@@ -1,0 +1,954 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		844050511A1C4626003D5F28 /* CommonOpenGLESImge */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 844050521A1C4626003D5F28 /* Build configuration list for PBXAggregateTarget "CommonOpenGLESImge" */;
+			buildPhases = (
+				844050551A1C4630003D5F28 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = CommonOpenGLESImge;
+			productName = CommonOpenGLESImge;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		84217FDF1A40233E003488E8 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84217FDE1A40233E003488E8 /* CoreMotion.framework */; };
+		84404FFC1A1C39FC003D5F28 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8443D71819753CE200803FC7 /* QuartzCore.framework */; };
+		84404FFD1A1C3A02003D5F28 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842A92A3195C338D00DD28C4 /* AVFoundation.framework */; };
+		84404FFE1A1C3A0A003D5F28 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B422FB4E18D45F890069CDE8 /* CoreGraphics.framework */; };
+		84404FFF1A1C3A11003D5F28 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B48B088718BAEF4C000706C5 /* UIKit.framework */; };
+		844050001A1C3A1B003D5F28 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B404A68518B5AFA3004A098E /* OpenGLES.framework */; };
+		844050011A1C3A23003D5F28 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B401432218B4AB3B00BC6480 /* Foundation.framework */; };
+		844050031A1C3B3F003D5F28 /* OpenGLESImage.h in Headers */ = {isa = PBXBuildFile; fileRef = B401432718B4AB3B00BC6480 /* OpenGLESImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		844050041A1C3B3F003D5F28 /* OIContext.h in Headers */ = {isa = PBXBuildFile; fileRef = B427C74418C9D0BA00C22135 /* OIContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		844050051A1C3B3F003D5F28 /* OIConsumer.h in Headers */ = {isa = PBXBuildFile; fileRef = B422FB4D18D453310069CDE8 /* OIConsumer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		844050061A1C3B3F003D5F28 /* OIFrameBufferObject.h in Headers */ = {isa = PBXBuildFile; fileRef = B427C74618C9D0BA00C22135 /* OIFrameBufferObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		844050071A1C3B3F003D5F28 /* OIProducer.h in Headers */ = {isa = PBXBuildFile; fileRef = B427C74818C9D0BA00C22135 /* OIProducer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		844050081A1C3B3F003D5F28 /* OIProgram.h in Headers */ = {isa = PBXBuildFile; fileRef = B427C74A18C9D0BA00C22135 /* OIProgram.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		844050091A1C3B3F003D5F28 /* OITexture.h in Headers */ = {isa = PBXBuildFile; fileRef = B427C74C18C9D0BA00C22135 /* OITexture.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8440500A1A1C3B3F003D5F28 /* OIVideoCaptor.h in Headers */ = {isa = PBXBuildFile; fileRef = B4F3917718E947AC00D6461F /* OIVideoCaptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8440500B1A1C3B3F003D5F28 /* OIStillImageCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = B4F3917A18E9595500D6461F /* OIStillImageCamera.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8440500C1A1C3B3F003D5F28 /* OIImage.h in Headers */ = {isa = PBXBuildFile; fileRef = B4FA72CD18E3CF04009F6520 /* OIImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8440500D1A1C3B3F003D5F28 /* OIUIElement.h in Headers */ = {isa = PBXBuildFile; fileRef = B4F3917418E924E600D6461F /* OIUIElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8440500E1A1C3B3F003D5F28 /* OIString.h in Headers */ = {isa = PBXBuildFile; fileRef = 841C02F619B712A100C4FD7A /* OIString.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8440500F1A1C3B3F003D5F28 /* OIVideo.h in Headers */ = {isa = PBXBuildFile; fileRef = 847E6EB319F4B88F0057BA7B /* OIVideo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		844050101A1C3B3F003D5F28 /* OIFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = B422FAF318D4403A0069CDE8 /* OIFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		844050111A1C3B3F003D5F28 /* OITwoInputsFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = B4A17D7B18FE7FB7009BA95E /* OITwoInputsFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		844050121A1C3B3F003D5F28 /* OITwoPassesFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = B4A17D7F18FE9424009BA95E /* OITwoPassesFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		844050131A1C3B3F003D5F28 /* OIMultiRendersFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 841C14531A08A4000005A10C /* OIMultiRendersFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		844050141A1C3B3F003D5F28 /* OIMultiInputsFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 841C145D1A08E0980005A10C /* OIMultiInputsFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		844050151A1C3B3F003D5F28 /* OIRGBAFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 843A423919A6054100699C57 /* OIRGBAFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		844050161A1C3B3F003D5F28 /* OIToneFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 843FD9C319FE1B090057F27F /* OIToneFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		844050171A1C3B3F003D5F28 /* OIBrightnessFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 841C145A1A08DC850005A10C /* OIBrightnessFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		844050181A1C3B3F003D5F28 /* OIBlendFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8415FE4619F8AD3500212041 /* OIBlendFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		844050191A1C3B3F003D5F28 /* OIScreenBlendFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8415FE4919F8AD6100212041 /* OIScreenBlendFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8440501A1A1C3B3F003D5F28 /* OIAlphaPreMultiplyBlendFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 841FE84919FF96DC00241979 /* OIAlphaPreMultiplyBlendFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8440501B1A1C3B3F003D5F28 /* OIRotationFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 841F2C9C197CE56600A47A10 /* OIRotationFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8440501C1A1C3B3F003D5F28 /* OIAlphaFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8491C0E4198B7A0100C2C458 /* OIAlphaFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8440501D1A1C3B3F003D5F28 /* OIMaskFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8469106019A49FF300DBCDF1 /* OIMaskFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8440501E1A1C3B3F003D5F28 /* OIMultiImagesSplicingFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8446DF011A09CF5600831CC5 /* OIMultiImagesSplicingFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8440501F1A1C3B3F003D5F28 /* OIAlphaMultiplingFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 845477941A0B6ADE003B67DD /* OIAlphaMultiplingFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		844050201A1C3B3F003D5F28 /* OIGaussianBlurFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = B424C3F01907D9D8005E596D /* OIGaussianBlurFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		844050211A1C3B3F003D5F28 /* OIFastSurfaceBlurFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = B408FEAA1935E6E100955247 /* OIFastSurfaceBlurFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		844050221A1C3B3F003D5F28 /* OIBoxBlurFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 841D09C9199B65E00082A7E6 /* OIBoxBlurFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		844050231A1C3B3F003D5F28 /* OIVerticalBoxBlurFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8446DF0B1A0A110600831CC5 /* OIVerticalBoxBlurFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		844050241A1C3B3F003D5F28 /* OIBeautyCameraFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = B409DA59193727F6002139AD /* OIBeautyCameraFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		844050251A1C3B3F003D5F28 /* OIView.h in Headers */ = {isa = PBXBuildFile; fileRef = B4F4D94B18E26E8B00ACB514 /* OIView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		844050261A1C3B40003D5F28 /* OIAudioVideoWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 84E280D019AB2068000DE6DF /* OIAudioVideoWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		844050271A1C3B6E003D5F28 /* OIProducerAnimationTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = 848EB98C19CBDB6C00D00FA3 /* OIProducerAnimationTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		844050281A1C3C34003D5F28 /* OpenGLESImage.m in Sources */ = {isa = PBXBuildFile; fileRef = B401432918B4AB3B00BC6480 /* OpenGLESImage.m */; };
+		844050291A1C3C34003D5F28 /* OIContext.m in Sources */ = {isa = PBXBuildFile; fileRef = B427C74518C9D0BA00C22135 /* OIContext.m */; };
+		8440502A1A1C3C34003D5F28 /* OIFrameBufferObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B427C74718C9D0BA00C22135 /* OIFrameBufferObject.m */; };
+		8440502B1A1C3C34003D5F28 /* OIProducer.m in Sources */ = {isa = PBXBuildFile; fileRef = B427C74918C9D0BA00C22135 /* OIProducer.m */; };
+		8440502C1A1C3C34003D5F28 /* OIProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = B427C74B18C9D0BA00C22135 /* OIProgram.m */; };
+		8440502D1A1C3C34003D5F28 /* OITexture.m in Sources */ = {isa = PBXBuildFile; fileRef = B427C74D18C9D0BA00C22135 /* OITexture.m */; };
+		8440502E1A1C3C34003D5F28 /* OIProducerAnimationTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 848EB98D19CBDB6C00D00FA3 /* OIProducerAnimationTimer.m */; };
+		8440502F1A1C3C34003D5F28 /* OIVideoCaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = B4F3917818E947AC00D6461F /* OIVideoCaptor.m */; };
+		844050301A1C3C34003D5F28 /* OIStillImageCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = B4F3917B18E9595500D6461F /* OIStillImageCamera.m */; };
+		844050311A1C3C34003D5F28 /* OIImage.m in Sources */ = {isa = PBXBuildFile; fileRef = B4FA72CE18E3CF04009F6520 /* OIImage.m */; };
+		844050321A1C3C34003D5F28 /* OIUIElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B4F3917518E924E600D6461F /* OIUIElement.m */; };
+		844050331A1C3C34003D5F28 /* OIString.m in Sources */ = {isa = PBXBuildFile; fileRef = 841C02F719B712A100C4FD7A /* OIString.m */; };
+		844050341A1C3C34003D5F28 /* OIVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 847E6EB419F4B88F0057BA7B /* OIVideo.m */; };
+		844050351A1C3C34003D5F28 /* OIFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = B422FAF418D4403A0069CDE8 /* OIFilter.m */; };
+		844050361A1C3C34003D5F28 /* OITwoInputsFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = B4A17D7C18FE7FB7009BA95E /* OITwoInputsFilter.m */; };
+		844050371A1C3C34003D5F28 /* OITwoPassesFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = B4A17D8018FE9424009BA95E /* OITwoPassesFilter.m */; };
+		844050381A1C3C34003D5F28 /* OIMultiRendersFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 841C14541A08A4000005A10C /* OIMultiRendersFilter.m */; };
+		844050391A1C3C34003D5F28 /* OIMultiInputsFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 841C145E1A08E0980005A10C /* OIMultiInputsFilter.m */; };
+		8440503A1A1C3C34003D5F28 /* OIRGBAFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 843A423A19A6054100699C57 /* OIRGBAFilter.m */; };
+		8440503B1A1C3C34003D5F28 /* OIToneFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 843FD9C419FE1B090057F27F /* OIToneFilter.m */; };
+		8440503C1A1C3C34003D5F28 /* OIBrightnessFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 841C145B1A08DC850005A10C /* OIBrightnessFilter.m */; };
+		8440503D1A1C3C34003D5F28 /* OIBlendFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8415FE4719F8AD3500212041 /* OIBlendFilter.m */; };
+		8440503E1A1C3C34003D5F28 /* OIScreenBlendFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8415FE4A19F8AD6100212041 /* OIScreenBlendFilter.m */; };
+		8440503F1A1C3C34003D5F28 /* OIAlphaPreMultiplyBlendFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 841FE84A19FF96DC00241979 /* OIAlphaPreMultiplyBlendFilter.m */; };
+		844050401A1C3C34003D5F28 /* OIRotationFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 841F2C9D197CE56600A47A10 /* OIRotationFilter.m */; };
+		844050411A1C3C34003D5F28 /* OIAlphaFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8491C0E5198B7A0100C2C458 /* OIAlphaFilter.m */; };
+		844050421A1C3C34003D5F28 /* OIMaskFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8469106119A49FF300DBCDF1 /* OIMaskFilter.m */; };
+		844050431A1C3C34003D5F28 /* OIMultiImagesSplicingFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8446DF021A09CF5600831CC5 /* OIMultiImagesSplicingFilter.m */; };
+		844050441A1C3C34003D5F28 /* OIAlphaMultiplingFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 845477951A0B6ADE003B67DD /* OIAlphaMultiplingFilter.m */; };
+		844050451A1C3C34003D5F28 /* OIGaussianBlurFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = B424C3F11907D9D8005E596D /* OIGaussianBlurFilter.m */; };
+		844050461A1C3C34003D5F28 /* OIFastSurfaceBlurFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = B408FEAB1935E6E100955247 /* OIFastSurfaceBlurFilter.m */; };
+		844050471A1C3C34003D5F28 /* OIBoxBlurFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 841D09CA199B65E00082A7E6 /* OIBoxBlurFilter.m */; };
+		844050481A1C3C34003D5F28 /* OIVerticalBoxBlurFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8446DF0C1A0A110600831CC5 /* OIVerticalBoxBlurFilter.m */; };
+		844050491A1C3C34003D5F28 /* OIBeautyCameraFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = B409DA5A193727F6002139AD /* OIBeautyCameraFilter.m */; };
+		8440504A1A1C3C34003D5F28 /* OIView.m in Sources */ = {isa = PBXBuildFile; fileRef = B4F4D94C18E26E8B00ACB514 /* OIView.m */; };
+		8440504B1A1C3C34003D5F28 /* OIAudioVideoWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E280D119AB2068000DE6DF /* OIAudioVideoWriter.m */; };
+		8440504C1A1C3C45003D5F28 /* OpenGLESImage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8468AC581A1B235B0068766F /* OpenGLESImage.bundle */; };
+		844654491A2C721500C6C6E8 /* OIVideoCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = 844654471A2C721500C6C6E8 /* OIVideoCamera.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8446544A1A2C721500C6C6E8 /* OIVideoCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 844654481A2C721500C6C6E8 /* OIVideoCamera.m */; };
+		84944C931A43CED500BD3CEC /* OIMultiplyBlendFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 84944C911A43CED500BD3CEC /* OIMultiplyBlendFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		84944C941A43CED500BD3CEC /* OIMultiplyBlendFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84944C921A43CED500BD3CEC /* OIMultiplyBlendFilter.m */; };
+		84B9BC0B1A5BE1130046C512 /* OIAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 84B9BC051A5BE1130046C512 /* OIAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		84B9BC0C1A5BE1130046C512 /* OIAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9BC061A5BE1130046C512 /* OIAnimation.m */; };
+		84B9BC0D1A5BE1130046C512 /* OIAnimationConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 84B9BC071A5BE1130046C512 /* OIAnimationConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		84B9BC0E1A5BE1130046C512 /* OIAnimationConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9BC081A5BE1130046C512 /* OIAnimationConfiguration.m */; };
+		84B9BC0F1A5BE1130046C512 /* OIAnimationConfigurationDescription.h in Headers */ = {isa = PBXBuildFile; fileRef = 84B9BC091A5BE1130046C512 /* OIAnimationConfigurationDescription.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		84B9BC101A5BE1130046C512 /* OIAnimationConfigurationDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9BC0A1A5BE1130046C512 /* OIAnimationConfigurationDescription.m */; };
+		84B9BC131A5BEBAC0046C512 /* OIAnimationConfigurationImageDescription.h in Headers */ = {isa = PBXBuildFile; fileRef = 84B9BC111A5BEBAC0046C512 /* OIAnimationConfigurationImageDescription.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		84B9BC141A5BEBAC0046C512 /* OIAnimationConfigurationImageDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9BC121A5BEBAC0046C512 /* OIAnimationConfigurationImageDescription.m */; };
+		84B9BC171A5BEF910046C512 /* OIAnimationConfigurationTextDescription.h in Headers */ = {isa = PBXBuildFile; fileRef = 84B9BC151A5BEF910046C512 /* OIAnimationConfigurationTextDescription.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		84B9BC181A5BEF910046C512 /* OIAnimationConfigurationTextDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9BC161A5BEF910046C512 /* OIAnimationConfigurationTextDescription.m */; };
+		84F7F2481A1C367400CA32DE /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F7F2471A1C367400CA32DE /* CoreFoundation.framework */; };
+		84F7F24E1A1C367400CA32DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84F7F24C1A1C367400CA32DE /* InfoPlist.strings */; };
+		84FEA73A1A4190E4007BEEDF /* OIOverlayBlendFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 84FEA7381A4190E4007BEEDF /* OIOverlayBlendFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		84FEA73B1A4190E4007BEEDF /* OIOverlayBlendFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FEA7391A4190E4007BEEDF /* OIOverlayBlendFilter.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		8415FE4619F8AD3500212041 /* OIBlendFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIBlendFilter.h; sourceTree = "<group>"; };
+		8415FE4719F8AD3500212041 /* OIBlendFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIBlendFilter.m; sourceTree = "<group>"; };
+		8415FE4919F8AD6100212041 /* OIScreenBlendFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIScreenBlendFilter.h; sourceTree = "<group>"; };
+		8415FE4A19F8AD6100212041 /* OIScreenBlendFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIScreenBlendFilter.m; sourceTree = "<group>"; };
+		8415FE4C19F8AE0C00212041 /* ScreenBlend.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ScreenBlend.fsh; sourceTree = "<group>"; };
+		841C02F619B712A100C4FD7A /* OIString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIString.h; sourceTree = "<group>"; };
+		841C02F719B712A100C4FD7A /* OIString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIString.m; sourceTree = "<group>"; };
+		841C14531A08A4000005A10C /* OIMultiRendersFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIMultiRendersFilter.h; sourceTree = "<group>"; };
+		841C14541A08A4000005A10C /* OIMultiRendersFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIMultiRendersFilter.m; sourceTree = "<group>"; };
+		841C145A1A08DC850005A10C /* OIBrightnessFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIBrightnessFilter.h; sourceTree = "<group>"; };
+		841C145B1A08DC850005A10C /* OIBrightnessFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIBrightnessFilter.m; sourceTree = "<group>"; };
+		841C145D1A08E0980005A10C /* OIMultiInputsFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIMultiInputsFilter.h; sourceTree = "<group>"; };
+		841C145E1A08E0980005A10C /* OIMultiInputsFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIMultiInputsFilter.m; sourceTree = "<group>"; };
+		841D09C9199B65E00082A7E6 /* OIBoxBlurFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIBoxBlurFilter.h; sourceTree = "<group>"; };
+		841D09CA199B65E00082A7E6 /* OIBoxBlurFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIBoxBlurFilter.m; sourceTree = "<group>"; };
+		841D09CC199B74080082A7E6 /* BoxBlur.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BoxBlur.vsh; sourceTree = "<group>"; };
+		841D09CD199B74240082A7E6 /* BoxBlur.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BoxBlur.fsh; sourceTree = "<group>"; };
+		841D9CDF19826DBF009E0995 /* Blend.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Blend.fsh; sourceTree = "<group>"; };
+		841F2C9C197CE56600A47A10 /* OIRotationFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIRotationFilter.h; sourceTree = "<group>"; };
+		841F2C9D197CE56600A47A10 /* OIRotationFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIRotationFilter.m; sourceTree = "<group>"; };
+		841F2C9F197CF61100A47A10 /* Rotation.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Rotation.vsh; sourceTree = "<group>"; };
+		841FE84919FF96DC00241979 /* OIAlphaPreMultiplyBlendFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIAlphaPreMultiplyBlendFilter.h; sourceTree = "<group>"; };
+		841FE84A19FF96DC00241979 /* OIAlphaPreMultiplyBlendFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIAlphaPreMultiplyBlendFilter.m; sourceTree = "<group>"; };
+		841FE84C19FF971200241979 /* AlphaPreMultiplyBlend.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = AlphaPreMultiplyBlend.fsh; sourceTree = "<group>"; };
+		84217FDE1A40233E003488E8 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		842A92A3195C338D00DD28C4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		843A423919A6054100699C57 /* OIRGBAFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIRGBAFilter.h; sourceTree = "<group>"; };
+		843A423A19A6054100699C57 /* OIRGBAFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIRGBAFilter.m; sourceTree = "<group>"; };
+		843A423C19A6091200699C57 /* RGBA.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = RGBA.fsh; sourceTree = "<group>"; };
+		843FD9C319FE1B090057F27F /* OIToneFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIToneFilter.h; sourceTree = "<group>"; };
+		843FD9C419FE1B090057F27F /* OIToneFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIToneFilter.m; sourceTree = "<group>"; };
+		843FD9C619FE25EB0057F27F /* Tone.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Tone.fsh; sourceTree = "<group>"; };
+		8443D71819753CE200803FC7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		844654471A2C721500C6C6E8 /* OIVideoCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIVideoCamera.h; sourceTree = "<group>"; };
+		844654481A2C721500C6C6E8 /* OIVideoCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIVideoCamera.m; sourceTree = "<group>"; };
+		8446DF011A09CF5600831CC5 /* OIMultiImagesSplicingFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIMultiImagesSplicingFilter.h; sourceTree = "<group>"; };
+		8446DF021A09CF5600831CC5 /* OIMultiImagesSplicingFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIMultiImagesSplicingFilter.m; sourceTree = "<group>"; };
+		8446DF041A09D4E600831CC5 /* MultiImagesSplicing.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MultiImagesSplicing.vsh; sourceTree = "<group>"; };
+		8446DF051A09D4F900831CC5 /* MultiImagesSplicing.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MultiImagesSplicing.fsh; sourceTree = "<group>"; };
+		8446DF0B1A0A110600831CC5 /* OIVerticalBoxBlurFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIVerticalBoxBlurFilter.h; sourceTree = "<group>"; };
+		8446DF0C1A0A110600831CC5 /* OIVerticalBoxBlurFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIVerticalBoxBlurFilter.m; sourceTree = "<group>"; };
+		8446DF0E1A0A125100831CC5 /* VerticalBoxBlur.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = VerticalBoxBlur.vsh; sourceTree = "<group>"; };
+		844A490219B412B900EBDA01 /* ColorSwizzling.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ColorSwizzling.fsh; sourceTree = "<group>"; };
+		844A490A19B42F9B00EBDA01 /* UpsideDown.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = UpsideDown.vsh; sourceTree = "<group>"; };
+		845477941A0B6ADE003B67DD /* OIAlphaMultiplingFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIAlphaMultiplingFilter.h; sourceTree = "<group>"; };
+		845477951A0B6ADE003B67DD /* OIAlphaMultiplingFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIAlphaMultiplingFilter.m; sourceTree = "<group>"; };
+		845477971A0B6B33003B67DD /* AlphaMultipling.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = AlphaMultipling.fsh; sourceTree = "<group>"; };
+		8468AC581A1B235B0068766F /* OpenGLESImage.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = OpenGLESImage.bundle; sourceTree = "<group>"; };
+		8469106019A49FF300DBCDF1 /* OIMaskFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIMaskFilter.h; sourceTree = "<group>"; };
+		8469106119A49FF300DBCDF1 /* OIMaskFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIMaskFilter.m; sourceTree = "<group>"; };
+		8469106319A4AF9200DBCDF1 /* Mask.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Mask.fsh; sourceTree = "<group>"; };
+		8469106419A4B12500DBCDF1 /* Mask.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Mask.vsh; sourceTree = "<group>"; };
+		847E6EB319F4B88F0057BA7B /* OIVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIVideo.h; sourceTree = "<group>"; };
+		847E6EB419F4B88F0057BA7B /* OIVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIVideo.m; sourceTree = "<group>"; };
+		848EB98C19CBDB6C00D00FA3 /* OIProducerAnimationTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIProducerAnimationTimer.h; sourceTree = "<group>"; };
+		848EB98D19CBDB6C00D00FA3 /* OIProducerAnimationTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIProducerAnimationTimer.m; sourceTree = "<group>"; };
+		8491C0E4198B7A0100C2C458 /* OIAlphaFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIAlphaFilter.h; sourceTree = "<group>"; };
+		8491C0E5198B7A0100C2C458 /* OIAlphaFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIAlphaFilter.m; sourceTree = "<group>"; };
+		8491C0E8198B82C300C2C458 /* Alpha.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Alpha.fsh; sourceTree = "<group>"; };
+		84944C8C1A43C37300BD3CEC /* OverlayBlend.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = OverlayBlend.fsh; sourceTree = "<group>"; };
+		84944C8F1A43CD2A00BD3CEC /* MultiplyBlend.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MultiplyBlend.fsh; sourceTree = "<group>"; };
+		84944C911A43CED500BD3CEC /* OIMultiplyBlendFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIMultiplyBlendFilter.h; sourceTree = "<group>"; };
+		84944C921A43CED500BD3CEC /* OIMultiplyBlendFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIMultiplyBlendFilter.m; sourceTree = "<group>"; };
+		84B9BC051A5BE1130046C512 /* OIAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIAnimation.h; sourceTree = "<group>"; };
+		84B9BC061A5BE1130046C512 /* OIAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIAnimation.m; sourceTree = "<group>"; };
+		84B9BC071A5BE1130046C512 /* OIAnimationConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIAnimationConfiguration.h; sourceTree = "<group>"; };
+		84B9BC081A5BE1130046C512 /* OIAnimationConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIAnimationConfiguration.m; sourceTree = "<group>"; };
+		84B9BC091A5BE1130046C512 /* OIAnimationConfigurationDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIAnimationConfigurationDescription.h; sourceTree = "<group>"; };
+		84B9BC0A1A5BE1130046C512 /* OIAnimationConfigurationDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIAnimationConfigurationDescription.m; sourceTree = "<group>"; };
+		84B9BC111A5BEBAC0046C512 /* OIAnimationConfigurationImageDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIAnimationConfigurationImageDescription.h; sourceTree = "<group>"; };
+		84B9BC121A5BEBAC0046C512 /* OIAnimationConfigurationImageDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIAnimationConfigurationImageDescription.m; sourceTree = "<group>"; };
+		84B9BC151A5BEF910046C512 /* OIAnimationConfigurationTextDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIAnimationConfigurationTextDescription.h; sourceTree = "<group>"; };
+		84B9BC161A5BEF910046C512 /* OIAnimationConfigurationTextDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIAnimationConfigurationTextDescription.m; sourceTree = "<group>"; };
+		84E280D019AB2068000DE6DF /* OIAudioVideoWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OIAudioVideoWriter.h; path = OpenGLESImage/Consumers/OIAudioVideoWriter.h; sourceTree = SOURCE_ROOT; };
+		84E280D119AB2068000DE6DF /* OIAudioVideoWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OIAudioVideoWriter.m; path = OpenGLESImage/Consumers/OIAudioVideoWriter.m; sourceTree = SOURCE_ROOT; };
+		84F7F2461A1C367400CA32DE /* OpenGLESImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenGLESImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84F7F2471A1C367400CA32DE /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		84F7F24B1A1C367400CA32DE /* OpenGLESImage-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OpenGLESImage-Info.plist"; sourceTree = "<group>"; };
+		84F7F24D1A1C367400CA32DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		84F7F24F1A1C367500CA32DE /* OpenGLESImage-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OpenGLESImage-Prefix.pch"; sourceTree = "<group>"; };
+		84FEA7381A4190E4007BEEDF /* OIOverlayBlendFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIOverlayBlendFilter.h; sourceTree = "<group>"; };
+		84FEA7391A4190E4007BEEDF /* OIOverlayBlendFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIOverlayBlendFilter.m; sourceTree = "<group>"; };
+		B401432218B4AB3B00BC6480 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B401432618B4AB3B00BC6480 /* OpenGLESImage-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OpenGLESImage-Prefix.pch"; sourceTree = "<group>"; };
+		B401432718B4AB3B00BC6480 /* OpenGLESImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenGLESImage.h; sourceTree = "<group>"; };
+		B401432918B4AB3B00BC6480 /* OpenGLESImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenGLESImage.m; sourceTree = "<group>"; };
+		B401433018B4AB3B00BC6480 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		B404A68518B5AFA3004A098E /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		B408FEAA1935E6E100955247 /* OIFastSurfaceBlurFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIFastSurfaceBlurFilter.h; sourceTree = "<group>"; };
+		B408FEAB1935E6E100955247 /* OIFastSurfaceBlurFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIFastSurfaceBlurFilter.m; sourceTree = "<group>"; };
+		B408FEB11935F6BF00955247 /* FastSurfaceBlur.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = FastSurfaceBlur.vsh; sourceTree = "<group>"; };
+		B408FEB21935F6DA00955247 /* FastSurfaceBlur.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = FastSurfaceBlur.fsh; sourceTree = "<group>"; };
+		B409DA59193727F6002139AD /* OIBeautyCameraFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIBeautyCameraFilter.h; sourceTree = "<group>"; };
+		B409DA5A193727F6002139AD /* OIBeautyCameraFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIBeautyCameraFilter.m; sourceTree = "<group>"; };
+		B409DA5C19372C41002139AD /* BeautyCamera.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BeautyCamera.fsh; sourceTree = "<group>"; };
+		B418CD0C18F3A1580080611B /* Default.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Default.fsh; sourceTree = "<group>"; };
+		B418CD0D18F3A1580080611B /* Default.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Default.vsh; sourceTree = "<group>"; };
+		B422FAF318D4403A0069CDE8 /* OIFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIFilter.h; sourceTree = "<group>"; };
+		B422FAF418D4403A0069CDE8 /* OIFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIFilter.m; sourceTree = "<group>"; };
+		B422FB4D18D453310069CDE8 /* OIConsumer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OIConsumer.h; sourceTree = "<group>"; };
+		B422FB4E18D45F890069CDE8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B424C3F01907D9D8005E596D /* OIGaussianBlurFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIGaussianBlurFilter.h; sourceTree = "<group>"; };
+		B424C3F11907D9D8005E596D /* OIGaussianBlurFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIGaussianBlurFilter.m; sourceTree = "<group>"; };
+		B427C74418C9D0BA00C22135 /* OIContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIContext.h; sourceTree = "<group>"; };
+		B427C74518C9D0BA00C22135 /* OIContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIContext.m; sourceTree = "<group>"; };
+		B427C74618C9D0BA00C22135 /* OIFrameBufferObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIFrameBufferObject.h; sourceTree = "<group>"; };
+		B427C74718C9D0BA00C22135 /* OIFrameBufferObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIFrameBufferObject.m; sourceTree = "<group>"; };
+		B427C74818C9D0BA00C22135 /* OIProducer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIProducer.h; sourceTree = "<group>"; };
+		B427C74918C9D0BA00C22135 /* OIProducer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIProducer.m; sourceTree = "<group>"; };
+		B427C74A18C9D0BA00C22135 /* OIProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIProgram.h; sourceTree = "<group>"; };
+		B427C74B18C9D0BA00C22135 /* OIProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIProgram.m; sourceTree = "<group>"; };
+		B427C74C18C9D0BA00C22135 /* OITexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITexture.h; sourceTree = "<group>"; };
+		B427C74D18C9D0BA00C22135 /* OITexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITexture.m; sourceTree = "<group>"; };
+		B435285B192DDF6800CBF2F9 /* GaussianBlur.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = GaussianBlur.vsh; sourceTree = "<group>"; };
+		B435285C192DDFB500CBF2F9 /* GaussianBlur.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = GaussianBlur.fsh; sourceTree = "<group>"; };
+		B48B088718BAEF4C000706C5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B4A17D7B18FE7FB7009BA95E /* OITwoInputsFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITwoInputsFilter.h; sourceTree = "<group>"; };
+		B4A17D7C18FE7FB7009BA95E /* OITwoInputsFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITwoInputsFilter.m; sourceTree = "<group>"; };
+		B4A17D7E18FE880B009BA95E /* TwoInputs.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = TwoInputs.vsh; sourceTree = "<group>"; };
+		B4A17D7F18FE9424009BA95E /* OITwoPassesFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OITwoPassesFilter.h; sourceTree = "<group>"; };
+		B4A17D8018FE9424009BA95E /* OITwoPassesFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OITwoPassesFilter.m; sourceTree = "<group>"; };
+		B4F3917418E924E600D6461F /* OIUIElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIUIElement.h; sourceTree = "<group>"; };
+		B4F3917518E924E600D6461F /* OIUIElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIUIElement.m; sourceTree = "<group>"; };
+		B4F3917718E947AC00D6461F /* OIVideoCaptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIVideoCaptor.h; sourceTree = "<group>"; };
+		B4F3917818E947AC00D6461F /* OIVideoCaptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIVideoCaptor.m; sourceTree = "<group>"; };
+		B4F3917A18E9595500D6461F /* OIStillImageCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIStillImageCamera.h; sourceTree = "<group>"; };
+		B4F3917B18E9595500D6461F /* OIStillImageCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIStillImageCamera.m; sourceTree = "<group>"; };
+		B4F4D94B18E26E8B00ACB514 /* OIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OIView.h; path = OpenGLESImage/Consumers/OIView.h; sourceTree = SOURCE_ROOT; };
+		B4F4D94C18E26E8B00ACB514 /* OIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OIView.m; path = OpenGLESImage/Consumers/OIView.m; sourceTree = SOURCE_ROOT; };
+		B4FA72CD18E3CF04009F6520 /* OIImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIImage.h; sourceTree = "<group>"; };
+		B4FA72CE18E3CF04009F6520 /* OIImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIImage.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		84F7F2431A1C367400CA32DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84217FDF1A40233E003488E8 /* CoreMotion.framework in Frameworks */,
+				844050011A1C3A23003D5F28 /* Foundation.framework in Frameworks */,
+				844050001A1C3A1B003D5F28 /* OpenGLES.framework in Frameworks */,
+				84404FFF1A1C3A11003D5F28 /* UIKit.framework in Frameworks */,
+				84404FFE1A1C3A0A003D5F28 /* CoreGraphics.framework in Frameworks */,
+				84404FFD1A1C3A02003D5F28 /* AVFoundation.framework in Frameworks */,
+				84404FFC1A1C39FC003D5F28 /* QuartzCore.framework in Frameworks */,
+				84F7F2481A1C367400CA32DE /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8415FE4519F8ACE300212041 /* Blend */ = {
+			isa = PBXGroup;
+			children = (
+				8415FE4619F8AD3500212041 /* OIBlendFilter.h */,
+				8415FE4719F8AD3500212041 /* OIBlendFilter.m */,
+				8415FE4919F8AD6100212041 /* OIScreenBlendFilter.h */,
+				8415FE4A19F8AD6100212041 /* OIScreenBlendFilter.m */,
+				841FE84919FF96DC00241979 /* OIAlphaPreMultiplyBlendFilter.h */,
+				841FE84A19FF96DC00241979 /* OIAlphaPreMultiplyBlendFilter.m */,
+				84FEA7381A4190E4007BEEDF /* OIOverlayBlendFilter.h */,
+				84FEA7391A4190E4007BEEDF /* OIOverlayBlendFilter.m */,
+				84944C911A43CED500BD3CEC /* OIMultiplyBlendFilter.h */,
+				84944C921A43CED500BD3CEC /* OIMultiplyBlendFilter.m */,
+			);
+			path = Blend;
+			sourceTree = "<group>";
+		};
+		841A84DC1A30535800E133B2 /* OIString Filters */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "OIString Filters";
+			sourceTree = "<group>";
+		};
+		841F2C9B197CE4D900A47A10 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				841F2C9C197CE56600A47A10 /* OIRotationFilter.h */,
+				841F2C9D197CE56600A47A10 /* OIRotationFilter.m */,
+				8491C0E4198B7A0100C2C458 /* OIAlphaFilter.h */,
+				8491C0E5198B7A0100C2C458 /* OIAlphaFilter.m */,
+				8469106019A49FF300DBCDF1 /* OIMaskFilter.h */,
+				8469106119A49FF300DBCDF1 /* OIMaskFilter.m */,
+				8446DF011A09CF5600831CC5 /* OIMultiImagesSplicingFilter.h */,
+				8446DF021A09CF5600831CC5 /* OIMultiImagesSplicingFilter.m */,
+				845477941A0B6ADE003B67DD /* OIAlphaMultiplingFilter.h */,
+				845477951A0B6ADE003B67DD /* OIAlphaMultiplingFilter.m */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
+		843A423819A6053100699C57 /* Color Processing */ = {
+			isa = PBXGroup;
+			children = (
+				843A423919A6054100699C57 /* OIRGBAFilter.h */,
+				843A423A19A6054100699C57 /* OIRGBAFilter.m */,
+				843FD9C319FE1B090057F27F /* OIToneFilter.h */,
+				843FD9C419FE1B090057F27F /* OIToneFilter.m */,
+				841C145A1A08DC850005A10C /* OIBrightnessFilter.h */,
+				841C145B1A08DC850005A10C /* OIBrightnessFilter.m */,
+			);
+			name = "Color Processing";
+			path = ColorProcessing;
+			sourceTree = "<group>";
+		};
+		84B9BC041A5BE1130046C512 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				84B9BC051A5BE1130046C512 /* OIAnimation.h */,
+				84B9BC061A5BE1130046C512 /* OIAnimation.m */,
+				84B9BC071A5BE1130046C512 /* OIAnimationConfiguration.h */,
+				84B9BC081A5BE1130046C512 /* OIAnimationConfiguration.m */,
+				84B9BC091A5BE1130046C512 /* OIAnimationConfigurationDescription.h */,
+				84B9BC0A1A5BE1130046C512 /* OIAnimationConfigurationDescription.m */,
+				84B9BC111A5BEBAC0046C512 /* OIAnimationConfigurationImageDescription.h */,
+				84B9BC121A5BEBAC0046C512 /* OIAnimationConfigurationImageDescription.m */,
+				84B9BC151A5BEF910046C512 /* OIAnimationConfigurationTextDescription.h */,
+				84B9BC161A5BEF910046C512 /* OIAnimationConfigurationTextDescription.m */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
+		84F7F2491A1C367400CA32DE /* OpenGLESImage */ = {
+			isa = PBXGroup;
+			children = (
+				84F7F24A1A1C367400CA32DE /* Supporting Files */,
+			);
+			path = OpenGLESImage;
+			sourceTree = "<group>";
+		};
+		84F7F24A1A1C367400CA32DE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				84F7F24B1A1C367400CA32DE /* OpenGLESImage-Info.plist */,
+				84F7F24C1A1C367400CA32DE /* InfoPlist.strings */,
+				84F7F24F1A1C367500CA32DE /* OpenGLESImage-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B401431618B4AB3B00BC6480 = {
+			isa = PBXGroup;
+			children = (
+				B401432418B4AB3B00BC6480 /* OpenGLESImage */,
+				84F7F2491A1C367400CA32DE /* OpenGLESImage */,
+				B401432118B4AB3B00BC6480 /* Frameworks */,
+				B401432018B4AB3B00BC6480 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B401432018B4AB3B00BC6480 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				84F7F2461A1C367400CA32DE /* OpenGLESImage.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B401432118B4AB3B00BC6480 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				84217FDE1A40233E003488E8 /* CoreMotion.framework */,
+				8443D71819753CE200803FC7 /* QuartzCore.framework */,
+				842A92A3195C338D00DD28C4 /* AVFoundation.framework */,
+				B422FB4E18D45F890069CDE8 /* CoreGraphics.framework */,
+				B48B088718BAEF4C000706C5 /* UIKit.framework */,
+				B404A68518B5AFA3004A098E /* OpenGLES.framework */,
+				B401432218B4AB3B00BC6480 /* Foundation.framework */,
+				B401433018B4AB3B00BC6480 /* XCTest.framework */,
+				84F7F2471A1C367400CA32DE /* CoreFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B401432418B4AB3B00BC6480 /* OpenGLESImage */ = {
+			isa = PBXGroup;
+			children = (
+				8468AC581A1B235B0068766F /* OpenGLESImage.bundle */,
+				B401432718B4AB3B00BC6480 /* OpenGLESImage.h */,
+				B401432918B4AB3B00BC6480 /* OpenGLESImage.m */,
+				B427C74118C9D0BA00C22135 /* Base Classes */,
+				84B9BC041A5BE1130046C512 /* Animation */,
+				B427C75418C9D0CC00C22135 /* Producers */,
+				B427C75518C9D0DD00C22135 /* Filters */,
+				B422FAF618D442F20069CDE8 /* Shaders */,
+				B427C75618C9D0E700C22135 /* Consumers */,
+				B401432518B4AB3B00BC6480 /* Supporting Files */,
+			);
+			path = OpenGLESImage;
+			sourceTree = "<group>";
+		};
+		B401432518B4AB3B00BC6480 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B401432618B4AB3B00BC6480 /* OpenGLESImage-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B409DA58193727A9002139AD /* For Beauty Camera */ = {
+			isa = PBXGroup;
+			children = (
+				B409DA59193727F6002139AD /* OIBeautyCameraFilter.h */,
+				B409DA5A193727F6002139AD /* OIBeautyCameraFilter.m */,
+			);
+			name = "For Beauty Camera";
+			path = ForBeautyCamera;
+			sourceTree = "<group>";
+		};
+		B422FAF618D442F20069CDE8 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				B418CD0D18F3A1580080611B /* Default.vsh */,
+				B418CD0C18F3A1580080611B /* Default.fsh */,
+				B4A17D7E18FE880B009BA95E /* TwoInputs.vsh */,
+				B435285B192DDF6800CBF2F9 /* GaussianBlur.vsh */,
+				B435285C192DDFB500CBF2F9 /* GaussianBlur.fsh */,
+				B408FEB11935F6BF00955247 /* FastSurfaceBlur.vsh */,
+				B408FEB21935F6DA00955247 /* FastSurfaceBlur.fsh */,
+				B409DA5C19372C41002139AD /* BeautyCamera.fsh */,
+				841F2C9F197CF61100A47A10 /* Rotation.vsh */,
+				841D9CDF19826DBF009E0995 /* Blend.fsh */,
+				8491C0E8198B82C300C2C458 /* Alpha.fsh */,
+				841D09CC199B74080082A7E6 /* BoxBlur.vsh */,
+				841D09CD199B74240082A7E6 /* BoxBlur.fsh */,
+				8469106419A4B12500DBCDF1 /* Mask.vsh */,
+				8469106319A4AF9200DBCDF1 /* Mask.fsh */,
+				843A423C19A6091200699C57 /* RGBA.fsh */,
+				844A490219B412B900EBDA01 /* ColorSwizzling.fsh */,
+				844A490A19B42F9B00EBDA01 /* UpsideDown.vsh */,
+				8415FE4C19F8AE0C00212041 /* ScreenBlend.fsh */,
+				843FD9C619FE25EB0057F27F /* Tone.fsh */,
+				841FE84C19FF971200241979 /* AlphaPreMultiplyBlend.fsh */,
+				8446DF041A09D4E600831CC5 /* MultiImagesSplicing.vsh */,
+				8446DF051A09D4F900831CC5 /* MultiImagesSplicing.fsh */,
+				8446DF0E1A0A125100831CC5 /* VerticalBoxBlur.vsh */,
+				845477971A0B6B33003B67DD /* AlphaMultipling.fsh */,
+				84944C8C1A43C37300BD3CEC /* OverlayBlend.fsh */,
+				84944C8F1A43CD2A00BD3CEC /* MultiplyBlend.fsh */,
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
+		B424C3EB1907C92B005E596D /* Blur */ = {
+			isa = PBXGroup;
+			children = (
+				B424C3F01907D9D8005E596D /* OIGaussianBlurFilter.h */,
+				B424C3F11907D9D8005E596D /* OIGaussianBlurFilter.m */,
+				B408FEAA1935E6E100955247 /* OIFastSurfaceBlurFilter.h */,
+				B408FEAB1935E6E100955247 /* OIFastSurfaceBlurFilter.m */,
+				841D09C9199B65E00082A7E6 /* OIBoxBlurFilter.h */,
+				841D09CA199B65E00082A7E6 /* OIBoxBlurFilter.m */,
+				8446DF0B1A0A110600831CC5 /* OIVerticalBoxBlurFilter.h */,
+				8446DF0C1A0A110600831CC5 /* OIVerticalBoxBlurFilter.m */,
+			);
+			path = Blur;
+			sourceTree = "<group>";
+		};
+		B427C74118C9D0BA00C22135 /* Base Classes */ = {
+			isa = PBXGroup;
+			children = (
+				B427C74418C9D0BA00C22135 /* OIContext.h */,
+				B427C74518C9D0BA00C22135 /* OIContext.m */,
+				B422FB4D18D453310069CDE8 /* OIConsumer.h */,
+				B427C74618C9D0BA00C22135 /* OIFrameBufferObject.h */,
+				B427C74718C9D0BA00C22135 /* OIFrameBufferObject.m */,
+				B427C74818C9D0BA00C22135 /* OIProducer.h */,
+				B427C74918C9D0BA00C22135 /* OIProducer.m */,
+				B427C74A18C9D0BA00C22135 /* OIProgram.h */,
+				B427C74B18C9D0BA00C22135 /* OIProgram.m */,
+				B427C74C18C9D0BA00C22135 /* OITexture.h */,
+				B427C74D18C9D0BA00C22135 /* OITexture.m */,
+				848EB98C19CBDB6C00D00FA3 /* OIProducerAnimationTimer.h */,
+				848EB98D19CBDB6C00D00FA3 /* OIProducerAnimationTimer.m */,
+			);
+			path = "Base Classes";
+			sourceTree = "<group>";
+		};
+		B427C75418C9D0CC00C22135 /* Producers */ = {
+			isa = PBXGroup;
+			children = (
+				B4F3917718E947AC00D6461F /* OIVideoCaptor.h */,
+				B4F3917818E947AC00D6461F /* OIVideoCaptor.m */,
+				B4F3917A18E9595500D6461F /* OIStillImageCamera.h */,
+				B4F3917B18E9595500D6461F /* OIStillImageCamera.m */,
+				844654471A2C721500C6C6E8 /* OIVideoCamera.h */,
+				844654481A2C721500C6C6E8 /* OIVideoCamera.m */,
+				B4FA72CD18E3CF04009F6520 /* OIImage.h */,
+				B4FA72CE18E3CF04009F6520 /* OIImage.m */,
+				B4F3917418E924E600D6461F /* OIUIElement.h */,
+				B4F3917518E924E600D6461F /* OIUIElement.m */,
+				841C02F619B712A100C4FD7A /* OIString.h */,
+				841C02F719B712A100C4FD7A /* OIString.m */,
+				847E6EB319F4B88F0057BA7B /* OIVideo.h */,
+				847E6EB419F4B88F0057BA7B /* OIVideo.m */,
+			);
+			path = Producers;
+			sourceTree = "<group>";
+		};
+		B427C75518C9D0DD00C22135 /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				B422FAF318D4403A0069CDE8 /* OIFilter.h */,
+				B422FAF418D4403A0069CDE8 /* OIFilter.m */,
+				B4A17D7B18FE7FB7009BA95E /* OITwoInputsFilter.h */,
+				B4A17D7C18FE7FB7009BA95E /* OITwoInputsFilter.m */,
+				B4A17D7F18FE9424009BA95E /* OITwoPassesFilter.h */,
+				B4A17D8018FE9424009BA95E /* OITwoPassesFilter.m */,
+				841C14531A08A4000005A10C /* OIMultiRendersFilter.h */,
+				841C14541A08A4000005A10C /* OIMultiRendersFilter.m */,
+				841C145D1A08E0980005A10C /* OIMultiInputsFilter.h */,
+				841C145E1A08E0980005A10C /* OIMultiInputsFilter.m */,
+				843A423819A6053100699C57 /* Color Processing */,
+				8415FE4519F8ACE300212041 /* Blend */,
+				841F2C9B197CE4D900A47A10 /* Animation */,
+				B424C3EB1907C92B005E596D /* Blur */,
+				841A84DC1A30535800E133B2 /* OIString Filters */,
+				B409DA58193727A9002139AD /* For Beauty Camera */,
+			);
+			path = Filters;
+			sourceTree = "<group>";
+		};
+		B427C75618C9D0E700C22135 /* Consumers */ = {
+			isa = PBXGroup;
+			children = (
+				B4F4D94B18E26E8B00ACB514 /* OIView.h */,
+				B4F4D94C18E26E8B00ACB514 /* OIView.m */,
+				84E280D019AB2068000DE6DF /* OIAudioVideoWriter.h */,
+				84E280D119AB2068000DE6DF /* OIAudioVideoWriter.m */,
+			);
+			name = Consumers;
+			path = consumers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		844050021A1C3ABA003D5F28 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84B9BC0F1A5BE1130046C512 /* OIAnimationConfigurationDescription.h in Headers */,
+				84B9BC0D1A5BE1130046C512 /* OIAnimationConfiguration.h in Headers */,
+				84B9BC171A5BEF910046C512 /* OIAnimationConfigurationTextDescription.h in Headers */,
+				84B9BC131A5BEBAC0046C512 /* OIAnimationConfigurationImageDescription.h in Headers */,
+				84B9BC0B1A5BE1130046C512 /* OIAnimation.h in Headers */,
+				84944C931A43CED500BD3CEC /* OIMultiplyBlendFilter.h in Headers */,
+				84FEA73A1A4190E4007BEEDF /* OIOverlayBlendFilter.h in Headers */,
+				844654491A2C721500C6C6E8 /* OIVideoCamera.h in Headers */,
+				844050271A1C3B6E003D5F28 /* OIProducerAnimationTimer.h in Headers */,
+				844050031A1C3B3F003D5F28 /* OpenGLESImage.h in Headers */,
+				844050041A1C3B3F003D5F28 /* OIContext.h in Headers */,
+				844050051A1C3B3F003D5F28 /* OIConsumer.h in Headers */,
+				844050061A1C3B3F003D5F28 /* OIFrameBufferObject.h in Headers */,
+				844050071A1C3B3F003D5F28 /* OIProducer.h in Headers */,
+				844050081A1C3B3F003D5F28 /* OIProgram.h in Headers */,
+				844050091A1C3B3F003D5F28 /* OITexture.h in Headers */,
+				8440500A1A1C3B3F003D5F28 /* OIVideoCaptor.h in Headers */,
+				8440500B1A1C3B3F003D5F28 /* OIStillImageCamera.h in Headers */,
+				8440500C1A1C3B3F003D5F28 /* OIImage.h in Headers */,
+				8440500D1A1C3B3F003D5F28 /* OIUIElement.h in Headers */,
+				8440500E1A1C3B3F003D5F28 /* OIString.h in Headers */,
+				8440500F1A1C3B3F003D5F28 /* OIVideo.h in Headers */,
+				844050101A1C3B3F003D5F28 /* OIFilter.h in Headers */,
+				844050111A1C3B3F003D5F28 /* OITwoInputsFilter.h in Headers */,
+				844050121A1C3B3F003D5F28 /* OITwoPassesFilter.h in Headers */,
+				844050131A1C3B3F003D5F28 /* OIMultiRendersFilter.h in Headers */,
+				844050141A1C3B3F003D5F28 /* OIMultiInputsFilter.h in Headers */,
+				844050151A1C3B3F003D5F28 /* OIRGBAFilter.h in Headers */,
+				844050161A1C3B3F003D5F28 /* OIToneFilter.h in Headers */,
+				844050171A1C3B3F003D5F28 /* OIBrightnessFilter.h in Headers */,
+				844050181A1C3B3F003D5F28 /* OIBlendFilter.h in Headers */,
+				844050191A1C3B3F003D5F28 /* OIScreenBlendFilter.h in Headers */,
+				8440501A1A1C3B3F003D5F28 /* OIAlphaPreMultiplyBlendFilter.h in Headers */,
+				8440501B1A1C3B3F003D5F28 /* OIRotationFilter.h in Headers */,
+				8440501C1A1C3B3F003D5F28 /* OIAlphaFilter.h in Headers */,
+				8440501D1A1C3B3F003D5F28 /* OIMaskFilter.h in Headers */,
+				8440501E1A1C3B3F003D5F28 /* OIMultiImagesSplicingFilter.h in Headers */,
+				8440501F1A1C3B3F003D5F28 /* OIAlphaMultiplingFilter.h in Headers */,
+				844050201A1C3B3F003D5F28 /* OIGaussianBlurFilter.h in Headers */,
+				844050211A1C3B3F003D5F28 /* OIFastSurfaceBlurFilter.h in Headers */,
+				844050221A1C3B3F003D5F28 /* OIBoxBlurFilter.h in Headers */,
+				844050231A1C3B3F003D5F28 /* OIVerticalBoxBlurFilter.h in Headers */,
+				844050241A1C3B3F003D5F28 /* OIBeautyCameraFilter.h in Headers */,
+				844050251A1C3B3F003D5F28 /* OIView.h in Headers */,
+				844050261A1C3B40003D5F28 /* OIAudioVideoWriter.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		84F7F2451A1C367400CA32DE /* OpenGLESImage */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84F7F2501A1C367500CA32DE /* Build configuration list for PBXNativeTarget "OpenGLESImage" */;
+			buildPhases = (
+				84F7F2421A1C367400CA32DE /* Sources */,
+				84F7F2431A1C367400CA32DE /* Frameworks */,
+				84F7F2441A1C367400CA32DE /* Resources */,
+				844050021A1C3ABA003D5F28 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OpenGLESImage;
+			productName = OpenGLESImage;
+			productReference = 84F7F2461A1C367400CA32DE /* OpenGLESImage.framework */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B401431718B4AB3B00BC6480 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Kwan Yiuleung";
+				TargetAttributes = {
+					844050511A1C4626003D5F28 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
+			};
+			buildConfigurationList = B401431A18B4AB3B00BC6480 /* Build configuration list for PBXProject "OpenGLESImage" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B401431618B4AB3B00BC6480;
+			productRefGroup = B401432018B4AB3B00BC6480 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				84F7F2451A1C367400CA32DE /* OpenGLESImage */,
+				844050511A1C4626003D5F28 /* CommonOpenGLESImge */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		84F7F2441A1C367400CA32DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8440504C1A1C3C45003D5F28 /* OpenGLESImage.bundle in Resources */,
+				84F7F24E1A1C367400CA32DE /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		844050551A1C4630003D5F28 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Sets the target folders and the final framework product.\n# 如果工程名称和Framework的Target名称不一样的话，要自定义FMKNAME\n# 例如: FMK_NAME = \"MyFramework\"\nFMK_NAME=${PROJECT_NAME}\n\n# Install dir will be the final output to the framework.\n# The following line create it in the root folder of the current project.\nINSTALL_DIR=${SRCROOT}/Products/${FMK_NAME}.framework\n\n# Working dir will be deleted after the framework creation.\nWRK_DIR=build\nDEVICE_DIR=${WRK_DIR}/Release-iphoneos/${FMK_NAME}.framework\nSIMULATOR_DIR=${WRK_DIR}/Release-iphonesimulator/${FMK_NAME}.framework\n\n# -configuration ${CONFIGURATION}\n# Clean and Building both architectures.\nxcodebuild -configuration \"Release\" -target \"${FMK_NAME}\" -sdk iphoneos clean build\nxcodebuild -configuration \"Release\" -target \"${FMK_NAME}\" -sdk iphonesimulator clean build\n\n# Cleaning the oldest.\nif [ -d \"${INSTALL_DIR}\" ]\nthen\nrm -rf \"${INSTALL_DIR}\"\nfi\n\nmkdir -p \"${INSTALL_DIR}\"\n\ncp -R \"${DEVICE_DIR}/\" \"${INSTALL_DIR}/\"\n\n# Uses the Lipo Tool to merge both binary files (i386 + armv6/armv7) into one Universal final product.\nlipo -create \"${DEVICE_DIR}/${FMK_NAME}\" \"${SIMULATOR_DIR}/${FMK_NAME}\" -output \"${INSTALL_DIR}/${FMK_NAME}\"\n\nrm -r \"${WRK_DIR}\"\n\nopen \"${INSTALL_DIR}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		84F7F2421A1C367400CA32DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				844050281A1C3C34003D5F28 /* OpenGLESImage.m in Sources */,
+				844050291A1C3C34003D5F28 /* OIContext.m in Sources */,
+				8440502A1A1C3C34003D5F28 /* OIFrameBufferObject.m in Sources */,
+				8440502B1A1C3C34003D5F28 /* OIProducer.m in Sources */,
+				8440502C1A1C3C34003D5F28 /* OIProgram.m in Sources */,
+				8440502D1A1C3C34003D5F28 /* OITexture.m in Sources */,
+				8440502E1A1C3C34003D5F28 /* OIProducerAnimationTimer.m in Sources */,
+				8440502F1A1C3C34003D5F28 /* OIVideoCaptor.m in Sources */,
+				84B9BC101A5BE1130046C512 /* OIAnimationConfigurationDescription.m in Sources */,
+				844050301A1C3C34003D5F28 /* OIStillImageCamera.m in Sources */,
+				844050311A1C3C34003D5F28 /* OIImage.m in Sources */,
+				844050321A1C3C34003D5F28 /* OIUIElement.m in Sources */,
+				844050331A1C3C34003D5F28 /* OIString.m in Sources */,
+				84944C941A43CED500BD3CEC /* OIMultiplyBlendFilter.m in Sources */,
+				844050341A1C3C34003D5F28 /* OIVideo.m in Sources */,
+				844050351A1C3C34003D5F28 /* OIFilter.m in Sources */,
+				844050361A1C3C34003D5F28 /* OITwoInputsFilter.m in Sources */,
+				844050371A1C3C34003D5F28 /* OITwoPassesFilter.m in Sources */,
+				844050381A1C3C34003D5F28 /* OIMultiRendersFilter.m in Sources */,
+				844050391A1C3C34003D5F28 /* OIMultiInputsFilter.m in Sources */,
+				8440503A1A1C3C34003D5F28 /* OIRGBAFilter.m in Sources */,
+				8440503B1A1C3C34003D5F28 /* OIToneFilter.m in Sources */,
+				8440503C1A1C3C34003D5F28 /* OIBrightnessFilter.m in Sources */,
+				84B9BC141A5BEBAC0046C512 /* OIAnimationConfigurationImageDescription.m in Sources */,
+				84B9BC0E1A5BE1130046C512 /* OIAnimationConfiguration.m in Sources */,
+				8440503D1A1C3C34003D5F28 /* OIBlendFilter.m in Sources */,
+				8440503E1A1C3C34003D5F28 /* OIScreenBlendFilter.m in Sources */,
+				8440503F1A1C3C34003D5F28 /* OIAlphaPreMultiplyBlendFilter.m in Sources */,
+				844050401A1C3C34003D5F28 /* OIRotationFilter.m in Sources */,
+				844050411A1C3C34003D5F28 /* OIAlphaFilter.m in Sources */,
+				844050421A1C3C34003D5F28 /* OIMaskFilter.m in Sources */,
+				844050431A1C3C34003D5F28 /* OIMultiImagesSplicingFilter.m in Sources */,
+				844050441A1C3C34003D5F28 /* OIAlphaMultiplingFilter.m in Sources */,
+				844050451A1C3C34003D5F28 /* OIGaussianBlurFilter.m in Sources */,
+				844050461A1C3C34003D5F28 /* OIFastSurfaceBlurFilter.m in Sources */,
+				84B9BC0C1A5BE1130046C512 /* OIAnimation.m in Sources */,
+				84FEA73B1A4190E4007BEEDF /* OIOverlayBlendFilter.m in Sources */,
+				84B9BC181A5BEF910046C512 /* OIAnimationConfigurationTextDescription.m in Sources */,
+				844050471A1C3C34003D5F28 /* OIBoxBlurFilter.m in Sources */,
+				844050481A1C3C34003D5F28 /* OIVerticalBoxBlurFilter.m in Sources */,
+				8446544A1A2C721500C6C6E8 /* OIVideoCamera.m in Sources */,
+				844050491A1C3C34003D5F28 /* OIBeautyCameraFilter.m in Sources */,
+				8440504A1A1C3C34003D5F28 /* OIView.m in Sources */,
+				8440504B1A1C3C34003D5F28 /* OIAudioVideoWriter.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		84F7F24C1A1C367400CA32DE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84F7F24D1A1C367400CA32DE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		844050531A1C4626003D5F28 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv7s,
+					arm64,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		844050541A1C4626003D5F28 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv7s,
+					arm64,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		84F7F2511A1C367500CA32DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv7s,
+					arm64,
+				);
+				CLANG_ENABLE_OBJC_ARC = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OpenGLESImage/OpenGLESImage-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "OpenGLESImage/OpenGLESImage-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				MACH_O_TYPE = mh_object;
+				MACOSX_DEPLOYMENT_TARGET = "";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		84F7F2521A1C367500CA32DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv7s,
+					arm64,
+				);
+				CLANG_ENABLE_OBJC_ARC = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OpenGLESImage/OpenGLESImage-Prefix.pch";
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "OpenGLESImage/OpenGLESImage-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				MACH_O_TYPE = mh_object;
+				MACOSX_DEPLOYMENT_TARGET = "";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		B401434018B4AB3B00BC6480 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B401434118B4AB3B00BC6480 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		844050521A1C4626003D5F28 /* Build configuration list for PBXAggregateTarget "CommonOpenGLESImge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				844050531A1C4626003D5F28 /* Debug */,
+				844050541A1C4626003D5F28 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84F7F2501A1C367500CA32DE /* Build configuration list for PBXNativeTarget "OpenGLESImage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84F7F2511A1C367500CA32DE /* Debug */,
+				84F7F2521A1C367500CA32DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B401431A18B4AB3B00BC6480 /* Build configuration list for PBXProject "OpenGLESImage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B401434018B4AB3B00BC6480 /* Debug */,
+				B401434118B4AB3B00BC6480 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B401431718B4AB3B00BC6480 /* Project object */;
+}
