@@ -16,7 +16,7 @@
 @interface OIContext : NSObject
 
 @property (readonly, nonatomic) dispatch_queue_t imageProcessingQueue;
-@property (readonly, nonatomic) EAGLContext *context;
+
 @property (readwrite, retain, nonatomic) EAGLSharegroup *sharegroup;
 
 + (OIContext *)sharedContext;

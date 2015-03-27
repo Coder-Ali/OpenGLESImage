@@ -45,7 +45,6 @@
 #import <OpenGLESImage/OIFastSurfaceBlurFilter.h>
 #import <OpenGLESImage/OIBoxBlurFilter.h>
 #import <OpenGLESImage/OIVerticalBoxBlurFilter.h>
-#import <OpenGLESImage/OIBeautyCameraFilter.h>
 #import <OpenGLESImage/OIView.h>
 #import <OpenGLESImage/OIAudioVideoWriter.h>
 

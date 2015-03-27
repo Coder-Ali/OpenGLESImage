@@ -23,9 +23,8 @@
 
 @implementation OIContext
 
-@synthesize imageProcessingQueue;
-@synthesize context;
-@synthesize sharegroup;
+@synthesize imageProcessingQueue = imageProcessingQueue_;
+@synthesize sharegroup = sharegroup_;
 
 #pragma mark - Class Methods
 
@@ -90,14 +89,14 @@
 
 - (void)dealloc
 {
-    if ([EAGLContext currentContext] == context) {
+    if ([EAGLContext currentContext] == context_) {
         [EAGLContext setCurrentContext:nil];
     }
-    [context release];
-    context = nil;
-    [sharegroup release];
-    sharegroup = nil;
-    dispatch_release(imageProcessingQueue);
+    [context_ release];
+    context_ = nil;
+    [sharegroup_ release];
+    sharegroup_ = nil;
+    dispatch_release(imageProcessingQueue_);
     [super dealloc];
 }
 
@@ -105,9 +104,9 @@
 {
     self = [super init];
     if (self) {
-        context = nil;
-        sharegroup = nil;
-        imageProcessingQueue = dispatch_queue_create("com.shuliansoftware.OpenGLESImage.imageProcessingQueue", NULL);
+        context_ = nil;
+        sharegroup_ = nil;
+        imageProcessingQueue_ = dispatch_queue_create("KwanYiuleung.OpenGLESImage.imageProcessingQueue", NULL);
     }
     return self;
 }
@@ -116,33 +115,33 @@
 
 - (void)setAsCurrentContext
 {
-    if (context == nil) {
-        context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2 sharegroup:sharegroup];
+    if (context_ == nil) {
+        context_ = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2 sharegroup:sharegroup_];
     }
-    if ([EAGLContext currentContext] != context) {
-        [EAGLContext setCurrentContext:context];
+    if ([EAGLContext currentContext] != context_) {
+        [EAGLContext setCurrentContext:context_];
     }
 }
 
 - (void)renderBufferStorageFromDrawable:(id<EAGLDrawable>)drawable
 {
-    [context renderbufferStorage:GL_RENDERBUFFER fromDrawable:drawable];
+    [context_ renderbufferStorage:GL_RENDERBUFFER fromDrawable:drawable];
 }
 
 - (void)presentRenderBufferToScreen
 {
-    [context presentRenderbuffer:GL_RENDERBUFFER];
+    [context_ presentRenderbuffer:GL_RENDERBUFFER];
 }
 
 #pragma mark - Propertys' Setters & Getters
 
-- (void)setSharegroup:(EAGLSharegroup *)newSharegroup
+- (void)setSharegroup:(EAGLSharegroup *)sharegroup
 {
-    if (context == nil) {
-        if (sharegroup != newSharegroup) {
-            [sharegroup release];
+    if (context_ == nil) {
+        if (sharegroup_ != sharegroup) {
+            [sharegroup_ release];
         }
-        sharegroup = [newSharegroup retain];
+        sharegroup_ = [sharegroup retain];
     }
 }
 

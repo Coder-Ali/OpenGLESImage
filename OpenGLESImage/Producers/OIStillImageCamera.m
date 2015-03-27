@@ -155,7 +155,7 @@
             handler(nil, error);
             return;
         }
-        
+        NSLog(@"captureOriginalImageAsynchronouslyWithCompletionHandler");
         UIImage *originalImage = [self imageFromSampleBuffer:imageSampleBuffer];
         handler(originalImage, error);
     }];
@@ -178,7 +178,7 @@
         
         [OIContext performAsynchronouslyOnImageProcessingQueue:^{
             OITextureOrientation textureOrientation;
-            switch (self.orientaion)
+            switch (self.orientation)
             {
                 case OIVideoCaptorOrientationPortrait:
                     textureOrientation = OITextureOrientationUp;
@@ -254,6 +254,7 @@
 - (UIImage *)imageFromSampleBuffer:(CMSampleBufferRef)sampleBuffer
 
 {
+    NSLog(@"imageFromSampleBuffer");
     // Get a CMSampleBuffer's Core Video image buffer for the media data
 	
     CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
@@ -295,7 +296,8 @@
     // Create an image object from the Quartz image
     
     UIImageOrientation imageOrientation;
-	switch (self.orientaion)
+    
+	switch ([self orientation])
     {
 		case OIVideoCaptorOrientationPortrait:
 			imageOrientation = UIImageOrientationRight;
@@ -304,10 +306,10 @@
 			imageOrientation = UIImageOrientationLeft;
 			break;
 		case OIVideoCaptorOrientationLandscapeLeft:
-			imageOrientation = UIImageOrientationUp;
+			imageOrientation = UIImageOrientationDown;
 			break;
 		case OIVideoCaptorOrientationLandscapeRight:
-			imageOrientation = UIImageOrientationDown;
+			imageOrientation = UIImageOrientationUp;
 			break;
 		default:
 			imageOrientation = UIImageOrientationUp;
@@ -332,5 +334,72 @@
 	
     return image;
 }
+
+//- (OIVideoCaptorOrientation)orientation
+//{
+//    if (!VideoCaptorMotionManager_) {
+//        VideoCaptorMotionManager_ = [[CMMotionManager alloc] init];
+//        if (VideoCaptorMotionManager_.isDeviceMotionAvailable) {
+//            if (VideoCaptorMotionManager_.isDeviceMotionAvailable) {
+//                NSLog(@"isDeviceMotionAvailable YES");
+//            }
+//            else {
+//                NSLog(@"isDeviceMotionAvailable NO");
+//            }
+//            [VideoCaptorMotionManager_ startDeviceMotionUpdates];
+//        }
+//    }
+//    
+//    OIVideoCaptorOrientation orientation = OIVideoCaptorOrientationUnknown;
+//    
+//    if (VideoCaptorMotionManager_.isDeviceMotionActive && VideoCaptorMotionManager_.deviceMotion) {
+//        float x = -VideoCaptorMotionManager_.deviceMotion.gravity.x;//-[acceleration x];
+//        float y =  VideoCaptorMotionManager_.deviceMotion.gravity.y;//[acceleration y];
+//        float radian = atan2(y, x);
+//        
+//        if(radian >= -2.25 && radian <= -0.75)
+//        {
+//            if(orientation != OIVideoCaptorOrientationPortrait)
+//            {
+//                orientation = OIVideoCaptorOrientationPortrait;
+//            }
+//        }
+//        else if(radian >= -0.75 && radian <= 0.75)
+//        {
+//            if(orientation != OIVideoCaptorOrientationLandscapeLeft)
+//            {
+//                orientation = OIVideoCaptorOrientationLandscapeLeft;
+//            }
+//        }
+//        else if(radian >= 0.75 && radian <= 2.25)
+//        {
+//            if(orientation != OIVideoCaptorOrientationPortraitUpsideDown)
+//            {
+//                orientation = OIVideoCaptorOrientationPortraitUpsideDown;
+//            }
+//        }
+//        else if(radian <= -2.25 || radian >= 2.25)
+//        {
+//            if(orientation != OIVideoCaptorOrientationLandscapeRight)
+//            {
+//                orientation = OIVideoCaptorOrientationLandscapeRight;
+//            }
+//        }
+//        NSLog(@"x = %f, y = %f, radian = %f", x, y, radian);
+//    }
+//    else {
+//        OIErrorLog(YES, self.class, @"- orientation", @"Cannot get the deviceMotion data", nil);
+//        NSLog(@"Cannot get the deviceMotion data");
+//        if (VideoCaptorMotionManager_.isDeviceMotionActive) {
+//            NSLog(@"YES");
+//        }
+//        else {
+//            NSLog(@"NO");
+//        }
+//        NSLog(@"VideoCaptorMotionManager_.deviceMotion = %@", VideoCaptorMotionManager_.deviceMotion);
+//    }
+//    
+//    return orientation;
+//}
 
 @end

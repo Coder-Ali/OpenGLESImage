@@ -20,11 +20,15 @@
 @synthesize focusPoint = focusPoint_;
 @synthesize exposureMode = exposureMode_;
 @synthesize exposurePoint = exposurePoint_;
+@synthesize exposureTargetBias = exposureTargetBias_;
+@synthesize orientation = orientation_;
 
 #pragma mark - Lifecycle
 
 - (void)dealloc
 {
+    [[UIAccelerometer sharedAccelerometer] setDelegate:nil];
+    
     if (VideoCaptorMotionManager_) {
         if (VideoCaptorMotionManager_.isDeviceMotionActive) {
             [VideoCaptorMotionManager_ stopDeviceMotionUpdates];
@@ -70,6 +74,8 @@
 {
     self = [super init];
     if (self) {
+        [[UIAccelerometer sharedAccelerometer] setDelegate:self];
+        
         self.delegate = nil;
         
         cameraQueue_ = dispatch_queue_create("com.shuliansoftware.OpenGLESImage.cameraQueue", NULL);
@@ -81,6 +87,7 @@
         
         exposureMode_ = OIVideoCaptorExposureModeContinuousAutoExposure;
         exposurePoint_ = CGPointMake(0.5f, 0.5f);
+        exposureTargetBias_ = 0.0;
         
         // Grab the back-facing or front-facing camera
         camera_ = nil;
@@ -100,7 +107,7 @@
         }
         
         position_ = cameraPosition;
-        [self setOutputTextureOrientaionBasingOnCameraPosition:position_];
+        [self setOutputTextureorientationBasingOnCameraPosition:position_];
         
         // Create the capture session
         cameraSession_ = [[AVCaptureSession alloc] init];
@@ -178,7 +185,7 @@
     }
 }
 
-- (void)rotateCamera
+- (void)switchCamera
 {
     NSError *error;
     AVCaptureDeviceInput *newVideoInput;
@@ -229,7 +236,7 @@
     position_ = newPosition;
     frameRate_ = 0;
     
-    [self setOutputTextureOrientaionBasingOnCameraPosition:position_];
+    [self setOutputTextureorientationBasingOnCameraPosition:position_];
 }
 
 #pragma mark - Properties' Setters & Getters
@@ -336,7 +343,7 @@
             [videoInput_.device setExposureMode:(AVCaptureExposureMode)exposureMode_];
             [videoInput_.device unlockForConfiguration];
         } else {
-            OIErrorLog(YES, self.class, @"- setExposurePoint:", error.description, @"device can not be lock to Configure");
+            OIErrorLog(YES, self.class, @"- setExposurePoint:", error.description, @"device can not be lock to configure");
         }
         exposurePoint_ = exposurePoint;
     }
@@ -345,57 +352,79 @@
     }
 }
 
-- (OIVideoCaptorOrientation)orientaion
+- (void)setExposureTargetBias:(float)exposureTargetBias
 {
-    if (!VideoCaptorMotionManager_) {
-        VideoCaptorMotionManager_ = [[CMMotionManager alloc] init];
-        if (VideoCaptorMotionManager_.isDeviceMotionAvailable) {
-            [VideoCaptorMotionManager_ startDeviceMotionUpdates];
-        }
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0
+    
+    exposureTargetBias_ = exposureTargetBias > 8.0 ? 8.0 : (exposureTargetBias < -8.0 ? -8.0 : exposureTargetBias);
+    
+    NSError *error = nil;
+    
+    if ([videoInput_.device lockForConfiguration:&error])
+    {
+        [videoInput_.device setExposureTargetBias:exposureTargetBias_ completionHandler:nil];
+        [videoInput_.device unlockForConfiguration];
+    }
+    else
+    {
+        OIErrorLog(YES, self.class, @"- setExposureTargetBias:", error.description, @"device can not be lock to configure");
     }
     
-    OIVideoCaptorOrientation orientation = OIVideoCaptorOrientationUnknown;
-    
-    if (VideoCaptorMotionManager_.isDeviceMotionActive && VideoCaptorMotionManager_.deviceMotion) {
-        float x = -VideoCaptorMotionManager_.deviceMotion.gravity.x;//-[acceleration x];
-        float y =  VideoCaptorMotionManager_.deviceMotion.gravity.y;//[acceleration y];
-        float radian = atan2(y, x);
-        
-        if(radian >= -2.25 && radian <= -0.75)
-        {
-            if(orientation != OIVideoCaptorOrientationPortrait)
-            {
-                orientation = OIVideoCaptorOrientationPortrait;
-            }
-        }
-        else if(radian >= -0.75 && radian <= 0.75)
-        {
-            if(orientation != OIVideoCaptorOrientationLandscapeLeft)
-            {
-                orientation = OIVideoCaptorOrientationLandscapeLeft;
-            }
-        }
-        else if(radian >= 0.75 && radian <= 2.25)
-        {
-            if(orientation != OIVideoCaptorOrientationPortraitUpsideDown)
-            {
-                orientation = OIVideoCaptorOrientationPortraitUpsideDown;
-            }
-        }
-        else if(radian <= -2.25 || radian >= 2.25)
-        {
-            if(orientation != OIVideoCaptorOrientationLandscapeRight)
-            {
-                orientation = OIVideoCaptorOrientationLandscapeRight;
-            }
-        }
-    }
-    else {
-        OIErrorLog(YES, self.class, @"- orientaion", @"Cannot get the deviceMotion data", nil);
-    }
-    
-    return orientation;
+#endif
 }
+
+//- (OIVideoCaptorOrientation)orientation
+//{
+//    if (!VideoCaptorMotionManager_) {
+//        VideoCaptorMotionManager_ = [[CMMotionManager alloc] init];
+//        if (VideoCaptorMotionManager_.isDeviceMotionAvailable) {
+//            [VideoCaptorMotionManager_ startDeviceMotionUpdates];
+//        }
+//    }
+//    
+//    OIVideoCaptorOrientation orientation = OIVideoCaptorOrientationUnknown;
+//    
+//    if (VideoCaptorMotionManager_.isDeviceMotionActive && VideoCaptorMotionManager_.deviceMotion) {
+//        float x = -VideoCaptorMotionManager_.deviceMotion.gravity.x;//-[acceleration x];
+//        float y =  VideoCaptorMotionManager_.deviceMotion.gravity.y;//[acceleration y];
+//        float radian = atan2(y, x);
+//        
+//        if(radian >= -2.25 && radian <= -0.75)
+//        {
+//            if(orientation != OIVideoCaptorOrientationPortrait)
+//            {
+//                orientation = OIVideoCaptorOrientationPortrait;
+//            }
+//        }
+//        else if(radian >= -0.75 && radian <= 0.75)
+//        {
+//            if(orientation != OIVideoCaptorOrientationLandscapeLeft)
+//            {
+//                orientation = OIVideoCaptorOrientationLandscapeLeft;
+//            }
+//        }
+//        else if(radian >= 0.75 && radian <= 2.25)
+//        {
+//            if(orientation != OIVideoCaptorOrientationPortraitUpsideDown)
+//            {
+//                orientation = OIVideoCaptorOrientationPortraitUpsideDown;
+//            }
+//        }
+//        else if(radian <= -2.25 || radian >= 2.25)
+//        {
+//            if(orientation != OIVideoCaptorOrientationLandscapeRight)
+//            {
+//                orientation = OIVideoCaptorOrientationLandscapeRight;
+//            }
+//        }
+//        NSLog(@"x = %f, y = %f, radian = %f", x, y, radian);
+//    }
+//    else {
+//        OIErrorLog(YES, self.class, @"- orientation", @"Cannot get the deviceMotion data", nil);
+//    }
+//    
+//    return orientation;
+//}
 
 #pragma mark - AVCaptureVideoDataOutputSampleBufferDelegate
 
@@ -433,7 +462,7 @@
     
     [[OIContext sharedContext] setAsCurrentContext];
     [outputTexture_ setupContentWithCVBuffer:cameraFrame];
-    [self setOutputTextureOrientaionBasingOnCameraPosition:position_];
+    [self setOutputTextureorientationBasingOnCameraPosition:position_];
     
     if (CGRectEqualToRect(outputFrame_, CGRectZero)) {
         outputFrame_ = CGRectMake(0, 0, outputTexture_.size.width, outputTexture_.size.height);
@@ -444,7 +473,7 @@
     CVPixelBufferUnlockBaseAddress(cameraFrame, 0);
 }
 
-- (void)setOutputTextureOrientaionBasingOnCameraPosition:(AVCaptureDevicePosition)position
+- (void)setOutputTextureorientationBasingOnCameraPosition:(AVCaptureDevicePosition)position
 {
     if (!outputTexture_) {
         return;
@@ -454,6 +483,42 @@
     }
     else if (position == AVCaptureDevicePositionFront) {
         outputTexture_.orientation = OITextureOrientationRight;
+    }
+}
+
+- (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
+{
+    float x = -[acceleration x];
+    float y =  [acceleration y];
+    float radian = atan2(y, x);
+    
+    if(radian >= -2.25 && radian <= -0.75)
+    {
+        if(orientation_ != OIVideoCaptorOrientationPortrait)
+        {
+            orientation_ = OIVideoCaptorOrientationPortrait;
+        }
+    }
+    else if(radian >= -0.75 && radian <= 0.75)
+    {
+        if(orientation_ != OIVideoCaptorOrientationLandscapeLeft)
+        {
+            orientation_ = OIVideoCaptorOrientationLandscapeLeft;
+        }
+    }
+    else if(radian >= 0.75 && radian <= 2.25)
+    {
+        if(orientation_ != OIVideoCaptorOrientationPortraitUpsideDown)
+        {
+            orientation_ = OIVideoCaptorOrientationPortraitUpsideDown;
+        }
+    }
+    else if(radian <= -2.25 || radian >= 2.25)
+    {
+        if(orientation_ != OIVideoCaptorOrientationLandscapeRight)
+        {
+            orientation_ = OIVideoCaptorOrientationLandscapeRight;
+        }
     }
 }
 

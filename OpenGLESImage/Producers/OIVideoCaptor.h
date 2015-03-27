@@ -57,8 +57,11 @@ typedef enum OIVideoCaptorExposureMode_ {
     CGPoint focusPoint_;
     OIVideoCaptorExposureMode exposureMode_;
     CGPoint exposurePoint_;
+    float exposureTargetBias_;
     
     CMMotionManager *VideoCaptorMotionManager_;
+    
+    OIVideoCaptorOrientation orientation_;
 }
 
 @property (assign, nonatomic) id <OIVideoCaptorDelegate> delegate;
@@ -69,13 +72,14 @@ typedef enum OIVideoCaptorExposureMode_ {
 @property (readwrite, nonatomic) CGPoint focusPoint;
 @property (readwrite, nonatomic) OIVideoCaptorExposureMode exposureMode;
 @property (readwrite, nonatomic) CGPoint exposurePoint;
+@property (readwrite, nonatomic) float exposureTargetBias;
 
 - (id)initWithCameraPosition:(AVCaptureDevicePosition)cameraPosition sessionPreset:(NSString *)sessionPreset;
 
-@property (readonly, nonatomic) OIVideoCaptorOrientation orientaion;
+@property (readonly, nonatomic) OIVideoCaptorOrientation orientation;
 
 - (void)startRunning;
 - (void)stopRunning;
-- (void)rotateCamera;  // Turning the receiver's position between AVCaptureDevicePositionFront and AVCaptureDevicePositionBack.
+- (void)switchCamera;  // Switching the receiver's position between AVCaptureDevicePositionFront and AVCaptureDevicePositionBack.
 
 @end
