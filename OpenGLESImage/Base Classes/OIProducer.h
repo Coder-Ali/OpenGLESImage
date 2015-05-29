@@ -103,6 +103,7 @@ typedef enum OIProducerAnimationEasingMode_ OIProducerAnimationEasingMode;
 + (void)restartAnimaion;
 + (void)cancelAnimation;
 + (void)setAnimationDelegate:(id<OIProducerAnimationDelegate>)animationDelegate;
++ (void)setAnimationFrameRate:(NSInteger)frameRate;  // Default is 30fps.
 
 /* Animation Hooks */
 

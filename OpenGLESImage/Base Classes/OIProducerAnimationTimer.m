@@ -18,7 +18,7 @@
     CADisplayLink *animationDisplayLink_;
     double totalTime_;
     double currentTime_;
-    int framePerSecond_;
+    NSInteger frameRate_;
     BOOL running_;
     BOOL paused_;
     
@@ -30,7 +30,7 @@
 
 @implementation OIProducerAnimationTimer
 
-@synthesize framePerSecond = framePerSecond_;
+@synthesize frameRate = frameRate_;
 @synthesize animationTimerDidStartBlock;
 @synthesize animationTimerWillStopBlock;
 @synthesize animationTimerDidStopBlock;
@@ -68,6 +68,7 @@
         currentTime_ = 0.0;
         running_ = NO;
         paused_ = NO;
+        frameRate_ = 30;
         self.animationTimerDidStartBlock = NULL;
         self.animationTimerDidStopBlock = NULL;
     }
@@ -76,13 +77,13 @@
 
 #pragma mark - Properties' setters & getters
 
-- (void)setFramePerSecond:(int)framePerSecond
+- (void)setframeRate:(NSInteger)frameRate
 {
-    if (self.isRunning) {
+    if (self.isRunning || frameRate <= 0) {
         return;
     }
     
-    
+    frameRate_ = frameRate;
 }
 
 - (void)setPaused:(BOOL)paused
@@ -156,7 +157,7 @@
     }
     
     animationDisplayLink_ = [CADisplayLink displayLinkWithTarget:self selector:@selector(triggerNextFrame:)];
-    animationDisplayLink_.frameInterval = 2;
+    animationDisplayLink_.frameInterval = 60 / self.frameRate;
     [animationDisplayLink_ addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     
     running_ = YES;

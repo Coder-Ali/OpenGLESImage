@@ -23,6 +23,7 @@
     BOOL playAtActualSpeed_;
     CMTime previousFrameTime_;
     NSTimeInterval previousFrameActualTime_;
+    BOOL shouldStopPlaying_;
 }
 
 @end
@@ -60,6 +61,7 @@
         delegate_ = nil;
         status_ = OIVideoStatusWaiting;
         playAtActualSpeed_ = YES;
+        shouldStopPlaying_ = NO;
         
         [OIContext performSynchronouslyOnImageProcessingQueue:^{
             outputTexture_ = [[OITexture alloc] init];
@@ -210,9 +212,12 @@
     
     [OIContext performAsynchronouslyOnImageProcessingQueue:^{
         while (assetReader_.status == AVAssetReaderStatusReading) {
+            
             CMSampleBufferRef videoSampleBuffer = [videoTrackOutput_ copyNextSampleBuffer];
-            if (videoSampleBuffer == NULL) {
-                continue;
+            if (videoSampleBuffer == NULL || shouldStopPlaying_) {
+                shouldStopPlaying_ = NO;
+                [assetReader_ cancelReading];
+                break;
             }
             CMTime frameTime = CMSampleBufferGetOutputPresentationTimeStamp(videoSampleBuffer);
             
@@ -251,17 +256,24 @@
             CFRelease(videoSampleBuffer);
         }
         
-        if (assetReader_.status == AVAssetReaderStatusCompleted) {
+//        if (assetReader_.status == AVAssetReaderStatusCompleted) {
             [self deleteAssetReader];
             status_ = OIVideoStatusWaiting;
             if (delegate_ && [delegate_ respondsToSelector:@selector(videoDidEnd:)]) {
                 [delegate_ videoDidEnd:self];
-            }
+//            }
         }
     }];
     
     
     return YES;
+}
+
+- (void)stop
+{
+    if (self.status == OIVideoStatusPlaying) {
+        shouldStopPlaying_ = YES;
+    }
 }
 
 - (CMSampleBufferRef)copyNextAudioSampleBuffer
@@ -392,7 +404,6 @@
 
 - (void)deleteAssetReader
 {
-    NSLog(@"deleteAssetReader");
     if (assetReader_) {
         [assetReader_ release];
         assetReader_ = nil;

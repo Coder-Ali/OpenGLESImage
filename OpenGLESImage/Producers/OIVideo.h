@@ -43,6 +43,8 @@ typedef enum OIVideoStatus_ OIVideoStatus;
 @property (readwrite, nonatomic) BOOL playAtActualSpeed;  //Default is YES.
 
 - (BOOL)play;
+- (void)stop;
+
 - (CMSampleBufferRef)copyNextAudioSampleBuffer;
 
 @end

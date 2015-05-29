@@ -44,11 +44,13 @@
 
 + (void)performSynchronouslyOnImageProcessingQueue:(void (^)(void))block
 {
-    if (dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL) == dispatch_queue_get_label([OIContext sharedImageProcessingQueue])) {
+//    if (dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL) == dispatch_queue_get_label([OIContext sharedImageProcessingQueue])) {
+    if (dispatch_get_current_queue() == [OIContext sharedImageProcessingQueue]) {
         
         [[OIContext sharedContext] setAsCurrentContext];
         
         block();
+        
     }
     else {
         dispatch_sync([OIContext sharedImageProcessingQueue], ^{
@@ -56,14 +58,16 @@
             [[OIContext sharedContext] setAsCurrentContext];
             
             block();
+            
         });
     }
 }
 
 + (void)performAsynchronouslyOnImageProcessingQueue:(void (^)(void))block
 {
-    if (dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL) == dispatch_queue_get_label([OIContext sharedImageProcessingQueue])) {
-        
+//    if (dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL) == dispatch_queue_get_label([OIContext sharedImageProcessingQueue])) {
+    if (dispatch_get_current_queue() == [OIContext sharedImageProcessingQueue]) {
+    
         [[OIContext sharedContext] setAsCurrentContext];
         
         block();

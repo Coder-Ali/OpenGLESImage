@@ -61,7 +61,6 @@
 		844050211A1C3B3F003D5F28 /* OIFastSurfaceBlurFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = B408FEAA1935E6E100955247 /* OIFastSurfaceBlurFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		844050221A1C3B3F003D5F28 /* OIBoxBlurFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 841D09C9199B65E00082A7E6 /* OIBoxBlurFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		844050231A1C3B3F003D5F28 /* OIVerticalBoxBlurFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8446DF0B1A0A110600831CC5 /* OIVerticalBoxBlurFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		844050241A1C3B3F003D5F28 /* OIBeautyCameraFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = B409DA59193727F6002139AD /* OIBeautyCameraFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		844050251A1C3B3F003D5F28 /* OIView.h in Headers */ = {isa = PBXBuildFile; fileRef = B4F4D94B18E26E8B00ACB514 /* OIView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		844050261A1C3B40003D5F28 /* OIAudioVideoWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 84E280D019AB2068000DE6DF /* OIAudioVideoWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		844050271A1C3B6E003D5F28 /* OIProducerAnimationTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = 848EB98C19CBDB6C00D00FA3 /* OIProducerAnimationTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -98,7 +97,6 @@
 		844050461A1C3C34003D5F28 /* OIFastSurfaceBlurFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = B408FEAB1935E6E100955247 /* OIFastSurfaceBlurFilter.m */; };
 		844050471A1C3C34003D5F28 /* OIBoxBlurFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 841D09CA199B65E00082A7E6 /* OIBoxBlurFilter.m */; };
 		844050481A1C3C34003D5F28 /* OIVerticalBoxBlurFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8446DF0C1A0A110600831CC5 /* OIVerticalBoxBlurFilter.m */; };
-		844050491A1C3C34003D5F28 /* OIBeautyCameraFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = B409DA5A193727F6002139AD /* OIBeautyCameraFilter.m */; };
 		8440504A1A1C3C34003D5F28 /* OIView.m in Sources */ = {isa = PBXBuildFile; fileRef = B4F4D94C18E26E8B00ACB514 /* OIView.m */; };
 		8440504B1A1C3C34003D5F28 /* OIAudioVideoWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E280D119AB2068000DE6DF /* OIAudioVideoWriter.m */; };
 		8440504C1A1C3C45003D5F28 /* OpenGLESImage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8468AC581A1B235B0068766F /* OpenGLESImage.bundle */; };
@@ -215,9 +213,6 @@
 		B408FEAB1935E6E100955247 /* OIFastSurfaceBlurFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIFastSurfaceBlurFilter.m; sourceTree = "<group>"; };
 		B408FEB11935F6BF00955247 /* FastSurfaceBlur.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = FastSurfaceBlur.vsh; sourceTree = "<group>"; };
 		B408FEB21935F6DA00955247 /* FastSurfaceBlur.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = FastSurfaceBlur.fsh; sourceTree = "<group>"; };
-		B409DA59193727F6002139AD /* OIBeautyCameraFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIBeautyCameraFilter.h; sourceTree = "<group>"; };
-		B409DA5A193727F6002139AD /* OIBeautyCameraFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIBeautyCameraFilter.m; sourceTree = "<group>"; };
-		B409DA5C19372C41002139AD /* BeautyCamera.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BeautyCamera.fsh; sourceTree = "<group>"; };
 		B418CD0C18F3A1580080611B /* Default.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Default.fsh; sourceTree = "<group>"; };
 		B418CD0D18F3A1580080611B /* Default.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Default.vsh; sourceTree = "<group>"; };
 		B422FAF318D4403A0069CDE8 /* OIFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIFilter.h; sourceTree = "<group>"; };
@@ -424,16 +419,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		B409DA58193727A9002139AD /* For Beauty Camera */ = {
-			isa = PBXGroup;
-			children = (
-				B409DA59193727F6002139AD /* OIBeautyCameraFilter.h */,
-				B409DA5A193727F6002139AD /* OIBeautyCameraFilter.m */,
-			);
-			name = "For Beauty Camera";
-			path = ForBeautyCamera;
-			sourceTree = "<group>";
-		};
 		B422FAF618D442F20069CDE8 /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
@@ -444,7 +429,6 @@
 				B435285C192DDFB500CBF2F9 /* GaussianBlur.fsh */,
 				B408FEB11935F6BF00955247 /* FastSurfaceBlur.vsh */,
 				B408FEB21935F6DA00955247 /* FastSurfaceBlur.fsh */,
-				B409DA5C19372C41002139AD /* BeautyCamera.fsh */,
 				841F2C9F197CF61100A47A10 /* Rotation.vsh */,
 				841D9CDF19826DBF009E0995 /* Blend.fsh */,
 				8491C0E8198B82C300C2C458 /* Alpha.fsh */,
@@ -542,7 +526,6 @@
 				841F2C9B197CE4D900A47A10 /* Animation */,
 				B424C3EB1907C92B005E596D /* Blur */,
 				841A84DC1A30535800E133B2 /* OIString Filters */,
-				B409DA58193727A9002139AD /* For Beauty Camera */,
 			);
 			path = Filters;
 			sourceTree = "<group>";
@@ -608,7 +591,6 @@
 				844050211A1C3B3F003D5F28 /* OIFastSurfaceBlurFilter.h in Headers */,
 				844050221A1C3B3F003D5F28 /* OIBoxBlurFilter.h in Headers */,
 				844050231A1C3B3F003D5F28 /* OIVerticalBoxBlurFilter.h in Headers */,
-				844050241A1C3B3F003D5F28 /* OIBeautyCameraFilter.h in Headers */,
 				844050251A1C3B3F003D5F28 /* OIView.h in Headers */,
 				844050261A1C3B40003D5F28 /* OIAudioVideoWriter.h in Headers */,
 			);
@@ -741,7 +723,6 @@
 				844050471A1C3C34003D5F28 /* OIBoxBlurFilter.m in Sources */,
 				844050481A1C3C34003D5F28 /* OIVerticalBoxBlurFilter.m in Sources */,
 				8446544A1A2C721500C6C6E8 /* OIVideoCamera.m in Sources */,
-				844050491A1C3C34003D5F28 /* OIBeautyCameraFilter.m in Sources */,
 				8440504A1A1C3C34003D5F28 /* OIView.m in Sources */,
 				8440504B1A1C3C34003D5F28 /* OIAudioVideoWriter.m in Sources */,
 			);
@@ -769,6 +750,7 @@
 					armv7s,
 					arm64,
 				);
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -781,6 +763,7 @@
 					armv7s,
 					arm64,
 				);
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -789,9 +772,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = (
-					armv7,
+					"$(ARCHS_STANDARD)",
 					armv7s,
-					arm64,
 				);
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -807,12 +789,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "OpenGLESImage/OpenGLESImage-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACH_O_TYPE = mh_object;
 				MACOSX_DEPLOYMENT_TARGET = "";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				VALID_ARCHS = "$(ARCHS_STANDARD) armv7s";
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
@@ -821,9 +805,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = (
-					armv7,
+					"$(ARCHS_STANDARD)",
 					armv7s,
-					arm64,
 				);
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -836,12 +819,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "OpenGLESImage/OpenGLESImage-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACH_O_TYPE = mh_object;
 				MACOSX_DEPLOYMENT_TARGET = "";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				VALID_ARCHS = "$(ARCHS_STANDARD) armv7s";
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
@@ -850,6 +835,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					armv7,
+					armv7s,
+					arm64,
+				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -879,7 +869,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -889,6 +879,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					armv7,
+					armv7s,
+					arm64,
+				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;

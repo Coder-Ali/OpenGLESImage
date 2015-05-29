@@ -20,6 +20,8 @@ typedef enum _OIStillImageCameraFlashMode {
 
 @interface OIStillImageCamera : OIVideoCaptor
 
+@property (readonly, nonatomic) BOOL hasFlash;
+
 @property (readwrite, nonatomic) OIStillImageCameraFlashMode flashMode;
 
 - (void)captureImageSampleBufferAsynchronouslyWithCompletionHandler:(void (^)(CMSampleBufferRef imageSampleBuffer, NSError *error))handler;

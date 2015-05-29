@@ -16,6 +16,7 @@
 
 @synthesize enabled = enabled_;
 @synthesize contentSize = contentSize_;
+@synthesize contentMode = contentMode_;
 @synthesize producers = producers_;
 
 + (Class)layerClass
@@ -63,6 +64,7 @@
 {
     enabled_ = YES;
     contentSize_ = CGSizeZero;
+    contentMode_ = OIConsumerContentModeNormal;
     producers_ = [[NSMutableArray alloc] init];
     displayFBO_ = nil;
     self.opaque = YES;
@@ -126,6 +128,7 @@
     }
     
     [[OIContext sharedContext] setAsCurrentContext];
+    [displayFBO_ setContentMode:(OIFrameBufferObjectContentMode)self.contentMode];
     [displayFBO_ bindToPipeline];
     [displayFBO_ clearBufferWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
     [inputTexture_ bindToTextureIndex:GL_TEXTURE0];

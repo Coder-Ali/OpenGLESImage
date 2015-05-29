@@ -19,35 +19,9 @@
     NSMutableDictionary *uniforms_;
 }
 
-- (void)testUse;
-
 @end
 
 @implementation OIProgram
-
-#pragma mark - Class Methods
-
-static OIProgram *currentProgram = nil;
-
-- (void)testUse {
-    NSLog(@"testUse");
-}
-
-+ (void)setCurrentProgram:(OIProgram *)program
-{
-    if ([[self class] currentProgram] != program) {
-        currentProgram = program;
-        
-        if (currentProgram) {
-            [currentProgram testUse];
-        }
-    }
-}
-
-+ (OIProgram *)currentProgram
-{
-    return currentProgram;
-}
 
 #pragma mark - Lifecycle
 

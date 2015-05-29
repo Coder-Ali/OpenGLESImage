@@ -312,6 +312,15 @@ static NSString *animationID_ = nil;
     animationDelegate_ = animationDelegate;
 }
 
++ (void)setAnimationFrameRate:(NSInteger)frameRate
+{
+    if ([[self class] animationStatus] != OIProducerAnimationStatusConfiguring) {
+        return;
+    }
+    
+    [OIProducerAnimationTimer defaultProducerAnimationTimer].frameRate = frameRate;
+}
+
 - (double)yValueByXValue:(double)xValue onCurveWithEasingMode:(OIProducerAnimationEasingMode)easingMode
 {
     switch (easingMode) {

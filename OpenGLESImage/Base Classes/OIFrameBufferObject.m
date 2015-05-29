@@ -18,6 +18,7 @@
     OITexture *texture_;
     CGSize size_;
     OIFrameBufferObjectType type_;
+    OIFrameBufferObjectContentMode contentMode_;
     
     CAEAGLLayer *eaglLayer_;
     CVBufferRef specifiedCVBuffer_;
@@ -29,6 +30,7 @@
 
 @synthesize size = size_;
 @synthesize texture = texture_;
+@synthesize contentMode = contentMode_;
 
 #pragma mark - Lifecycle
 
@@ -46,6 +48,7 @@
         renderBuffer_ = 0;
         texture_ = nil;
         size_ = CGSizeZero;
+        contentMode_ = OIFrameBufferObjectContentModeNormal;
         type_ = OIFrameBufferObjectTypeUnknow;
         eaglLayer_ = nil;
         specifiedCVBuffer_ = NULL;
@@ -172,11 +175,13 @@
     static CGRect preRect = {0.0, 0.0, 0.0, 0.0};
     static GLfloat vCoordinate[8] = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
     
-    if (!CGRectEqualToRect(preRect, rect)) {
-        GLfloat left   = rect.origin.x / size_.width * 2.0 - 1.0;
-        GLfloat right  = (rect.origin.x + rect.size.width) / size_.width * 2.0 - 1.0;
-        GLfloat top    = (1.0 - rect.origin.y / size_.height) * 2.0 - 1.0;
-        GLfloat bottom = (1.0 - (rect.origin.y + rect.size.height) / size_.height) * 2.0 - 1.0;
+    CGRect adjustedRect = [self adjustCGRect:rect withContentMode:self.contentMode];
+    
+    if (!CGRectEqualToRect(preRect, adjustedRect)) {
+        GLfloat left   = adjustedRect.origin.x / size_.width * 2.0 - 1.0;
+        GLfloat right  = (adjustedRect.origin.x + adjustedRect.size.width) / size_.width * 2.0 - 1.0;
+        GLfloat top    = (1.0 - adjustedRect.origin.y / size_.height) * 2.0 - 1.0;
+        GLfloat bottom = (1.0 - (adjustedRect.origin.y + adjustedRect.size.height) / size_.height) * 2.0 - 1.0;
         
         vCoordinate[0] = left;
         vCoordinate[1] = bottom;
@@ -189,6 +194,23 @@
     }
     
     return vCoordinate;
+}
+
+- (CGRect)adjustCGRect:(CGRect)rect withContentMode:(OIFrameBufferObjectContentMode)contentMode
+{
+    CGRect adjustedRect;
+    
+    switch (contentMode) {
+        case OIFrameBufferObjectContentModeResizeToFill:
+            adjustedRect = CGRectMake(0, 0, self.size.width, self.size.height);
+            break;
+            
+        default:
+            adjustedRect = rect;
+            break;
+    }
+    
+    return adjustedRect;
 }
 
 @end

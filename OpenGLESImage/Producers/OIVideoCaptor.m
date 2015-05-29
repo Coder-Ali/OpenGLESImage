@@ -29,12 +29,12 @@
 {
     [[UIAccelerometer sharedAccelerometer] setDelegate:nil];
     
-    if (VideoCaptorMotionManager_) {
-        if (VideoCaptorMotionManager_.isDeviceMotionActive) {
-            [VideoCaptorMotionManager_ stopDeviceMotionUpdates];
+    if (videoCaptorMotionManager_) {
+        if (videoCaptorMotionManager_.isDeviceMotionActive) {
+            [videoCaptorMotionManager_ stopDeviceMotionUpdates];
         }
         
-        [VideoCaptorMotionManager_ release];
+        [videoCaptorMotionManager_ release];
     }
     
     camera_ = nil;
@@ -164,7 +164,7 @@
             outputTexture_ = [[OITexture alloc] init];
         }];
         
-        VideoCaptorMotionManager_ = nil;
+        videoCaptorMotionManager_ = nil;
     }
     return self;
 }
@@ -253,52 +253,145 @@
     frameRate_ = 0;
 }
 
+- (void)setMinFrameDuration:(CMTime)minFrameDuration
+{
+    if ([UIDevice currentDevice].systemVersion.floatValue >=7.0) {
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_7_0
+        NSError *error = nil;
+        [videoInput_.device lockForConfiguration:&error];
+        if (error) {
+            OIErrorLog(YES, self.class, @"- setMinFrameDuration:", error.description, @"device can not be lock to Configure");
+            return;
+        }
+        
+        videoInput_.device.activeVideoMinFrameDuration = minFrameDuration;
+        
+        [videoInput_.device unlockForConfiguration];
+#endif
+    }
+    else {
+        for (AVCaptureConnection *connection in videoOutput_.connections)
+        {
+            if ([connection respondsToSelector:@selector(setVideoMinFrameDuration:)])
+                connection.videoMinFrameDuration = minFrameDuration;
+        }
+    }
+}
+
+- (CMTime)minFrameDuration
+{
+    if ([UIDevice currentDevice].systemVersion.floatValue >=7.0) {
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_7_0
+        return videoInput_.device.activeVideoMinFrameDuration;
+#endif
+    }
+    else {
+        for (AVCaptureConnection *connection in videoOutput_.connections)
+        {
+            if ([connection respondsToSelector:@selector(videoMinFrameDuration)])
+                return connection.videoMinFrameDuration;
+        }
+        
+        return kCMTimeInvalid;
+    }
+    
+    return kCMTimeInvalid;
+}
+
+- (void)setMaxFrameDuration:(CMTime)maxFrameDuration
+{
+    if ([UIDevice currentDevice].systemVersion.floatValue >=7.0) {
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_7_0
+        NSError *error = nil;
+        [videoInput_.device lockForConfiguration:&error];
+        if (error) {
+            OIErrorLog(YES, self.class, @"- setMaxFrameDuration:", error.description, @"device can not be lock to Configure");
+            return;
+        }
+        
+        videoInput_.device.activeVideoMaxFrameDuration = maxFrameDuration;
+        
+        [videoInput_.device unlockForConfiguration];
+#endif
+    }
+    else {
+        for (AVCaptureConnection *connection in videoOutput_.connections)
+        {
+            if ([connection respondsToSelector:@selector(setVideoMaxFrameDuration:)])
+                connection.videoMaxFrameDuration = maxFrameDuration;
+        }
+    }
+}
+
+- (CMTime)maxFrameDuration
+{
+    if ([UIDevice currentDevice].systemVersion.floatValue >=7.0) {
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_7_0
+        return videoInput_.device.activeVideoMaxFrameDuration;
+#endif
+    }
+    else {
+        for (AVCaptureConnection *connection in videoOutput_.connections)
+        {
+            if ([connection respondsToSelector:@selector(videoMaxFrameDuration)])
+                return connection.videoMaxFrameDuration;
+        }
+        
+        return kCMTimeInvalid;
+    }
+    
+    return kCMTimeInvalid;
+}
+
 - (void)setFrameRate:(int)frameRate;
 {
 	frameRate_ = frameRate;
-	
+    
+    if ([UIDevice currentDevice].systemVersion.floatValue >=7.0) {
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_7_0
-    NSError *error = nil;
-    [videoInput_.device lockForConfiguration:&error];
-    if (error) {
-        OIErrorLog(YES, self.class, @"- setFrameRate:", error.description, @"device can not be lock to Configure");
-        return;
-    }
-    if (frameRate_ > 0)
-	{
-        videoInput_.device.activeVideoMinFrameDuration = CMTimeMake(1, frameRate_);
-        videoInput_.device.activeVideoMaxFrameDuration = CMTimeMake(1, frameRate_);
-	}
-	else
-	{
-        videoInput_.device.activeVideoMinFrameDuration = kCMTimeInvalid;
-        videoInput_.device.activeVideoMaxFrameDuration = kCMTimeInvalid;
-	}
-    [videoInput_.device unlockForConfiguration];
-#else
-	if (frameRate_ > 0)
-	{
-		for (AVCaptureConnection *connection in videoOutput_.connections)
-		{
-			if ([connection respondsToSelector:@selector(setVideoMinFrameDuration:)])
-				connection.videoMinFrameDuration = CMTimeMake(1, frameRate_);
-			
-			if ([connection respondsToSelector:@selector(setVideoMaxFrameDuration:)])
-				connection.videoMaxFrameDuration = CMTimeMake(1, frameRate_);
-		}
-	}
-	else
-	{
-		for (AVCaptureConnection *connection in videoOutput_.connections)
-		{
-			if ([connection respondsToSelector:@selector(setVideoMinFrameDuration:)])
-				connection.videoMinFrameDuration = kCMTimeInvalid; // This sets videoMinFrameDuration back to default
-			
-			if ([connection respondsToSelector:@selector(setVideoMaxFrameDuration:)])
-				connection.videoMaxFrameDuration = kCMTimeInvalid; // This sets videoMaxFrameDuration back to default
-		}
-	}
+        NSError *error = nil;
+        [videoInput_.device lockForConfiguration:&error];
+        if (error) {
+            OIErrorLog(YES, self.class, @"- setFrameRate:", error.description, @"device can not be lock to Configure");
+            return;
+        }
+        if (frameRate_ > 0)
+        {
+            videoInput_.device.activeVideoMinFrameDuration = CMTimeMake(1, frameRate_);
+            videoInput_.device.activeVideoMaxFrameDuration = CMTimeMake(1, frameRate_);
+        }
+        else
+        {
+            videoInput_.device.activeVideoMinFrameDuration = kCMTimeInvalid;
+            videoInput_.device.activeVideoMaxFrameDuration = kCMTimeInvalid;
+        }
+        [videoInput_.device unlockForConfiguration];
 #endif
+    }
+    else {
+        if (frameRate_ > 0)
+        {
+            for (AVCaptureConnection *connection in videoOutput_.connections)
+            {
+                if ([connection respondsToSelector:@selector(setVideoMinFrameDuration:)])
+                    connection.videoMinFrameDuration = CMTimeMake(1, frameRate_);
+                
+                if ([connection respondsToSelector:@selector(setVideoMaxFrameDuration:)])
+                    connection.videoMaxFrameDuration = CMTimeMake(1, frameRate_);
+            }
+        }
+        else
+        {
+            for (AVCaptureConnection *connection in videoOutput_.connections)
+            {
+                if ([connection respondsToSelector:@selector(setVideoMinFrameDuration:)])
+                    connection.videoMinFrameDuration = kCMTimeInvalid; // This sets videoMinFrameDuration back to default
+                
+                if ([connection respondsToSelector:@selector(setVideoMaxFrameDuration:)])
+                    connection.videoMaxFrameDuration = kCMTimeInvalid; // This sets videoMaxFrameDuration back to default
+            }
+        }
+    }
 }
 
 - (void)setFocusPoint:(CGPoint)focusPoint
@@ -375,18 +468,18 @@
 
 //- (OIVideoCaptorOrientation)orientation
 //{
-//    if (!VideoCaptorMotionManager_) {
-//        VideoCaptorMotionManager_ = [[CMMotionManager alloc] init];
-//        if (VideoCaptorMotionManager_.isDeviceMotionAvailable) {
-//            [VideoCaptorMotionManager_ startDeviceMotionUpdates];
+//    if (!videoCaptorMotionManager_) {
+//        videoCaptorMotionManager_ = [[CMMotionManager alloc] init];
+//        if (videoCaptorMotionManager_.isDeviceMotionAvailable) {
+//            [videoCaptorMotionManager_ startDeviceMotionUpdates];
 //        }
 //    }
 //    
 //    OIVideoCaptorOrientation orientation = OIVideoCaptorOrientationUnknown;
 //    
-//    if (VideoCaptorMotionManager_.isDeviceMotionActive && VideoCaptorMotionManager_.deviceMotion) {
-//        float x = -VideoCaptorMotionManager_.deviceMotion.gravity.x;//-[acceleration x];
-//        float y =  VideoCaptorMotionManager_.deviceMotion.gravity.y;//[acceleration y];
+//    if (videoCaptorMotionManager_.isDeviceMotionActive && videoCaptorMotionManager_.deviceMotion) {
+//        float x = -videoCaptorMotionManager_.deviceMotion.gravity.x;//-[acceleration x];
+//        float y =  videoCaptorMotionManager_.deviceMotion.gravity.y;//[acceleration y];
 //        float radian = atan2(y, x);
 //        
 //        if(radian >= -2.25 && radian <= -0.75)
@@ -490,6 +583,7 @@
 {
     float x = -[acceleration x];
     float y =  [acceleration y];
+    float z =  [acceleration z];
     float radian = atan2(y, x);
     
     if(radian >= -2.25 && radian <= -0.75)
@@ -519,6 +613,10 @@
         {
             orientation_ = OIVideoCaptorOrientationLandscapeRight;
         }
+    }
+    
+    if (z > 0.85) {
+        orientation_ = OIVideoCaptorOrientationPortrait;
     }
 }
 

@@ -516,7 +516,7 @@
     CGColorSpaceRelease(defaultRGBColorSpace);
     
     int orientation = orientation_;
-    UIImage *image = [UIImage imageWithCGImage:cgImageFromBytes scale:1.0 orientation:orientation];
+    UIImage *image = [UIImage imageWithCGImage:cgImageFromBytes scale:1.0 orientation:UIImageOrientationDownMirrored];
     CGImageRelease(cgImageFromBytes);
     
     return image;

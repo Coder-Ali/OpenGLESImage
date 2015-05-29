@@ -59,7 +59,7 @@ typedef enum OIVideoCaptorExposureMode_ {
     CGPoint exposurePoint_;
     float exposureTargetBias_;
     
-    CMMotionManager *VideoCaptorMotionManager_;
+    CMMotionManager *videoCaptorMotionManager_;
     
     OIVideoCaptorOrientation orientation_;
 }
@@ -67,6 +67,8 @@ typedef enum OIVideoCaptorExposureMode_ {
 @property (assign, nonatomic) id <OIVideoCaptorDelegate> delegate;
 @property (readonly, nonatomic) AVCaptureDevicePosition position;  // The value of this property is an AVCaptureDevicePosition indicating where the receiver's device is physically located on the system hardware.
 @property (readwrite, copy, nonatomic) NSString *sessionPreset;
+@property (readwrite, nonatomic) CMTime minFrameDuration;  // Default value is kCMTimeInvalid.
+@property (readwrite, nonatomic) CMTime maxFrameDuration;  // Default value is kCMTimeInvalid.
 @property (readwrite, nonatomic) int frameRate;
 @property (readwrite, nonatomic) OIVideoCaptorFocusMode focusMode;
 @property (readwrite, nonatomic) CGPoint focusPoint;

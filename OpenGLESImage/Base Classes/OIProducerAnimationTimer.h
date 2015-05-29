@@ -14,7 +14,7 @@
 
 + (OIProducerAnimationTimer *)defaultProducerAnimationTimer;
 
-@property (readwrite, nonatomic) int framePerSecond;
+@property (readwrite, nonatomic) NSInteger frameRate;
 
 @property (readonly, nonatomic, getter=isRunning) BOOL running;
 

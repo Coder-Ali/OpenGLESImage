@@ -21,6 +21,7 @@
     OITexture *inputTexture_;
     OIProgram *displayProgram_;
     CGSize contentSize_;
+    OIConsumerContentMode contentMode_;
     NSMutableArray *producers_;
 }
 

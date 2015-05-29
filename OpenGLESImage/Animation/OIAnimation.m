@@ -341,6 +341,7 @@
         layer1RotationFilter_ = [[OIRotationFilter alloc] init];
         
         topLayerBlendFilter_ = [[OIAlphaPreMultiplyBlendFilter alloc] init];
+//        topLayerBlendFilter_.outputFrame = CGRectMake(0, 0, 480, 480);
         textLayerImageLayerBlendFilter_ = [[OIAlphaPreMultiplyBlendFilter alloc] init];
         textLayerBlendFilter_ = [[OIAlphaPreMultiplyBlendFilter alloc] init];
         layer01BlendFilter_ = [[OIBlendFilter alloc] init];
@@ -1049,6 +1050,8 @@
                 }
                 else if (participantType == kAnimationParticipantTypeTextBackground) {
                     stringBackground = [participants_ objectForKey:[configuration objectAtIndex:kAnimationParticipantIDIndex]];
+                    
+                    stringBackground.outputFrame = CGRectMake(0, 0, targetView_.contentSize.width, targetView_.contentSize.height);
                 }
             }
         }

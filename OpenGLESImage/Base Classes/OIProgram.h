@@ -17,9 +17,6 @@ typedef struct OI2DFloatVector_ {
 
 @interface OIProgram : NSObject
 
-+ (void)setCurrentProgram:(OIProgram *)program;
-+ (OIProgram *)currentProgram;
-
 - (id)initWithVertexShaderString:(NSString *)vShaderString fragmentShaderString:(NSString *)fShaderString;
 - (id)initWithVertexShaderFilename:(NSString *)vShaderFilename fragmentShaderFilename:(NSString *)fShaderFilename;
 
