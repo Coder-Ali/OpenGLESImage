@@ -134,7 +134,7 @@
 - (void)setAnimatedImageRepeatCount:(int)animatedImageRepeatCount
 {
     if (self.isAnimatedImage) {
-        animatedImageRepeatCount_ = animatedImageRepeatCount < 0 ? 0 : animatedImageRepeatCount;
+        animatedImageRepeatCount_ = animatedImageRepeatCount;
     }
 }
 
@@ -189,7 +189,9 @@
     }
     
     [OIProducer beginAnimationConfigurationWithAnimationID:nil];
-    self.animationDuration = self.animatedImageDuration * (1 + self.animatedImageRepeatCount);
+    if (self.animatedImageRepeatCount >= 0) {
+        self.animationDuration = self.animatedImageDuration * (1 + self.animatedImageRepeatCount);
+    }
     [OIProducer commitAnimationConfiguration];
     imageAnimating_ = YES;
 }
@@ -247,10 +249,19 @@
         if (self.isAnimatedImage) {
             currentAnimationTime_ = CMTimeGetSeconds(time) + hasPlayedTime_;
             
-            while (currentAnimationTime_ > self.animatedImageDuration) {
-                currentAnimationTime_ -= self.animatedImageDuration;
+            if (self.animatedImageRepeatCount < 0) {
+                while (currentAnimationTime_ > self.animatedImageDuration) {
+                    currentAnimationTime_ -= self.animatedImageDuration;
+                }
+                currentImageIndex_ = sourceImage_.images.count * currentAnimationTime_ / self.animatedImageDuration - 1;
             }
-            currentImageIndex_ = sourceImage_.images.count * currentAnimationTime_ / self.animatedImageDuration - 1;
+            else {
+                currentImageIndex_ = sourceImage_.images.count * currentAnimationTime_ / self.animatedImageDuration - 1;
+                
+                if (currentImageIndex_ >= sourceImage_.images.count) {
+                    currentImageIndex_ = (int)sourceImage_.images.count - 1;
+                }
+            }
             
             UIImage *currentImage = [sourceImage_.images objectAtIndex:currentImageIndex_];
             

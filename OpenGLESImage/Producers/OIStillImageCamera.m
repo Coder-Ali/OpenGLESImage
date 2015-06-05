@@ -160,7 +160,7 @@
             handler(nil, error);
             return;
         }
-        NSLog(@"captureOriginalImageAsynchronouslyWithCompletionHandler");
+        
         UIImage *originalImage = [self imageFromSampleBuffer:imageSampleBuffer];
         handler(originalImage, error);
     }];
@@ -257,9 +257,7 @@
 #pragma mark -
 
 - (UIImage *)imageFromSampleBuffer:(CMSampleBufferRef)sampleBuffer
-
 {
-    NSLog(@"imageFromSampleBuffer");
     // Get a CMSampleBuffer's Core Video image buffer for the media data
 	
     CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);

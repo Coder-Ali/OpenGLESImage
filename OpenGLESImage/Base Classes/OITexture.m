@@ -439,8 +439,6 @@
             NSLog(@"OpenGLESImage Error at CVPixelBufferCreate %d", error);
         }
         
-        
-        
         CFRelease(attrs);
         CFRelease(empty);
 
