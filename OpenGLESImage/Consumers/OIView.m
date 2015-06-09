@@ -12,6 +12,13 @@
 #import "OITexture.h"
 #import "OIProgram.h"
 
+@interface OIView ()
+{
+    BOOL superClassInitHasCompleted_;
+}
+
+@end
+
 @implementation OIView
 
 @synthesize enabled = enabled_;
@@ -62,6 +69,7 @@
 
 - (void)performCommonStepsForInit
 {
+    superClassInitHasCompleted_ = YES;
     enabled_ = YES;
     contentSize_ = CGSizeZero;
     contentMode_ = OIConsumerContentModeNormal;
@@ -78,7 +86,6 @@
     }
     
     [OIContext performSynchronouslyOnImageProcessingQueue:^{
-        [[OIContext sharedContext] setAsCurrentContext];
         
         inputTexture_ = nil;
         
@@ -93,7 +100,10 @@
 {
     [super setContentScaleFactor:contentScaleFactor];
     
-    [self setupDisplayFBO];
+    if (superClassInitHasCompleted_) {
+        // UIView初始化时会调用此set函数同时造成内存泄漏，原因不明，故加此判断。
+        [self setupDisplayFBO];
+    }
 }
 
 #pragma mark - OIConsumer Methods
@@ -148,9 +158,9 @@
     eaglLayer.drawableProperties = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:NO], kEAGLDrawablePropertyRetainedBacking, kEAGLColorFormatRGBA8, kEAGLDrawablePropertyColorFormat, nil];
     
     [OIContext performSynchronouslyOnImageProcessingQueue:^{
-
         if (displayFBO_) {
             [displayFBO_ release];
+            displayFBO_ = nil;
         }
         displayFBO_ = [[OIFrameBufferObject alloc] init];
         [displayFBO_ setupStorageForDisplayFromLayer:eaglLayer];

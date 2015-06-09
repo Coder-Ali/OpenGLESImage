@@ -38,7 +38,7 @@ typedef enum _OITextureOrientation {
 - (id)initWithCVBuffer:(CVBufferRef)CVBuffer;
 - (id)initWithCGImage:(CGImageRef)image;
 - (id)initWithCALayer:(CALayer *)caLayer;
-- (id)initWithPixelTables:(GLubyte *)tables tableSize:(int)tableSize count:(int)count;
+- (id)initWithPixelTables:(GLubyte *)tables tableSize:(int)tableSize count:(int)count;  // Uncompleted
 - (id)initWithSize:(CGSize)size orientation:(OITextureOrientation)orientation;
 - (id)initWithCVBuffer:(CVBufferRef)CVBuffer orientation:(OITextureOrientation)orientation;
 - (id)initWithCGImage:(CGImageRef)image orientation:(OITextureOrientation)orientation;
@@ -46,7 +46,6 @@ typedef enum _OITextureOrientation {
 - (void)setupContentWithSize:(CGSize)size;
 - (void)setupContentWithCVBuffer:(CVBufferRef)CVBuffer;
 - (void)setupContentWithCGImage:(CGImageRef)image;
-- (void)setupContentWithAnimatedCGImage:(CGImageRef)image;
 - (void)setupContentWithCALayer:(CALayer *)caLayer;
 
 - (void)attachToCurrentFrameBufferObject;

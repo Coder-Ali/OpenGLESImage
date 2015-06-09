@@ -81,7 +81,8 @@
 
 - (void)setupStorageForDisplayFromLayer:(CAEAGLLayer *)layer
 {
-    if ((type_ != OIFrameBufferObjectTypeForDisplay && type_ != OIFrameBufferObjectTypeUnknow) || eaglLayer_ != layer || !CGSizeEqualToSize(size_, layer.frame.size)) {
+    CGSize layerSize = CGSizeMake(layer.frame.size.width * layer.contentsScale, layer.frame.size.height * layer.contentsScale);
+    if ((type_ != OIFrameBufferObjectTypeForDisplay && type_ != OIFrameBufferObjectTypeUnknow) || eaglLayer_ != layer || !CGSizeEqualToSize(size_, layerSize)) {
         [self deleteFrameBufferObject];
     }
     eaglLayer_ = layer;

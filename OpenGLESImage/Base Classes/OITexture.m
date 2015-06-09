@@ -20,8 +20,6 @@
     CVOpenGLESTextureRef textureRef_;
     CGSize size_;
     OITextureOrientation orientation_;
-    
-    GLubyte *animatedImageData_;
 }
 
 @end
@@ -67,7 +65,6 @@
         textureRef_ = NULL;
         size_ = CGSizeZero;
         orientation_ = OITextureOrientationUp;
-        animatedImageData_ = NULL;
 #if defined(__IPHONE_6_0)
         CVReturn error = CVOpenGLESTextureCacheCreate(kCFAllocatorDefault, NULL, [EAGLContext currentContext], NULL, &textureCacheRef_);
 #else
@@ -177,9 +174,6 @@
 
 - (void)setupContentWithCVBuffer:(CVBufferRef)CVBuffer
 {
-//    if (contentBuffer_ == buffer) {
-//        return;
-//    }
     [self deleteTextureBuffer];
     if (CVPixelBufferGetWidth(CVBuffer) > [[self class] maximumTextureSizeForCurrentDevice] || CVPixelBufferGetHeight(CVBuffer) > [[self class] maximumTextureSizeForCurrentDevice]) {
         CGSize scaledSize = [self scaleSizeBasingOnMaxTextureSize:CGSizeMake(CVPixelBufferGetWidth(contentBuffer_), CVPixelBufferGetHeight(contentBuffer_))];
@@ -211,78 +205,21 @@
     CGContextRelease(imageContext);
     CGColorSpaceRelease(genericRGBColorspace);
     
-    CVReturn error = 0;
-    CFDictionaryRef empty; // empty value for attr value.
-    CFMutableDictionaryRef attrs;
-    empty = CFDictionaryCreate(kCFAllocatorDefault, NULL, NULL, 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks); // our empty IOSurface properties dictionary
-    attrs = CFDictionaryCreateMutable(kCFAllocatorDefault, 1, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
-    CFDictionarySetValue(attrs, kCVPixelBufferIOSurfacePropertiesKey, empty);
-    
-    error = CVPixelBufferCreateWithBytes(kCFAllocatorDefault, (size_t)size_.width, (size_t)size_.height, kCVPixelFormatType_32BGRA, imageData, (size_t)size_.width * 4, contentBufferReleaseBytesCallback, NULL, attrs, &contentBuffer_);
-    if (error)
-    {
-        NSLog(@"CGImage size: %f, %f", size_.width, size_.height);
-        NSLog(@"OpenGLESImage Error at CVPixelBufferCreateWithBytes %d", error);
-    }
-}
-
-- (void)setupContentWithAnimatedCGImage:(CGImageRef)image
-{
-    [self deleteTextureBuffer];
-    
-    CGFloat widthOfImage = CGImageGetWidth(image);
-    CGFloat heightOfImage = CGImageGetHeight(image);
-    size_ = [self scaleSizeBasingOnMaxTextureSize:CGSizeMake(widthOfImage, heightOfImage)];
-    
-//    if (animatedImageData_ != NULL) {
-//        
-//        CGColorSpaceRef genericRGBColorspace = CGColorSpaceCreateDeviceRGB();
-//        
-//        CGContextRef imageContext = CGBitmapContextCreate(animatedImageData_, (size_t)size_.width, (size_t)size_.height, 8, (size_t)size_.width * 4, genericRGBColorspace,  kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
-//        //        CGContextSetBlendMode(imageContext, kCGBlendModeCopy); // From Technical Q&A QA1708: http://developer.apple.com/library/ios/#qa/qa1708/_index.html
-//        CGContextDrawImage(imageContext, CGRectMake(0.0, 0.0, size_.width, size_.height), image);
-//        CGContextRelease(imageContext);
-//        CGColorSpaceRelease(genericRGBColorspace);
-//        
-//        CVReturn error = 0;
-//        CFDictionaryRef empty; // empty value for attr value.
-//        CFMutableDictionaryRef attrs;
-//        empty = CFDictionaryCreate(kCFAllocatorDefault, NULL, NULL, 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks); // our empty IOSurface properties dictionary
-//        attrs = CFDictionaryCreateMutable(kCFAllocatorDefault, 1, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
-//        CFDictionarySetValue(attrs, kCVPixelBufferIOSurfacePropertiesKey, empty);
-//        
-//        error = CVPixelBufferCreateWithBytes(kCFAllocatorDefault, (size_t)size_.width, (size_t)size_.height, kCVPixelFormatType_32BGRA, animatedImageData_, (size_t)size_.width * 4, NULL, NULL, attrs, &contentBuffer_);
-//        if (error)
-//        {
-//            NSLog(@"CGImage size: %f, %f", size_.width, size_.height);
-//            NSLog(@"OpenGLESImage Error at CVPixelBufferCreateWithBytes %d", error);
-//        }
+//    CVReturn error = 0;
+//    CFDictionaryRef empty; // empty value for attr value.
+//    CFMutableDictionaryRef attrs;
+//    empty = CFDictionaryCreate(kCFAllocatorDefault, NULL, NULL, 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks); // our empty IOSurface properties dictionary
+//    attrs = CFDictionaryCreateMutable(kCFAllocatorDefault, 1, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
+//    CFDictionarySetValue(attrs, kCVPixelBufferIOSurfacePropertiesKey, empty);
+//    
+//    error = CVPixelBufferCreateWithBytes(kCFAllocatorDefault, (size_t)size_.width, (size_t)size_.height, kCVPixelFormatType_32BGRA, imageData, (size_t)size_.width * 4, contentBufferReleaseBytesCallback, NULL, attrs, &contentBuffer_);
+//    if (error)
+//    {
+//        NSLog(@"CGImage size: %f, %f", size_.width, size_.height);
+//        NSLog(@"OpenGLESImage Error at CVPixelBufferCreateWithBytes %d", error);
 //    }
-//    else {
-        animatedImageData_ = (GLubyte *) calloc(1, (int)size_.width * (int)size_.height * 4);
-        
-        CGColorSpaceRef genericRGBColorspace = CGColorSpaceCreateDeviceRGB();
-        
-        CGContextRef imageContext = CGBitmapContextCreate(animatedImageData_, (size_t)size_.width, (size_t)size_.height, 8, (size_t)size_.width * 4, genericRGBColorspace,  kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
-        //        CGContextSetBlendMode(imageContext, kCGBlendModeCopy); // From Technical Q&A QA1708: http://developer.apple.com/library/ios/#qa/qa1708/_index.html
-        CGContextDrawImage(imageContext, CGRectMake(0.0, 0.0, size_.width, size_.height), image);
-        CGContextRelease(imageContext);
-        CGColorSpaceRelease(genericRGBColorspace);
-        
-        CVReturn error = 0;
-        CFDictionaryRef empty; // empty value for attr value.
-        CFMutableDictionaryRef attrs;
-        empty = CFDictionaryCreate(kCFAllocatorDefault, NULL, NULL, 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks); // our empty IOSurface properties dictionary
-        attrs = CFDictionaryCreateMutable(kCFAllocatorDefault, 1, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
-        CFDictionarySetValue(attrs, kCVPixelBufferIOSurfacePropertiesKey, empty);
-        
-        error = CVPixelBufferCreateWithBytes(kCFAllocatorDefault, (size_t)size_.width, (size_t)size_.height, kCVPixelFormatType_32BGRA, animatedImageData_, (size_t)size_.width * 4, NULL, NULL, attrs, &contentBuffer_);
-        if (error)
-        {
-            NSLog(@"CGImage size: %f, %f", size_.width, size_.height);
-            NSLog(@"OpenGLESImage Error at CVPixelBufferCreateWithBytes %d", error);
-        }
-//    }
+    
+    [self createContentBufferWithImageData:imageData size:size_];
 }
 
 - (void)setupContentWithCALayer:(CALayer *)caLayer
@@ -305,6 +242,25 @@
     CGContextRelease(imageContext);
     CGColorSpaceRelease(genericRGBColorspace);
     
+//    CVReturn error = 0;
+//    CFDictionaryRef empty; // empty value for attr value.
+//    CFMutableDictionaryRef attrs;
+//    empty = CFDictionaryCreate(kCFAllocatorDefault, NULL, NULL, 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks); // our empty IOSurface properties dictionary
+//    attrs = CFDictionaryCreateMutable(kCFAllocatorDefault, 1, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
+//    CFDictionarySetValue(attrs, kCVPixelBufferIOSurfacePropertiesKey, empty);
+//    
+//    error = CVPixelBufferCreateWithBytes(kCFAllocatorDefault, (size_t)size_.width, (size_t)size_.height, kCVPixelFormatType_32BGRA, imageData, (size_t)size_.width * 4, contentBufferReleaseBytesCallback, NULL, attrs, &contentBuffer_);
+//    if (error)
+//    {
+//        NSLog(@"CALayer pixel size: %f, %f", size_.width, size_.height);
+//        NSLog(@"OpenGLESImage Error at OITexture setupContentWithCALayer, messege: CVReturn code %d", error);
+//    }
+    
+    [self createContentBufferWithImageData:imageData size:size_];
+}
+
+- (void)createContentBufferWithImageData:(GLubyte *)imageData size:(CGSize)bufferSize
+{
     CVReturn error = 0;
     CFDictionaryRef empty; // empty value for attr value.
     CFMutableDictionaryRef attrs;
@@ -312,12 +268,12 @@
     attrs = CFDictionaryCreateMutable(kCFAllocatorDefault, 1, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
     CFDictionarySetValue(attrs, kCVPixelBufferIOSurfacePropertiesKey, empty);
     
-    error = CVPixelBufferCreateWithBytes(kCFAllocatorDefault, (size_t)size_.width, (size_t)size_.height, kCVPixelFormatType_32BGRA, imageData, (size_t)size_.width * 4, contentBufferReleaseBytesCallback, NULL, attrs, &contentBuffer_);
-    if (error)
-    {
-        NSLog(@"CALayer pixel size: %f, %f", size_.width, size_.height);
-        NSLog(@"OpenGLESImage Error at OITexture setupContentWithCALayer, messege: CVReturn code %d", error);
-    }
+    error = CVPixelBufferCreateWithBytes(kCFAllocatorDefault, (size_t)bufferSize.width, (size_t)bufferSize.height, kCVPixelFormatType_32BGRA, imageData, (size_t)bufferSize.width * 4, contentBufferReleaseBytesCallback, NULL, attrs, &contentBuffer_);
+    
+    OIErrorLog(error, [self class], @"- (void)createContentBufferWithImageData:(GLubyte *)imageData size:(CGSize)bufferSize", [NSString stringWithFormat:@"error code %d", error], nil);
+    
+    CFRelease(attrs);
+    CFRelease(empty);
 }
 
 #pragma mark - Properties' Setter & Getter
