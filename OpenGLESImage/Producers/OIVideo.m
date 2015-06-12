@@ -214,11 +214,21 @@
         while (assetReader_.status == AVAssetReaderStatusReading) {
             
             CMSampleBufferRef videoSampleBuffer = [videoTrackOutput_ copyNextSampleBuffer];
-            if (videoSampleBuffer == NULL || shouldStopPlaying_) {
-                shouldStopPlaying_ = NO;
+            
+            if (videoSampleBuffer == NULL) {
                 [assetReader_ cancelReading];
                 break;
             }
+            if (shouldStopPlaying_) {
+                shouldStopPlaying_ = NO;
+                if (videoSampleBuffer) {
+                    CMSampleBufferInvalidate(videoSampleBuffer);
+                    CFRelease(videoSampleBuffer);
+                }
+                [assetReader_ cancelReading];
+                break;
+            }
+            
             CMTime frameTime = CMSampleBufferGetOutputPresentationTimeStamp(videoSampleBuffer);
             
             if (self.playAtActualSpeed)

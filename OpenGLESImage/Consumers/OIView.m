@@ -100,8 +100,8 @@
 {
     [super setContentScaleFactor:contentScaleFactor];
     
+    // UIView初始化时会调用此set函数同时造成内存泄漏，原因不明，故加此判断。
     if (superClassInitHasCompleted_) {
-        // UIView初始化时会调用此set函数同时造成内存泄漏，原因不明，故加此判断。
         [self setupDisplayFBO];
     }
 }
