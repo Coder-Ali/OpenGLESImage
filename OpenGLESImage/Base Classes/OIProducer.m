@@ -141,32 +141,17 @@ static NSString *animationID_ = nil;
     [consumer setProducer:self];
 }
 
-- (void)replaceConsumerAtIndex:(int)index withNewConsumer:(id <OIConsumer>)newConsumer
+- (void)replaceConsumer:(id <OIConsumer>)consumer withNewConsumer:(id <OIConsumer>)newConsumer
 {
-    if (newConsumer == nil || index > [consumers_ count] - 1) {
+    if (newConsumer == nil || ![consumers_ containsObject:consumer]) {
         return;
     }
     
-    id <OIConsumer> consumer = [consumers_ objectAtIndex:index];
-    
     [consumer removeProducer:self];
     
-    [consumers_ replaceObjectAtIndex:index withObject:newConsumer];
+    [consumers_ replaceObjectAtIndex:[consumers_ indexOfObject:consumer] withObject:newConsumer];
     
     [newConsumer setProducer:self];
-}
-
-- (void)removeConsumerAtIndex:(int)index
-{
-    if (index > [consumers_ count] - 1) {
-        return;
-    }
-    
-    id <OIConsumer> consumer = [consumers_ objectAtIndex:index];
-    
-    [consumer removeProducer:self];
-    
-    [consumers_ removeObjectAtIndex:index];
 }
 
 - (void)removeConsumer:(id <OIConsumer>)consumer

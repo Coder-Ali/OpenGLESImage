@@ -21,6 +21,23 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		3310FC121B3D4A7F005FFA09 /* OIAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3310FC101B3D4A7F005FFA09 /* OIAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3310FC131B3D4A7F005FFA09 /* OIAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3310FC111B3D4A7F005FFA09 /* OIAnimation.m */; };
+		33960C351B74892100FC60A6 /* OIAnimationLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 33960C291B74892100FC60A6 /* OIAnimationLayer.h */; };
+		33960C361B74892100FC60A6 /* OIAnimationLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 33960C2A1B74892100FC60A6 /* OIAnimationLayer.m */; };
+		33960C371B74892100FC60A6 /* OIAnimationLayerConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 33960C2B1B74892100FC60A6 /* OIAnimationLayerConfiguration.h */; };
+		33960C381B74892100FC60A6 /* OIAnimationLayerConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 33960C2C1B74892100FC60A6 /* OIAnimationLayerConfiguration.m */; };
+		33960C391B74892100FC60A6 /* OIAnimationLayerMixer.h in Headers */ = {isa = PBXBuildFile; fileRef = 33960C2E1B74892100FC60A6 /* OIAnimationLayerMixer.h */; };
+		33960C3A1B74892100FC60A6 /* OIAnimationLayerMixer.m in Sources */ = {isa = PBXBuildFile; fileRef = 33960C2F1B74892100FC60A6 /* OIAnimationLayerMixer.m */; };
+		33960C3B1B74892100FC60A6 /* OIAnimationScript.h in Headers */ = {isa = PBXBuildFile; fileRef = 33960C311B74892100FC60A6 /* OIAnimationScript.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		33960C3C1B74892100FC60A6 /* OIAnimationScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 33960C321B74892100FC60A6 /* OIAnimationScript.m */; };
+		33960C3D1B74892100FC60A6 /* OIAnimationScriptItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 33960C331B74892100FC60A6 /* OIAnimationScriptItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		33960C3E1B74892100FC60A6 /* OIAnimationScriptItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 33960C341B74892100FC60A6 /* OIAnimationScriptItem.m */; };
+		33960C411B74898B00FC60A6 /* OIAnimationLayerMixerConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 33960C3F1B74898B00FC60A6 /* OIAnimationLayerMixerConfiguration.h */; };
+		33960C421B74898B00FC60A6 /* OIAnimationLayerMixerConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 33960C401B74898B00FC60A6 /* OIAnimationLayerMixerConfiguration.m */; };
+		33960C451B7499EA00FC60A6 /* OIAnimationLayerManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 33960C431B7499EA00FC60A6 /* OIAnimationLayerManager.h */; };
+		33960C461B7499EA00FC60A6 /* OIAnimationLayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 33960C441B7499EA00FC60A6 /* OIAnimationLayerManager.m */; };
+		33960C501B830AF900FC60A6 /* OIMaths.h in Headers */ = {isa = PBXBuildFile; fileRef = 33960C4F1B830A7000FC60A6 /* OIMaths.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		84217FDF1A40233E003488E8 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84217FDE1A40233E003488E8 /* CoreMotion.framework */; };
 		84404FFC1A1C39FC003D5F28 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8443D71819753CE200803FC7 /* QuartzCore.framework */; };
 		84404FFD1A1C3A02003D5F28 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842A92A3195C338D00DD28C4 /* AVFoundation.framework */; };
@@ -104,16 +121,6 @@
 		8446544A1A2C721500C6C6E8 /* OIVideoCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 844654481A2C721500C6C6E8 /* OIVideoCamera.m */; };
 		84944C931A43CED500BD3CEC /* OIMultiplyBlendFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 84944C911A43CED500BD3CEC /* OIMultiplyBlendFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		84944C941A43CED500BD3CEC /* OIMultiplyBlendFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84944C921A43CED500BD3CEC /* OIMultiplyBlendFilter.m */; };
-		84B9BC0B1A5BE1130046C512 /* OIAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 84B9BC051A5BE1130046C512 /* OIAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		84B9BC0C1A5BE1130046C512 /* OIAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9BC061A5BE1130046C512 /* OIAnimation.m */; };
-		84B9BC0D1A5BE1130046C512 /* OIAnimationConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 84B9BC071A5BE1130046C512 /* OIAnimationConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		84B9BC0E1A5BE1130046C512 /* OIAnimationConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9BC081A5BE1130046C512 /* OIAnimationConfiguration.m */; };
-		84B9BC0F1A5BE1130046C512 /* OIAnimationConfigurationDescription.h in Headers */ = {isa = PBXBuildFile; fileRef = 84B9BC091A5BE1130046C512 /* OIAnimationConfigurationDescription.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		84B9BC101A5BE1130046C512 /* OIAnimationConfigurationDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9BC0A1A5BE1130046C512 /* OIAnimationConfigurationDescription.m */; };
-		84B9BC131A5BEBAC0046C512 /* OIAnimationConfigurationImageDescription.h in Headers */ = {isa = PBXBuildFile; fileRef = 84B9BC111A5BEBAC0046C512 /* OIAnimationConfigurationImageDescription.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		84B9BC141A5BEBAC0046C512 /* OIAnimationConfigurationImageDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9BC121A5BEBAC0046C512 /* OIAnimationConfigurationImageDescription.m */; };
-		84B9BC171A5BEF910046C512 /* OIAnimationConfigurationTextDescription.h in Headers */ = {isa = PBXBuildFile; fileRef = 84B9BC151A5BEF910046C512 /* OIAnimationConfigurationTextDescription.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		84B9BC181A5BEF910046C512 /* OIAnimationConfigurationTextDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9BC161A5BEF910046C512 /* OIAnimationConfigurationTextDescription.m */; };
 		84F7F2481A1C367400CA32DE /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F7F2471A1C367400CA32DE /* CoreFoundation.framework */; };
 		84F7F24E1A1C367400CA32DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84F7F24C1A1C367400CA32DE /* InfoPlist.strings */; };
 		84FEA73A1A4190E4007BEEDF /* OIOverlayBlendFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 84FEA7381A4190E4007BEEDF /* OIOverlayBlendFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -121,6 +128,25 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3310FC101B3D4A7F005FFA09 /* OIAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIAnimation.h; sourceTree = "<group>"; };
+		3310FC111B3D4A7F005FFA09 /* OIAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIAnimation.m; sourceTree = "<group>"; };
+		33960C291B74892100FC60A6 /* OIAnimationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIAnimationLayer.h; sourceTree = "<group>"; };
+		33960C2A1B74892100FC60A6 /* OIAnimationLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIAnimationLayer.m; sourceTree = "<group>"; };
+		33960C2B1B74892100FC60A6 /* OIAnimationLayerConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIAnimationLayerConfiguration.h; sourceTree = "<group>"; };
+		33960C2C1B74892100FC60A6 /* OIAnimationLayerConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIAnimationLayerConfiguration.m; sourceTree = "<group>"; };
+		33960C2E1B74892100FC60A6 /* OIAnimationLayerMixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIAnimationLayerMixer.h; sourceTree = "<group>"; };
+		33960C2F1B74892100FC60A6 /* OIAnimationLayerMixer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIAnimationLayerMixer.m; sourceTree = "<group>"; };
+		33960C311B74892100FC60A6 /* OIAnimationScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIAnimationScript.h; sourceTree = "<group>"; };
+		33960C321B74892100FC60A6 /* OIAnimationScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIAnimationScript.m; sourceTree = "<group>"; };
+		33960C331B74892100FC60A6 /* OIAnimationScriptItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIAnimationScriptItem.h; sourceTree = "<group>"; };
+		33960C341B74892100FC60A6 /* OIAnimationScriptItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIAnimationScriptItem.m; sourceTree = "<group>"; };
+		33960C3F1B74898B00FC60A6 /* OIAnimationLayerMixerConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIAnimationLayerMixerConfiguration.h; sourceTree = "<group>"; };
+		33960C401B74898B00FC60A6 /* OIAnimationLayerMixerConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIAnimationLayerMixerConfiguration.m; sourceTree = "<group>"; };
+		33960C431B7499EA00FC60A6 /* OIAnimationLayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIAnimationLayerManager.h; sourceTree = "<group>"; };
+		33960C441B7499EA00FC60A6 /* OIAnimationLayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIAnimationLayerManager.m; sourceTree = "<group>"; };
+		33960C471B79FADE00FC60A6 /* AnimationLayerMixer.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = AnimationLayerMixer.fsh; sourceTree = "<group>"; };
+		33960C491B79FBC400FC60A6 /* MultiInputs.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MultiInputs.fsh; sourceTree = "<group>"; };
+		33960C4F1B830A7000FC60A6 /* OIMaths.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OIMaths.h; sourceTree = "<group>"; };
 		8415FE4619F8AD3500212041 /* OIBlendFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIBlendFilter.h; sourceTree = "<group>"; };
 		8415FE4719F8AD3500212041 /* OIBlendFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIBlendFilter.m; sourceTree = "<group>"; };
 		8415FE4919F8AD6100212041 /* OIScreenBlendFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIScreenBlendFilter.h; sourceTree = "<group>"; };
@@ -158,7 +184,7 @@
 		844654481A2C721500C6C6E8 /* OIVideoCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIVideoCamera.m; sourceTree = "<group>"; };
 		8446DF011A09CF5600831CC5 /* OIMultiImagesSplicingFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIMultiImagesSplicingFilter.h; sourceTree = "<group>"; };
 		8446DF021A09CF5600831CC5 /* OIMultiImagesSplicingFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIMultiImagesSplicingFilter.m; sourceTree = "<group>"; };
-		8446DF041A09D4E600831CC5 /* MultiImagesSplicing.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MultiImagesSplicing.vsh; sourceTree = "<group>"; };
+		8446DF041A09D4E600831CC5 /* MultiInputs.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MultiInputs.vsh; sourceTree = "<group>"; };
 		8446DF051A09D4F900831CC5 /* MultiImagesSplicing.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MultiImagesSplicing.fsh; sourceTree = "<group>"; };
 		8446DF0B1A0A110600831CC5 /* OIVerticalBoxBlurFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIVerticalBoxBlurFilter.h; sourceTree = "<group>"; };
 		8446DF0C1A0A110600831CC5 /* OIVerticalBoxBlurFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIVerticalBoxBlurFilter.m; sourceTree = "<group>"; };
@@ -184,16 +210,6 @@
 		84944C8F1A43CD2A00BD3CEC /* MultiplyBlend.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MultiplyBlend.fsh; sourceTree = "<group>"; };
 		84944C911A43CED500BD3CEC /* OIMultiplyBlendFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIMultiplyBlendFilter.h; sourceTree = "<group>"; };
 		84944C921A43CED500BD3CEC /* OIMultiplyBlendFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIMultiplyBlendFilter.m; sourceTree = "<group>"; };
-		84B9BC051A5BE1130046C512 /* OIAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIAnimation.h; sourceTree = "<group>"; };
-		84B9BC061A5BE1130046C512 /* OIAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIAnimation.m; sourceTree = "<group>"; };
-		84B9BC071A5BE1130046C512 /* OIAnimationConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIAnimationConfiguration.h; sourceTree = "<group>"; };
-		84B9BC081A5BE1130046C512 /* OIAnimationConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIAnimationConfiguration.m; sourceTree = "<group>"; };
-		84B9BC091A5BE1130046C512 /* OIAnimationConfigurationDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIAnimationConfigurationDescription.h; sourceTree = "<group>"; };
-		84B9BC0A1A5BE1130046C512 /* OIAnimationConfigurationDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIAnimationConfigurationDescription.m; sourceTree = "<group>"; };
-		84B9BC111A5BEBAC0046C512 /* OIAnimationConfigurationImageDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIAnimationConfigurationImageDescription.h; sourceTree = "<group>"; };
-		84B9BC121A5BEBAC0046C512 /* OIAnimationConfigurationImageDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIAnimationConfigurationImageDescription.m; sourceTree = "<group>"; };
-		84B9BC151A5BEF910046C512 /* OIAnimationConfigurationTextDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIAnimationConfigurationTextDescription.h; sourceTree = "<group>"; };
-		84B9BC161A5BEF910046C512 /* OIAnimationConfigurationTextDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIAnimationConfigurationTextDescription.m; sourceTree = "<group>"; };
 		84E280D019AB2068000DE6DF /* OIAudioVideoWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OIAudioVideoWriter.h; path = OpenGLESImage/Consumers/OIAudioVideoWriter.h; sourceTree = SOURCE_ROOT; };
 		84E280D119AB2068000DE6DF /* OIAudioVideoWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OIAudioVideoWriter.m; path = OpenGLESImage/Consumers/OIAudioVideoWriter.m; sourceTree = SOURCE_ROOT; };
 		84F7F2461A1C367400CA32DE /* OpenGLESImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenGLESImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -270,6 +286,53 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3310FC0F1B3D4A51005FFA09 /* OIAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				3310FC101B3D4A7F005FFA09 /* OIAnimation.h */,
+				3310FC111B3D4A7F005FFA09 /* OIAnimation.m */,
+				33960C281B74892100FC60A6 /* Animation Layer */,
+				33960C2D1B74892100FC60A6 /* Animation Layer Mixer */,
+				33960C301B74892100FC60A6 /* Animation Script */,
+				33960C431B7499EA00FC60A6 /* OIAnimationLayerManager.h */,
+				33960C441B7499EA00FC60A6 /* OIAnimationLayerManager.m */,
+			);
+			path = OIAnimation;
+			sourceTree = "<group>";
+		};
+		33960C281B74892100FC60A6 /* Animation Layer */ = {
+			isa = PBXGroup;
+			children = (
+				33960C291B74892100FC60A6 /* OIAnimationLayer.h */,
+				33960C2A1B74892100FC60A6 /* OIAnimationLayer.m */,
+				33960C2B1B74892100FC60A6 /* OIAnimationLayerConfiguration.h */,
+				33960C2C1B74892100FC60A6 /* OIAnimationLayerConfiguration.m */,
+			);
+			path = "Animation Layer";
+			sourceTree = "<group>";
+		};
+		33960C2D1B74892100FC60A6 /* Animation Layer Mixer */ = {
+			isa = PBXGroup;
+			children = (
+				33960C2E1B74892100FC60A6 /* OIAnimationLayerMixer.h */,
+				33960C2F1B74892100FC60A6 /* OIAnimationLayerMixer.m */,
+				33960C3F1B74898B00FC60A6 /* OIAnimationLayerMixerConfiguration.h */,
+				33960C401B74898B00FC60A6 /* OIAnimationLayerMixerConfiguration.m */,
+			);
+			path = "Animation Layer Mixer";
+			sourceTree = "<group>";
+		};
+		33960C301B74892100FC60A6 /* Animation Script */ = {
+			isa = PBXGroup;
+			children = (
+				33960C311B74892100FC60A6 /* OIAnimationScript.h */,
+				33960C321B74892100FC60A6 /* OIAnimationScript.m */,
+				33960C331B74892100FC60A6 /* OIAnimationScriptItem.h */,
+				33960C341B74892100FC60A6 /* OIAnimationScriptItem.m */,
+			);
+			path = "Animation Script";
+			sourceTree = "<group>";
+		};
 		8415FE4519F8ACE300212041 /* Blend */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,23 +386,6 @@
 			);
 			name = "Color Processing";
 			path = ColorProcessing;
-			sourceTree = "<group>";
-		};
-		84B9BC041A5BE1130046C512 /* Animation */ = {
-			isa = PBXGroup;
-			children = (
-				84B9BC051A5BE1130046C512 /* OIAnimation.h */,
-				84B9BC061A5BE1130046C512 /* OIAnimation.m */,
-				84B9BC071A5BE1130046C512 /* OIAnimationConfiguration.h */,
-				84B9BC081A5BE1130046C512 /* OIAnimationConfiguration.m */,
-				84B9BC091A5BE1130046C512 /* OIAnimationConfigurationDescription.h */,
-				84B9BC0A1A5BE1130046C512 /* OIAnimationConfigurationDescription.m */,
-				84B9BC111A5BEBAC0046C512 /* OIAnimationConfigurationImageDescription.h */,
-				84B9BC121A5BEBAC0046C512 /* OIAnimationConfigurationImageDescription.m */,
-				84B9BC151A5BEF910046C512 /* OIAnimationConfigurationTextDescription.h */,
-				84B9BC161A5BEF910046C512 /* OIAnimationConfigurationTextDescription.m */,
-			);
-			path = Animation;
 			sourceTree = "<group>";
 		};
 		84F7F2491A1C367400CA32DE /* OpenGLESImage */ = {
@@ -401,12 +447,12 @@
 				B401432718B4AB3B00BC6480 /* OpenGLESImage.h */,
 				B401432918B4AB3B00BC6480 /* OpenGLESImage.m */,
 				B427C74118C9D0BA00C22135 /* Base Classes */,
-				84B9BC041A5BE1130046C512 /* Animation */,
 				B427C75418C9D0CC00C22135 /* Producers */,
 				B427C75518C9D0DD00C22135 /* Filters */,
 				B422FAF618D442F20069CDE8 /* Shaders */,
 				B427C75618C9D0E700C22135 /* Consumers */,
 				B401432518B4AB3B00BC6480 /* Supporting Files */,
+				33960C4F1B830A7000FC60A6 /* OIMaths.h */,
 			);
 			path = OpenGLESImage;
 			sourceTree = "<group>";
@@ -442,12 +488,14 @@
 				8415FE4C19F8AE0C00212041 /* ScreenBlend.fsh */,
 				843FD9C619FE25EB0057F27F /* Tone.fsh */,
 				841FE84C19FF971200241979 /* AlphaPreMultiplyBlend.fsh */,
-				8446DF041A09D4E600831CC5 /* MultiImagesSplicing.vsh */,
+				8446DF041A09D4E600831CC5 /* MultiInputs.vsh */,
+				33960C491B79FBC400FC60A6 /* MultiInputs.fsh */,
 				8446DF051A09D4F900831CC5 /* MultiImagesSplicing.fsh */,
 				8446DF0E1A0A125100831CC5 /* VerticalBoxBlur.vsh */,
 				845477971A0B6B33003B67DD /* AlphaMultipling.fsh */,
 				84944C8C1A43C37300BD3CEC /* OverlayBlend.fsh */,
 				84944C8F1A43CD2A00BD3CEC /* MultiplyBlend.fsh */,
+				33960C471B79FADE00FC60A6 /* AnimationLayerMixer.fsh */,
 			);
 			path = Shaders;
 			sourceTree = "<group>";
@@ -490,6 +538,7 @@
 		B427C75418C9D0CC00C22135 /* Producers */ = {
 			isa = PBXGroup;
 			children = (
+				3310FC0F1B3D4A51005FFA09 /* OIAnimation */,
 				B4F3917718E947AC00D6461F /* OIVideoCaptor.h */,
 				B4F3917818E947AC00D6461F /* OIVideoCaptor.m */,
 				B4F3917A18E9595500D6461F /* OIStillImageCamera.h */,
@@ -549,11 +598,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84B9BC0F1A5BE1130046C512 /* OIAnimationConfigurationDescription.h in Headers */,
-				84B9BC0D1A5BE1130046C512 /* OIAnimationConfiguration.h in Headers */,
-				84B9BC171A5BEF910046C512 /* OIAnimationConfigurationTextDescription.h in Headers */,
-				84B9BC131A5BEBAC0046C512 /* OIAnimationConfigurationImageDescription.h in Headers */,
-				84B9BC0B1A5BE1130046C512 /* OIAnimation.h in Headers */,
+				33960C3B1B74892100FC60A6 /* OIAnimationScript.h in Headers */,
+				33960C3D1B74892100FC60A6 /* OIAnimationScriptItem.h in Headers */,
+				3310FC121B3D4A7F005FFA09 /* OIAnimation.h in Headers */,
 				84944C931A43CED500BD3CEC /* OIMultiplyBlendFilter.h in Headers */,
 				84FEA73A1A4190E4007BEEDF /* OIOverlayBlendFilter.h in Headers */,
 				844654491A2C721500C6C6E8 /* OIVideoCamera.h in Headers */,
@@ -589,10 +636,16 @@
 				8440501F1A1C3B3F003D5F28 /* OIAlphaMultiplingFilter.h in Headers */,
 				844050201A1C3B3F003D5F28 /* OIGaussianBlurFilter.h in Headers */,
 				844050211A1C3B3F003D5F28 /* OIFastSurfaceBlurFilter.h in Headers */,
+				33960C501B830AF900FC60A6 /* OIMaths.h in Headers */,
 				844050221A1C3B3F003D5F28 /* OIBoxBlurFilter.h in Headers */,
 				844050231A1C3B3F003D5F28 /* OIVerticalBoxBlurFilter.h in Headers */,
 				844050251A1C3B3F003D5F28 /* OIView.h in Headers */,
 				844050261A1C3B40003D5F28 /* OIAudioVideoWriter.h in Headers */,
+				33960C451B7499EA00FC60A6 /* OIAnimationLayerManager.h in Headers */,
+				33960C391B74892100FC60A6 /* OIAnimationLayerMixer.h in Headers */,
+				33960C411B74898B00FC60A6 /* OIAnimationLayerMixerConfiguration.h in Headers */,
+				33960C371B74892100FC60A6 /* OIAnimationLayerConfiguration.h in Headers */,
+				33960C351B74892100FC60A6 /* OIAnimationLayer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -682,6 +735,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33960C461B7499EA00FC60A6 /* OIAnimationLayerManager.m in Sources */,
 				844050281A1C3C34003D5F28 /* OpenGLESImage.m in Sources */,
 				844050291A1C3C34003D5F28 /* OIContext.m in Sources */,
 				8440502A1A1C3C34003D5F28 /* OIFrameBufferObject.m in Sources */,
@@ -690,24 +744,27 @@
 				8440502D1A1C3C34003D5F28 /* OITexture.m in Sources */,
 				8440502E1A1C3C34003D5F28 /* OIProducerAnimationTimer.m in Sources */,
 				8440502F1A1C3C34003D5F28 /* OIVideoCaptor.m in Sources */,
-				84B9BC101A5BE1130046C512 /* OIAnimationConfigurationDescription.m in Sources */,
 				844050301A1C3C34003D5F28 /* OIStillImageCamera.m in Sources */,
 				844050311A1C3C34003D5F28 /* OIImage.m in Sources */,
+				33960C3A1B74892100FC60A6 /* OIAnimationLayerMixer.m in Sources */,
 				844050321A1C3C34003D5F28 /* OIUIElement.m in Sources */,
+				3310FC131B3D4A7F005FFA09 /* OIAnimation.m in Sources */,
 				844050331A1C3C34003D5F28 /* OIString.m in Sources */,
 				84944C941A43CED500BD3CEC /* OIMultiplyBlendFilter.m in Sources */,
 				844050341A1C3C34003D5F28 /* OIVideo.m in Sources */,
 				844050351A1C3C34003D5F28 /* OIFilter.m in Sources */,
+				33960C421B74898B00FC60A6 /* OIAnimationLayerMixerConfiguration.m in Sources */,
 				844050361A1C3C34003D5F28 /* OITwoInputsFilter.m in Sources */,
 				844050371A1C3C34003D5F28 /* OITwoPassesFilter.m in Sources */,
 				844050381A1C3C34003D5F28 /* OIMultiRendersFilter.m in Sources */,
+				33960C381B74892100FC60A6 /* OIAnimationLayerConfiguration.m in Sources */,
 				844050391A1C3C34003D5F28 /* OIMultiInputsFilter.m in Sources */,
+				33960C3E1B74892100FC60A6 /* OIAnimationScriptItem.m in Sources */,
 				8440503A1A1C3C34003D5F28 /* OIRGBAFilter.m in Sources */,
 				8440503B1A1C3C34003D5F28 /* OIToneFilter.m in Sources */,
 				8440503C1A1C3C34003D5F28 /* OIBrightnessFilter.m in Sources */,
-				84B9BC141A5BEBAC0046C512 /* OIAnimationConfigurationImageDescription.m in Sources */,
-				84B9BC0E1A5BE1130046C512 /* OIAnimationConfiguration.m in Sources */,
 				8440503D1A1C3C34003D5F28 /* OIBlendFilter.m in Sources */,
+				33960C3C1B74892100FC60A6 /* OIAnimationScript.m in Sources */,
 				8440503E1A1C3C34003D5F28 /* OIScreenBlendFilter.m in Sources */,
 				8440503F1A1C3C34003D5F28 /* OIAlphaPreMultiplyBlendFilter.m in Sources */,
 				844050401A1C3C34003D5F28 /* OIRotationFilter.m in Sources */,
@@ -717,9 +774,8 @@
 				844050441A1C3C34003D5F28 /* OIAlphaMultiplingFilter.m in Sources */,
 				844050451A1C3C34003D5F28 /* OIGaussianBlurFilter.m in Sources */,
 				844050461A1C3C34003D5F28 /* OIFastSurfaceBlurFilter.m in Sources */,
-				84B9BC0C1A5BE1130046C512 /* OIAnimation.m in Sources */,
 				84FEA73B1A4190E4007BEEDF /* OIOverlayBlendFilter.m in Sources */,
-				84B9BC181A5BEF910046C512 /* OIAnimationConfigurationTextDescription.m in Sources */,
+				33960C361B74892100FC60A6 /* OIAnimationLayer.m in Sources */,
 				844050471A1C3C34003D5F28 /* OIBoxBlurFilter.m in Sources */,
 				844050481A1C3C34003D5F28 /* OIVerticalBoxBlurFilter.m in Sources */,
 				8446544A1A2C721500C6C6E8 /* OIVideoCamera.m in Sources */,

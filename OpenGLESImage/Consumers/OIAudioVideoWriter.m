@@ -58,6 +58,7 @@
 @synthesize shouldWriteWithAudio = shouldWriteWithAudio_;
 @synthesize compressionAudioSettings = compressionAudioSettings_;
 @synthesize writingInRealTime = writingInRealTime_;
+@synthesize contentMode;
 
 #pragma mark - Lifecycle
 

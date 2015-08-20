@@ -9,11 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <OpenGLES/ES2/gl.h>
 #import <OpenGLES/ES2/glext.h>
-
-typedef struct OI2DFloatVector_ {
-    float x;
-    float y;
-} OI2DFloatVector;
+#import <OpenGLESImage/OIMaths.h>
 
 @interface OIProgram : NSObject
 
@@ -26,10 +22,12 @@ typedef struct OI2DFloatVector_ {
 - (void)setCoordinatePointer:(const GLfloat *)pointer coordinateSize:(GLint)size forAttribute:(NSString *)attributeName;
 
 - (void)setInt:(int)intValue forUniform:(NSString *)uniformName;
+- (void)setIntArray:(int *)intArray withArrayCount:(int)count forUniform:(NSString *)uniformName;
 - (void)setFloat:(float)floatValue forUniform:(NSString *)uniformName;
 - (void)setTextureIndex:(int)index forTexture:(NSString *)textureName;
-- (void)setFloatArray:(float *)floatArray ofArrayCount:(int)count forUniform:(NSString *)uniformName;
+- (void)setFloatArray:(float *)floatArray withArrayCount:(int)count forUniform:(NSString *)uniformName;
 - (void)set2DFloatVector:(OI2DFloatVector)vector forUniform:(NSString *)uniformName;
+- (void)set4DFloatVectorArray:(OI4DFloatVector *)vectorArray withArrayCount:(int)count forUniform:(NSString *)uniformName;
 - (void)set4x4Matrix:(float *)matrix forUniform:(NSString *)uniformName;
 
 @end

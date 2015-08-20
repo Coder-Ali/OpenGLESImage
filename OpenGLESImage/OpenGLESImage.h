@@ -14,8 +14,8 @@
 #import <OpenGLESImage/OIProgram.h>
 #import <OpenGLESImage/OITexture.h>
 #import <OpenGLESImage/OIAnimation.h>
-#import <OpenGLESImage/OIAnimationConfiguration.h>
-#import <OpenGLESImage/OIAnimationConfigurationDescription.h>
+#import <OpenGLESImage/OIAnimationScript.h>
+#import <OpenGLESImage/OIAnimationScriptItem.h>
 #import <OpenGLESImage/OIVideoCaptor.h>
 #import <OpenGLESImage/OIStillImageCamera.h>
 #import <OpenGLESImage/OIVideoCamera.h>
@@ -47,6 +47,7 @@
 #import <OpenGLESImage/OIVerticalBoxBlurFilter.h>
 #import <OpenGLESImage/OIView.h>
 #import <OpenGLESImage/OIAudioVideoWriter.h>
+#import <OpenGLESImage/OIMaths.h>
 
 //@interface OpenGLESImage : NSObject
 //

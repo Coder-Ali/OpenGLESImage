@@ -12,12 +12,6 @@
 
 #pragma mark - The Methods Be Overrided In Subclass If Need
 
-+ (NSString *)vertexShaderFilename
-{
-    static NSString *vName = @"MultiImagesSplicing";
-    return vName;
-}
-
 + (NSString *)fragmentShaderFilename
 {
     static NSString *fName = @"MultiImagesSplicing";

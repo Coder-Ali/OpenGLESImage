@@ -62,14 +62,36 @@
     
     inputCount_ = inputCount;
     
-    for (int i = 0; i < inputCount_; ++i) {
-        [OIContext performSynchronouslyOnImageProcessingQueue:^{
-            [[OIContext sharedContext] setAsCurrentContext];
-            [filterProgram_ use];
-            [filterProgram_ setInt:inputCount_ forUniform:@"inputCount"];
-            [filterProgram_ setTextureIndex:i forTexture:[NSString stringWithFormat:@"sourceImage%d", i]];
-        }];
-    }
+    [OIContext performSynchronouslyOnImageProcessingQueue:^{
+        [[OIContext sharedContext] setAsCurrentContext];
+        [filterProgram_ use];
+        [filterProgram_ setInt:inputCount_ forUniform:@"inputCount"];
+        int sourceImages[8] = {0, 1, 2, 3, 4, 5, 6, 7};
+        [filterProgram_ setIntArray:sourceImages withArrayCount:8 forUniform:@"sourceImages"];
+    }];
+    
+//    for (int i = 0; i < inputCount_; ++i) {
+//        [OIContext performSynchronouslyOnImageProcessingQueue:^{
+//            [[OIContext sharedContext] setAsCurrentContext];
+//            [filterProgram_ use];
+//            [filterProgram_ setInt:inputCount_ forUniform:@"inputCount"];
+//            [filterProgram_ setTextureIndex:i forTexture:[NSString stringWithFormat:@"sourceImage%d", i]];
+//        }];
+//    }
+}
+
+#pragma mark - The Methods Be Overrided In Subclass If Need
+
++ (NSString *)vertexShaderFilename
+{
+    static NSString *vName = @"MultiInputs";
+    return vName;
+}
+
++ (NSString *)fragmentShaderFilename
+{
+    static NSString *fName = @"MultiInputs";
+    return fName;
 }
 
 #pragma mark - OIConsumer Methods

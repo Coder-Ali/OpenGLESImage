@@ -20,6 +20,7 @@
 
 @synthesize producers = producers_;
 @synthesize contentSize = contentSize_;
+@synthesize contentMode;
 
 #pragma mark - Lifecycle
 

@@ -29,13 +29,6 @@ uniform int inputCount;
 void main()
 {
     lowp vec4 sourceColor0 = texture2D(sourceImage0, texture0CoordinatePort);
-//    lowp vec4 sourceColor1 = texture2D(sourceImage1, texture1CoordinatePort);
-//    lowp vec4 sourceColor2 = texture2D(sourceImage2, texture2CoordinatePort);
-//    lowp vec4 sourceColor3 = texture2D(sourceImage3, texture3CoordinatePort);
-//    lowp vec4 sourceColor4 = texture2D(sourceImage4, texture4CoordinatePort);
-//    lowp vec4 sourceColor5 = texture2D(sourceImage5, texture5CoordinatePort);
-//    lowp vec4 sourceColor6 = texture2D(sourceImage6, texture6CoordinatePort);
-//    lowp vec4 sourceColor7 = texture2D(sourceImage7, texture7CoordinatePort);
     
     lowp vec4 outputColor = vec4(0.5);
     

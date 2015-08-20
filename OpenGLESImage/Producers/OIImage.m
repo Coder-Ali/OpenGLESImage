@@ -150,24 +150,24 @@
     [super addConsumer:consumer];
 }
 
-- (void)replaceConsumerAtIndex:(int)index withNewConsumer:(id <OIConsumer>)newConsumer
+- (void)replaceConsumer:(id<OIConsumer>)consumer withNewConsumer:(id<OIConsumer>)newConsumer
 {
     if (processedImage_) {
         [processedImage_ release];
         processedImage_ = nil;
     }
     
-    [super replaceConsumerAtIndex:index withNewConsumer:newConsumer];
+    [super replaceConsumer:consumer withNewConsumer:newConsumer];
 }
 
-- (void)removeConsumerAtIndex:(int)index
+- (void)removeConsumer:(id<OIConsumer>)consumer
 {
     if (processedImage_) {
         [processedImage_ release];
         processedImage_ = nil;
     }
     
-    [super removeConsumerAtIndex:index];
+    [super removeConsumer:consumer];
 }
 
 - (void)removeAllConsumers

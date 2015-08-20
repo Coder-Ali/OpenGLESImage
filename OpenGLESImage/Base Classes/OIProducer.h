@@ -85,8 +85,7 @@ typedef enum OIProducerAnimationEasingMode_ OIProducerAnimationEasingMode;
 @property (readwrite, nonatomic) OIProducerAnimationEasingMode animationEasingMode;  // Default is OIProducerAnimationEasingModeLinear.
 
 - (void)addConsumer:(id <OIConsumer>)consumer;
-- (void)replaceConsumerAtIndex:(int)index withNewConsumer:(id <OIConsumer>)newConsumer;
-- (void)removeConsumerAtIndex:(int)index;
+- (void)replaceConsumer:(id <OIConsumer>)consumer withNewConsumer:(id <OIConsumer>)newConsumer;
 - (void)removeConsumer:(id <OIConsumer>)consumer;
 - (void)removeAllConsumers;
 

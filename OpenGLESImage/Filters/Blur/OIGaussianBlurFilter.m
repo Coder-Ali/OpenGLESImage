@@ -41,10 +41,10 @@
         [OIContext performSynchronouslyOnImageProcessingQueue:^{
             [[OIContext sharedContext] setAsCurrentContext];
             [filterProgram_ use];
-            [filterProgram_ setFloatArray:offsetsZero_ ofArrayCount:MAX_KERNEL_COUNT forUniform:@"vOffsets"];
+            [filterProgram_ setFloatArray:offsetsZero_ withArrayCount:MAX_KERNEL_COUNT forUniform:@"vOffsets"];
             
             [secondFilterProgram_ use];
-            [secondFilterProgram_ setFloatArray:offsetsZero_ ofArrayCount:MAX_KERNEL_COUNT forUniform:@"hOffsets"];
+            [secondFilterProgram_ setFloatArray:offsetsZero_ withArrayCount:MAX_KERNEL_COUNT forUniform:@"hOffsets"];
         }];
     }
     return self;
@@ -130,11 +130,11 @@
         [[OIContext sharedContext] setAsCurrentContext];
         [filterProgram_ use];
         [filterProgram_ setInt:optimizedKernelCount forUniform:@"kernelCount"];
-        [filterProgram_ setFloatArray:kernels_ ofArrayCount:optimizedKernelCount forUniform:@"kernels"];
+        [filterProgram_ setFloatArray:kernels_ withArrayCount:optimizedKernelCount forUniform:@"kernels"];
         
         [secondFilterProgram_ use];
         [secondFilterProgram_ setInt:optimizedKernelCount forUniform:@"kernelCount"];
-        [secondFilterProgram_ setFloatArray:kernels_ ofArrayCount:optimizedKernelCount forUniform:@"kernels"];
+        [secondFilterProgram_ setFloatArray:kernels_ withArrayCount:optimizedKernelCount forUniform:@"kernels"];
     }];
 }
 
@@ -158,7 +158,7 @@
     for (int i = 0; i < MAX_KERNEL_COUNT; i++) {
         offsets[i] = offsets_[i] / contentSize_.width;
     }
-    [filterProgram_ setFloatArray:offsets ofArrayCount:MAX_KERNEL_COUNT forUniform:@"hOffsets"];
+    [filterProgram_ setFloatArray:offsets withArrayCount:MAX_KERNEL_COUNT forUniform:@"hOffsets"];
 }
 
 - (void)setSecondProgramUniform
@@ -167,7 +167,7 @@
     for (int i = 0; i < MAX_KERNEL_COUNT; i++) {
         offsets[i] = offsets_[i] / contentSize_.height;
     }
-    [secondFilterProgram_ setFloatArray:offsets ofArrayCount:MAX_KERNEL_COUNT forUniform:@"vOffsets"];
+    [secondFilterProgram_ setFloatArray:offsets withArrayCount:MAX_KERNEL_COUNT forUniform:@"vOffsets"];
 }
 
 - (void)calculateAnimationParametersWithFactor:(double)animationFactor

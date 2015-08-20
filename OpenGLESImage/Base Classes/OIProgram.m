@@ -207,6 +207,13 @@
     glUniform1i([uniformLocation intValue], intValue);
 }
 
+- (void)setIntArray:(int *)intArray withArrayCount:(int)count forUniform:(NSString *)uniformName
+{
+    NSNumber *uniformLocation = [self locationForUniformName:uniformName];
+    
+    glUniform1iv([uniformLocation intValue], count, intArray);
+}
+
 - (void)setFloat:(float)floatValue forUniform:(NSString *)uniformName
 {
     NSNumber *uniformLocation = [self locationForUniformName:uniformName];
@@ -219,7 +226,7 @@
     [self setInt:index forUniform:textureName];
 }
 
-- (void)setFloatArray:(float *)floatArray ofArrayCount:(int)count forUniform:(NSString *)uniformName
+- (void)setFloatArray:(float *)floatArray withArrayCount:(int)count forUniform:(NSString *)uniformName
 {
     NSNumber *uniformLocation = [self locationForUniformName:uniformName];
     
@@ -231,6 +238,13 @@
     NSNumber *uniformLocation = [self locationForUniformName:uniformName];
     
     glUniform2f([uniformLocation intValue], vector.x, vector.y);
+}
+
+- (void)set4DFloatVectorArray:(OI4DFloatVector *)vectorArray withArrayCount:(int)count forUniform:(NSString *)uniformName
+{
+    NSNumber *uniformLocation = [self locationForUniformName:uniformName];
+    
+    glUniform4fv([uniformLocation intValue], count, (GLfloat *)vectorArray);
 }
 
 - (void)set4x4Matrix:(float *)matrix forUniform:(NSString *)uniformName

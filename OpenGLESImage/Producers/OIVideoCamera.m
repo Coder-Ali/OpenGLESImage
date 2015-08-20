@@ -22,6 +22,8 @@
 
 @implementation OIVideoCamera
 
+@synthesize delegate;
+
 #pragma mark - Lifecycle
 
 - (void)dealloc
