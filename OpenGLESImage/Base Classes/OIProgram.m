@@ -244,7 +244,7 @@
 {
     NSNumber *uniformLocation = [self locationForUniformName:uniformName];
     
-    glUniform4fv([uniformLocation intValue], count, (GLfloat *)vectorArray);
+    glUniform4fv([uniformLocation intValue], count * 4, (GLfloat *)vectorArray);
 }
 
 - (void)set4x4Matrix:(float *)matrix forUniform:(NSString *)uniformName

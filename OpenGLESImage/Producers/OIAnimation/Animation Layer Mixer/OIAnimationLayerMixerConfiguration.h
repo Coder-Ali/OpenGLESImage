@@ -16,6 +16,9 @@ static const OIAnimationLayerMixerMixMode kOIAnimationLayerMixerMixModeImageInMa
 static const OIAnimationLayerMixerMixMode kOIAnimationLayerMixerMixModeLightingEffect = 3;
 static const OIAnimationLayerMixerMixMode kOIAnimationLayerMixerMixModeAlphaPreMultiplied = 4;
 
+static const float   kOIAnimationLayerMixerConfigurationNoAlpha = -1.0;
+static const OIColor kOIAnimationLayerMixerConfigurationNoTone = {-1.0, -1.0, -1.0, -1.0};
+
 @interface OIAnimationLayerMixerConfiguration : NSObject
 
 + (OIAnimationLayerMixerConfiguration *)animationLayerMixerConfigurationWithMixMode:(OIAnimationLayerMixerMixMode)mixMode alpha:(float)alpha tone:(OIColor)tone;

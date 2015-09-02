@@ -28,6 +28,10 @@ typedef enum OIAnimationEasingMode_ {
     OIAnimationEasingModeEaseInOutSine
 } OIAnimationEasingMode;
 
+static const float   kOIAnimationScriptItemNoAlpha = -1.0;
+static const float   kOIAnimationScriptItemNoBlur  = -1.0;
+static const OIColor kOIAnimationScriptItemNoTone  = {-1.0, -1.0, -1.0, -1.0};
+
 @class OIProducer;
 @class OIAnimationLayerConfiguration;
 @class OIAnimationLayerMixerConfiguration;

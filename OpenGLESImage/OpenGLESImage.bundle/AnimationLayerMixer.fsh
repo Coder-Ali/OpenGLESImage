@@ -1,10 +1,10 @@
-/* 
-  AnimationLayerMixer.fsh
-  OpenGLESImage
-
-  Created by Kwan Yiuleung on 15/8/11.
-  Copyright (c) 2015年 Kwan Yiuleung. All rights reserved.
-*/
+/*
+ AnimationLayerMixer.fsh
+ OpenGLESImage
+ 
+ Created by Kwan Yiuleung on 15/8/11.
+ Copyright (c) 2015年 Kwan Yiuleung. All rights reserved.
+ */
 
 const int MAX_LAYER_COUNT = 8;
 
@@ -64,8 +64,7 @@ lowp vec4 alphaPreMultipliedBlend(lowp vec4 sourceColor, lowp vec4 destColor)
 
 void main()
 {
-    highp vec2 coordinates[MAX_LAYER_COUNT];// = {texture0CoordinatePort, texture1CoordinatePort, texture2CoordinatePort, texture3CoordinatePort, texture4CoordinatePort, texture5CoordinatePort, texture6CoordinatePort, texture7CoordinatePort};
-//    sampler2D sourceImages[] = {sourceImage0, sourceImage1, sourceImage2, sourceImage3, sourceImage4, sourceImage5, sourceImage6, sourceImage7};
+    highp vec2 coordinates[MAX_LAYER_COUNT];
     
     coordinates[0] = texture0CoordinatePort;
     coordinates[1] = texture1CoordinatePort;
@@ -77,6 +76,12 @@ void main()
     coordinates[7] = texture7CoordinatePort;
     
     lowp vec4 outputColor = texture2D(sourceImages[0], texture0CoordinatePort);
+    
+    if (tones[0].a >= 0.0) {
+        outputColor.rgb = mix(outputColor.rgb, tones[0].rgb, tones[0].a);
+        
+        outputColor.rgb = clamp(outputColor.rgb, 0.0, 1.0);
+    }
     
     for (int i = 1; i < inputCount; ++i) {
         lowp vec4 destColor = texture2D(sourceImages[i], coordinates[i]);
