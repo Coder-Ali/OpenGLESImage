@@ -24,6 +24,7 @@
     int animatedImageRepeatCount_;
     
     double currentAnimationTime_;
+    int currentRepeatCount_;
     double hasPlayedTime_;
     
     int currentImageIndex_;
@@ -272,7 +273,13 @@
         if (self.isAnimatedImage) {
             
             if (currentImageIndex_ >= sourceImage_.images.count) {
-                currentImageIndex_ = 0;
+                if (currentRepeatCount_ < self.animatedImageRepeatCount) {
+                    ++currentRepeatCount_;
+                    currentImageIndex_ = 0;
+                }
+                else {
+                    currentImageIndex_ = sourceImage_.images.count - 1;
+                }
             }
 //            NSLog(@"currentImageIndex:%d", currentImageIndex_);
             UIImage *currentImage = [sourceImage_.images objectAtIndex:currentImageIndex_];

@@ -23,7 +23,7 @@ typedef enum OIVideoStatus_ OIVideoStatus;
 @protocol OIVideoDelegate <NSObject>
 
 @optional
-
+- (void)video:(OIVideo *)video willOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer;
 - (void)videoDidEnd:(OIVideo *)video;
 
 @end
@@ -39,6 +39,8 @@ typedef enum OIVideoStatus_ OIVideoStatus;
 @property (retain, nonatomic) NSURL *URL;  //If receiver do not init by (initWithURL:) and this property never be set, return nil. You can set the source video's URL by this, which be play by receiver.
 
 @property (readonly, nonatomic) OIVideoStatus status;
+
+@property (readonly, nonatomic) double duration; //返回视频的总长度，单位为秒。
 
 @property (readwrite, nonatomic) BOOL playAtActualSpeed;  //Default is YES.
 

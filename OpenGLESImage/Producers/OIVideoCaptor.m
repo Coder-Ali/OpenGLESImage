@@ -46,7 +46,7 @@
             [videoInput_ release];
         }
         if (videoOutput_) {
-            [videoOutput_ setSampleBufferDelegate:nil queue:dispatch_get_main_queue()];
+            [videoOutput_ setSampleBufferDelegate:nil queue:NULL];
             [cameraSession_ removeOutput:videoOutput_];
             [videoOutput_ release];
         }
@@ -101,8 +101,8 @@
         }
         
         if (!camera_) {
-            [self release];
             OIErrorLog(YES, self.class, @"- initWithCameraPosition: sessionPreset:", @"Camera in specified position is not found", nil);
+            [self release];
             return nil;
         }
         
@@ -523,6 +523,9 @@
 
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
 {
+    if (!cameraSession_ || !cameraSession_.isRunning) {
+        return;
+    }
     if (!self.isEnabled) {
         return;
     }

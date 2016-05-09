@@ -246,10 +246,6 @@
     [writerFBO_ clearBufferWithRed:0.0 green:0.0 blue:0.0 alpha:0.0];
     [inputTexture_ bindToTextureIndex:GL_TEXTURE0];
     
-    if (self.isWritingInRealTime) {
-        inputTexture_.orientation = OITextureOrientationLeftMirrored;
-    }
-    
     [writerProgram_ use];
     [writerProgram_ setCoordinatePointer:[writerFBO_ verticesCoordinateForDrawableRect:rect] coordinateSize:2 forAttribute:@"position"];
     [writerProgram_ setCoordinatePointer:inputTexture_.textureCoordinate coordinateSize:2 forAttribute:@"textureCoordinate"];
@@ -358,33 +354,19 @@
         return NO;
     }
     
-//    double preferredHardwareSampleRate = [[AVAudioSession sharedInstance] currentHardwareSampleRate];
-    
-//    AudioChannelLayout acl;
-//    bzero( &acl, sizeof(acl));
-//    acl.mChannelLayoutTag = kAudioChannelLayoutTag_Mono;
-//    NSDictionary* audioOutputSettings = [NSDictionary dictionaryWithObjectsAndKeys:
-//                                            [ NSNumber numberWithInt: kAudioFormatMPEG4AAC], AVFormatIDKey,
-//                                            [ NSNumber numberWithInt: 1 ], AVNumberOfChannelsKey,
-//                                            [ NSNumber numberWithFloat: preferredHardwareSampleRate ], AVSampleRateKey,
-//                                            [ NSData dataWithBytes: &acl length: sizeof( acl ) ], AVChannelLayoutKey,
-//                                            //[ NSNumber numberWithInt:AVAudioQualityLow], AVEncoderAudioQualityKey,
-//                                            [ NSNumber numberWithInt: 64000 ], AVEncoderBitRateKey,
-//                                            nil];
-    
-    // Configure the channel layout as stereo.
     if (self.shouldWriteWithAudio) {
-        AudioChannelLayout stereoChannelLayout = {
-            .mChannelLayoutTag = kAudioChannelLayoutTag_Stereo,
-            .mChannelBitmap = 0,
-            .mNumberChannelDescriptions = 0
-        };
-        
-        // Convert the channel layout object to an NSData object.
-        NSData *channelLayoutAsData = [NSData dataWithBytes:&stereoChannelLayout length:offsetof(AudioChannelLayout, mChannelDescriptions)];
-        
-        // Get the compression settings for 128 kbps AAC.
         if (!self.compressionAudioSettings) {
+            // Configure the channel layout as stereo.
+            AudioChannelLayout stereoChannelLayout = {
+                .mChannelLayoutTag = kAudioChannelLayoutTag_Stereo,
+                .mChannelBitmap = 0,
+                .mNumberChannelDescriptions = 0
+            };
+            
+            // Convert the channel layout object to an NSData object.
+            NSData *channelLayoutAsData = [NSData dataWithBytes:&stereoChannelLayout length:offsetof(AudioChannelLayout, mChannelDescriptions)];
+            
+            // Get the compression settings for 128 kbps AAC.
             NSDictionary *compressionAudioSettings = @{
                                                        AVFormatIDKey         : [NSNumber numberWithUnsignedInt:kAudioFormatMPEG4AAC],
                                                        AVEncoderBitRateKey   : [NSNumber numberWithInteger:128000],

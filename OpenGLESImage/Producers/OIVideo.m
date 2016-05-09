@@ -136,6 +136,17 @@
     }
 }
 
+- (double)duration
+{
+    double duration = 0.0;
+    
+    if (self.AVAsset) {
+        duration = CMTimeGetSeconds(self.AVAsset.duration);
+    }
+    
+    return duration;
+}
+
 #pragma mark - 
 
 - (BOOL)play
@@ -162,6 +173,7 @@
     [outputSettings setObject: [NSNumber numberWithInt:kCVPixelFormatType_32BGRA]  forKey: (NSString*)kCVPixelBufferPixelFormatTypeKey];
     // Maybe set alwaysCopiesSampleData to NO on iOS 5.0 for faster video decoding
     videoTrackOutput_ = [[AVAssetReaderTrackOutput alloc] initWithTrack:[[self.AVAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0] outputSettings:outputSettings];
+    videoTrackOutput_.alwaysCopiesSampleData = NO;
     if (![assetReader_ canAddOutput:videoTrackOutput_]) {
         [assetReader_ release];
         assetReader_ = nil;
@@ -180,7 +192,10 @@
     {
         // This might need to be extended to handle movies with more than one audio track
         AVAssetTrack* audioTrack = [audioTracks objectAtIndex:0];
-        audioTrackOutput_ = [[AVAssetReaderTrackOutput alloc] initWithTrack:audioTrack outputSettings:nil];
+        NSMutableDictionary *audioSettings = [NSMutableDictionary dictionary];
+        [audioSettings setObject: [NSNumber numberWithInt:kAudioFormatLinearPCM]  forKey: (NSString*)AVFormatIDKey];
+        audioTrackOutput_ = [[AVAssetReaderTrackOutput alloc] initWithTrack:audioTrack outputSettings:audioSettings];
+        audioTrackOutput_.alwaysCopiesSampleData = NO;
         if ([assetReader_ canAddOutput:audioTrackOutput_]) {
             [assetReader_ addOutput:audioTrackOutput_];
         }
@@ -210,9 +225,8 @@
     previousFrameTime_ = kCMTimeZero;
     previousFrameActualTime_ = [NSDate timeIntervalSinceReferenceDate];
     
-    [OIContext performAsynchronouslyOnImageProcessingQueue:^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         while (assetReader_.status == AVAssetReaderStatusReading) {
-            
             CMSampleBufferRef videoSampleBuffer = [videoTrackOutput_ copyNextSampleBuffer];
             
             if (videoSampleBuffer == NULL) {
@@ -239,42 +253,45 @@
                 
                 NSTimeInterval frameTimeDifference = CMTimeGetSeconds(differenceFromLastFrame);
                 NSTimeInterval actualTimeDifference = currentActualTime - previousFrameActualTime_;
-                
+
                 if (frameTimeDifference > actualTimeDifference)
                 {
                     usleep(1000000.0 * (frameTimeDifference - actualTimeDifference));
                 }
-                
+
                 previousFrameTime_ = frameTime;
                 previousFrameActualTime_ = [NSDate timeIntervalSinceReferenceDate];
+            }
+            
+            if (self.delegate && [self.delegate respondsToSelector:@selector(video:willOutputSampleBuffer:)]) {
+                [self.delegate video:self willOutputSampleBuffer:videoSampleBuffer];
             }
             
             CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(videoSampleBuffer);
             
             CVPixelBufferLockBaseAddress(imageBuffer, 0);
             
-            [outputTexture_ setupContentWithCVBuffer:imageBuffer];
-            
-            if (CGRectEqualToRect(outputFrame_, CGRectZero)) {
-                outputFrame_ = CGRectMake(0, 0, outputTexture_.size.width, outputTexture_.size.height);
-            }
-            
-            [super produceAtTime:frameTime];
+            [OIContext performSynchronouslyOnImageProcessingQueue:^{
+                [outputTexture_ setupContentWithCVBuffer:imageBuffer];
+                
+                if (CGRectEqualToRect(outputFrame_, CGRectZero)) {
+                    outputFrame_ = CGRectMake(0, 0, outputTexture_.size.width, outputTexture_.size.height);
+                }
+                
+                [super produceAtTime:frameTime];
+            }];
             
             CVPixelBufferUnlockBaseAddress(imageBuffer, 0);
             CMSampleBufferInvalidate(videoSampleBuffer);
             CFRelease(videoSampleBuffer);
         }
         
-//        if (assetReader_.status == AVAssetReaderStatusCompleted) {
-            [self deleteAssetReader];
-            status_ = OIVideoStatusWaiting;
-            if (delegate_ && [delegate_ respondsToSelector:@selector(videoDidEnd:)]) {
-                [delegate_ videoDidEnd:self];
-//            }
+        [self deleteAssetReader];
+        status_ = OIVideoStatusWaiting;
+        if (delegate_ && [delegate_ respondsToSelector:@selector(videoDidEnd:)]) {
+            [delegate_ videoDidEnd:self];
         }
-    }];
-    
+    });
     
     return YES;
 }
@@ -373,6 +390,19 @@
     [OIContext performSynchronouslyOnImageProcessingQueue:^{
         if (assetReader_.status == AVAssetReaderStatusReading) {
             CMSampleBufferRef videoSampleBuffer = [videoTrackOutput_ copyNextSampleBuffer];
+            if (videoSampleBuffer == NULL) {
+                [assetReader_ cancelReading];
+                [self deleteAssetReader];
+                status_ = OIVideoStatusWaiting;
+                if (delegate_ && [delegate_ respondsToSelector:@selector(videoDidEnd:)]) {
+                    [delegate_ videoDidEnd:self];
+                }
+            }
+            
+            if (self.delegate && [self.delegate respondsToSelector:@selector(video:willOutputSampleBuffer:)]) {
+                [self.delegate video:self willOutputSampleBuffer:videoSampleBuffer];
+            }
+            
 //            CMTime frameTime = CMSampleBufferGetOutputPresentationTimeStamp(videoSampleBuffer);
             CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(videoSampleBuffer);
             
@@ -390,13 +420,13 @@
             CMSampleBufferInvalidate(videoSampleBuffer);
             CFRelease(videoSampleBuffer);
         }
-        else if (assetReader_.status == AVAssetReaderStatusCompleted) {
-            [self deleteAssetReader];
-            status_ = OIVideoStatusWaiting;
-            if (delegate_ && [delegate_ respondsToSelector:@selector(videoDidEnd:)]) {
-                [delegate_ videoDidEnd:self];
-            }
-        }
+//        else if (assetReader_.status == AVAssetReaderStatusCompleted) {
+//            [self deleteAssetReader];
+//            status_ = OIVideoStatusWaiting;
+//            if (delegate_ && [delegate_ respondsToSelector:@selector(videoDidEnd:)]) {
+//                [delegate_ videoDidEnd:self];
+//            }
+//        }
     }];
 }
 
