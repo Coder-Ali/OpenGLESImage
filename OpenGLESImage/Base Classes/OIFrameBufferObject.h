@@ -31,6 +31,7 @@ typedef enum OIFrameBufferObjectContentMode_ OIFrameBufferObjectContentMode;
 
 @property (readonly, nonatomic) CGSize size;
 @property (readonly, nonatomic) OITexture *texture;
+@property (readonly, nonatomic) OIFrameBufferObjectType type;
 @property (nonatomic) OIFrameBufferObjectContentMode contentMode;
 
 - (id)init;

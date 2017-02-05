@@ -136,9 +136,11 @@ static NSString *animationID_ = nil;
         return;
     }
     
-    [consumers_ addObject:consumer];
-    
-    [consumer setProducer:self];
+    [OIContext performSynchronouslyOnImageProcessingQueue:^{
+        [consumers_ addObject:consumer];
+        
+        [consumer setProducer:self];
+    }];
 }
 
 - (void)replaceConsumer:(id <OIConsumer>)consumer withNewConsumer:(id <OIConsumer>)newConsumer
@@ -147,29 +149,35 @@ static NSString *animationID_ = nil;
         return;
     }
     
-    [consumer removeProducer:self];
-    
-    [consumers_ replaceObjectAtIndex:[consumers_ indexOfObject:consumer] withObject:newConsumer];
-    
-    [newConsumer setProducer:self];
+    [OIContext performSynchronouslyOnImageProcessingQueue:^{
+        [consumer removeProducer:self];
+        
+        [consumers_ replaceObjectAtIndex:[consumers_ indexOfObject:consumer] withObject:newConsumer];
+        
+        [newConsumer setProducer:self];
+    }];
 }
 
 - (void)removeConsumer:(id <OIConsumer>)consumer
 {
-    if ([consumers_ containsObject:consumer]) {
-        [consumer removeProducer:self];
-        
-        [consumers_ removeObject:consumer];
-    }
+    [OIContext performSynchronouslyOnImageProcessingQueue:^{
+        if ([consumers_ containsObject:consumer]) {
+            [consumer removeProducer:self];
+            
+            [consumers_ removeObject:consumer];
+        }
+    }];
 }
 
 - (void)removeAllConsumers
 {
-    for (id <OIConsumer> consumer in consumers_) {
-        [consumer removeProducer:self];
-    }
-    
-    [consumers_ removeAllObjects];
+    [OIContext performSynchronouslyOnImageProcessingQueue:^{
+        for (id <OIConsumer> consumer in consumers_) {
+            [consumer removeProducer:self];
+        }
+        
+        [consumers_ removeAllObjects];
+    }];
 }
 
 #pragma mark - Output Texture Manager
@@ -406,14 +414,14 @@ static NSString *animationID_ = nil;
         [self determineAnimationParametersWithTime:time];
     }
     
-    if (outputTexture_ && [consumers_ count]) {
-        for (id <OIConsumer> consumer in consumers_) {
-            [OIContext performSynchronouslyOnImageProcessingQueue:^{
+    [OIContext performSynchronouslyOnImageProcessingQueue:^{
+        if (outputTexture_ && [consumers_ count]) {
+            for (id <OIConsumer> consumer in consumers_) {
                 [consumer setInputTexture:outputTexture_];
                 [consumer renderRect:self.outputFrame atTime:time];
-            }];
+            }
         }
-    }
+    }];
 }
 
 @end

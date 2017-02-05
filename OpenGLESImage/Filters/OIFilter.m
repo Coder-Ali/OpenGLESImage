@@ -69,16 +69,16 @@
 
 - (void)setProducer:(OIProducer *)producer
 {
-    if (![self.producers containsObject:producer]) {
-        [producers_ addObject:producer];
-    }
+//    if (![self.producers containsObject:producer]) {
+//        [producers_ addObject:producer];
+//    }
 }
 
 - (void)removeProducer:(OIProducer *)producer
 {
-    if ([self.producers containsObject:producer]) {
-        [producers_ removeObject:producer];
-    }
+//    if ([self.producers containsObject:producer]) {
+//        [producers_ removeObject:producer];
+//    }
 }
 
 - (void)setInputTexture:(OITexture *)texture
@@ -125,12 +125,6 @@
 
 - (UIImage *)imageFromCurrentFrame
 {
-    if ([consumers_ count]) {
-        id <OIConsumer> consumer = [consumers_ lastObject];
-        if ([consumer respondsToSelector:@selector(imageFromCurrentFrame)]) {
-            return [consumer imageFromCurrentFrame];
-        }
-    }
     return [outputTexture_ imageFromContentBuffer];
 }
 

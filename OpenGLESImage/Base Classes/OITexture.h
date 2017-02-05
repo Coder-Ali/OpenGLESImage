@@ -53,4 +53,6 @@ typedef enum _OITextureOrientation {
 
 - (UIImage *)imageFromContentBuffer;
 
+- (void)copyContentToBuffer:(GLubyte *)buffer;
+
 @end

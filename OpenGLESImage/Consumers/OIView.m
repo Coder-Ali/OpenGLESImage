@@ -110,16 +110,16 @@
 
 - (void)setProducer:(OIProducer *)producer
 {
-    if (![self.producers containsObject:producer]) {
-        [producers_ addObject:producer];
-    }
+//    if (![self.producers containsObject:producer]) {
+//        [producers_ addObject:producer];
+//    }
 }
 
 - (void)removeProducer:(OIProducer *)producer
 {
-    if ([self.producers containsObject:producer]) {
-        [producers_ removeObject:producer];
-    }
+//    if ([self.producers containsObject:producer]) {
+//        [producers_ removeObject:producer];
+//    }
 }
 
 - (void)setInputTexture:(id)texture
@@ -146,7 +146,7 @@
     [displayProgram_ setCoordinatePointer:[displayFBO_ verticesCoordinateForDrawableRect:rect] coordinateSize:2 forAttribute:@"position"];
     [displayProgram_ setCoordinatePointer:inputTexture_.textureCoordinate coordinateSize:2 forAttribute:@"textureCoordinate"];
     [displayProgram_ draw];
-    [[OIContext sharedContext] presentRenderBufferToScreen];
+    [[OIContext sharedContext] presentFrameBufferObject:displayFBO_];
 }
 
 #pragma mark -

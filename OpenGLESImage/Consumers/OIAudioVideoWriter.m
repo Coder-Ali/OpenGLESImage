@@ -171,16 +171,16 @@
 
 - (void)setProducer:(OIProducer *)producer
 {
-    if (![self.producers containsObject:producer]) {
-        [producers_ addObject:producer];
-    }
+//    if (![self.producers containsObject:producer]) {
+//        [producers_ addObject:producer];
+//    }
 }
 
 - (void)removeProducer:(OIProducer *)producer
 {
-    if ([self.producers containsObject:producer]) {
-        [producers_ removeObject:producer];
-    }
+//    if ([self.producers containsObject:producer]) {
+//        [producers_ removeObject:producer];
+//    }
 }
 
 - (void)setInputTexture:(OITexture *)texture
@@ -272,10 +272,10 @@
     }
 }
 
-- (UIImage *)imageFromCurrentFrame
-{
-    return nil;
-}
+//- (UIImage *)imageFromCurrentFrame
+//{
+//    return nil;
+//}
 
 #pragma - Audio Sample Buffer Writing Methods
 

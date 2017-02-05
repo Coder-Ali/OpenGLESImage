@@ -30,6 +30,7 @@
 
 @synthesize size = size_;
 @synthesize texture = texture_;
+@synthesize type = type_;
 @synthesize contentMode = contentMode_;
 
 #pragma mark - Lifecycle

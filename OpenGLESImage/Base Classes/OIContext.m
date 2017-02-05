@@ -11,6 +11,7 @@
 #import <OpenGLES/ES2/gl.h>
 #import <OpenGLES/ES2/glext.h>
 #import <OpenGLES/EAGLDrawable.h>
+#import "OIFrameBufferObject.h"
 
 @interface OIContext()
 {
@@ -37,15 +38,10 @@
     return sharedContext;
 }
 
-+ (dispatch_queue_t)sharedImageProcessingQueue
-{
-    return [OIContext sharedContext].imageProcessingQueue;
-}
-
 + (void)performSynchronouslyOnImageProcessingQueue:(void (^)(void))block
 {
-//    if (dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL) == dispatch_queue_get_label([OIContext sharedImageProcessingQueue])) {
-    if (dispatch_get_current_queue() == [OIContext sharedImageProcessingQueue]) {
+//    if (dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL) == dispatch_queue_get_label([OIContext sharedContext].imageProcessingQueue)) {
+    if (dispatch_get_current_queue() == [OIContext sharedContext].imageProcessingQueue) {
         
         [[OIContext sharedContext] setAsCurrentContext];
         
@@ -53,7 +49,7 @@
         
     }
     else {
-        dispatch_sync([OIContext sharedImageProcessingQueue], ^{
+        dispatch_sync([OIContext sharedContext].imageProcessingQueue, ^{
             
             [[OIContext sharedContext] setAsCurrentContext];
             
@@ -65,15 +61,15 @@
 
 + (void)performAsynchronouslyOnImageProcessingQueue:(void (^)(void))block
 {
-//    if (dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL) == dispatch_queue_get_label([OIContext sharedImageProcessingQueue])) {
-    if (dispatch_get_current_queue() == [OIContext sharedImageProcessingQueue]) {
+//    if (dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL) == dispatch_queue_get_label([OIContext sharedContext].imageProcessingQueue)) {
+    if (dispatch_get_current_queue() == [OIContext sharedContext].imageProcessingQueue) {
     
         [[OIContext sharedContext] setAsCurrentContext];
         
         block();
     }
     else {
-        dispatch_async([OIContext sharedImageProcessingQueue], ^{
+        dispatch_async([OIContext sharedContext].imageProcessingQueue, ^{
             
             [[OIContext sharedContext] setAsCurrentContext];
             
@@ -127,13 +123,14 @@
     }
 }
 
-- (void)renderBufferStorageFromDrawable:(id<EAGLDrawable>)drawable
+- (void)presentFrameBufferObject:(OIFrameBufferObject *)fbo
 {
-    [context_ renderbufferStorage:GL_RENDERBUFFER fromDrawable:drawable];
-}
-
-- (void)presentRenderBufferToScreen
-{
+    [fbo bindToPipeline];
+    
+    if (fbo.type != OIFrameBufferObjectTypeForDisplay) {
+        return;
+    }
+    
     [context_ presentRenderbuffer:GL_RENDERBUFFER];
 }
 

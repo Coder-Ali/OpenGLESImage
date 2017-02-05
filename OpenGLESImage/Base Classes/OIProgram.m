@@ -163,6 +163,11 @@
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
+- (void)drawWithIndexCount:(GLsizei)count
+{
+    glDrawElements(GL_TRIANGLES, count, GL_UNSIGNED_SHORT, 0);
+}
+
 #pragma mark - Getting Attribute or Uniform Location Methods
 
 - (NSNumber *)locationForAttributeName:(NSString *)attributeName

@@ -18,6 +18,7 @@
 
 - (void)use;
 - (void)draw;
+- (void)drawWithIndexCount:(GLsizei)count;
 
 - (void)setCoordinatePointer:(const GLfloat *)pointer coordinateSize:(GLint)size forAttribute:(NSString *)attributeName;
 

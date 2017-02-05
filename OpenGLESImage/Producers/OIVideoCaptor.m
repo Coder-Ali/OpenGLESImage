@@ -27,7 +27,7 @@
 
 - (void)dealloc
 {
-    [[UIAccelerometer sharedAccelerometer] setDelegate:nil];
+//    [[UIAccelerometer sharedAccelerometer] setDelegate:nil];
     
     if (videoCaptorMotionManager_) {
         if (videoCaptorMotionManager_.isDeviceMotionActive) {
@@ -74,7 +74,7 @@
 {
     self = [super init];
     if (self) {
-        [[UIAccelerometer sharedAccelerometer] setDelegate:self];
+//        [[UIAccelerometer sharedAccelerometer] setDelegate:self];
         
         self.delegate = nil;
         
@@ -165,6 +165,12 @@
         }];
         
         videoCaptorMotionManager_ = nil;
+        if (!videoCaptorMotionManager_) {
+            videoCaptorMotionManager_ = [[CMMotionManager alloc] init];
+            if (videoCaptorMotionManager_.isDeviceMotionAvailable) {
+                [videoCaptorMotionManager_ startDeviceMotionUpdates];
+            }
+        }
     }
     return self;
 }
@@ -466,58 +472,58 @@
 #endif
 }
 
-//- (OIVideoCaptorOrientation)orientation
-//{
+- (OIVideoCaptorOrientation)orientation
+{
 //    if (!videoCaptorMotionManager_) {
 //        videoCaptorMotionManager_ = [[CMMotionManager alloc] init];
 //        if (videoCaptorMotionManager_.isDeviceMotionAvailable) {
 //            [videoCaptorMotionManager_ startDeviceMotionUpdates];
 //        }
 //    }
-//    
-//    OIVideoCaptorOrientation orientation = OIVideoCaptorOrientationUnknown;
-//    
-//    if (videoCaptorMotionManager_.isDeviceMotionActive && videoCaptorMotionManager_.deviceMotion) {
-//        float x = -videoCaptorMotionManager_.deviceMotion.gravity.x;//-[acceleration x];
-//        float y =  videoCaptorMotionManager_.deviceMotion.gravity.y;//[acceleration y];
-//        float radian = atan2(y, x);
-//        
-//        if(radian >= -2.25 && radian <= -0.75)
-//        {
-//            if(orientation != OIVideoCaptorOrientationPortrait)
-//            {
-//                orientation = OIVideoCaptorOrientationPortrait;
-//            }
-//        }
-//        else if(radian >= -0.75 && radian <= 0.75)
-//        {
-//            if(orientation != OIVideoCaptorOrientationLandscapeLeft)
-//            {
-//                orientation = OIVideoCaptorOrientationLandscapeLeft;
-//            }
-//        }
-//        else if(radian >= 0.75 && radian <= 2.25)
-//        {
-//            if(orientation != OIVideoCaptorOrientationPortraitUpsideDown)
-//            {
-//                orientation = OIVideoCaptorOrientationPortraitUpsideDown;
-//            }
-//        }
-//        else if(radian <= -2.25 || radian >= 2.25)
-//        {
-//            if(orientation != OIVideoCaptorOrientationLandscapeRight)
-//            {
-//                orientation = OIVideoCaptorOrientationLandscapeRight;
-//            }
-//        }
+    
+    OIVideoCaptorOrientation orientation = OIVideoCaptorOrientationUnknown;
+    
+    if (videoCaptorMotionManager_.isDeviceMotionActive && videoCaptorMotionManager_.deviceMotion) {
+        float x = -videoCaptorMotionManager_.deviceMotion.gravity.x;//-[acceleration x];
+        float y =  videoCaptorMotionManager_.deviceMotion.gravity.y;//[acceleration y];
+        float radian = atan2(y, x);
+        
+        if(radian >= -2.25 && radian <= -0.75)
+        {
+            if(orientation != OIVideoCaptorOrientationPortrait)
+            {
+                orientation = OIVideoCaptorOrientationPortrait;
+            }
+        }
+        else if(radian >= -0.75 && radian <= 0.75)
+        {
+            if(orientation != OIVideoCaptorOrientationLandscapeLeft)
+            {
+                orientation = OIVideoCaptorOrientationLandscapeLeft;
+            }
+        }
+        else if(radian >= 0.75 && radian <= 2.25)
+        {
+            if(orientation != OIVideoCaptorOrientationPortraitUpsideDown)
+            {
+                orientation = OIVideoCaptorOrientationPortraitUpsideDown;
+            }
+        }
+        else if(radian <= -2.25 || radian >= 2.25)
+        {
+            if(orientation != OIVideoCaptorOrientationLandscapeRight)
+            {
+                orientation = OIVideoCaptorOrientationLandscapeRight;
+            }
+        }
 //        NSLog(@"x = %f, y = %f, radian = %f", x, y, radian);
-//    }
-//    else {
-//        OIErrorLog(YES, self.class, @"- orientation", @"Cannot get the deviceMotion data", nil);
-//    }
-//    
-//    return orientation;
-//}
+    }
+    else {
+        OIErrorLog(YES, self.class, @"- orientation", @"Cannot get the deviceMotion data", nil);
+    }
+    
+    return orientation;
+}
 
 #pragma mark - AVCaptureVideoDataOutputSampleBufferDelegate
 
@@ -540,6 +546,7 @@
     {
         [self.delegate videoCaptor:self willOutputVideoSampleBuffer:sampleBuffer];
     }
+    
     [OIContext performAsynchronouslyOnImageProcessingQueue:^{
         
         [self processVideoSampleBuffer:sampleBuffer];
@@ -582,45 +589,45 @@
     }
 }
 
-- (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
-{
-    float x = -[acceleration x];
-    float y =  [acceleration y];
-    float z =  [acceleration z];
-    float radian = atan2(y, x);
-    
-    if(radian >= -2.25 && radian <= -0.75)
-    {
-        if(orientation_ != OIVideoCaptorOrientationPortrait)
-        {
-            orientation_ = OIVideoCaptorOrientationPortrait;
-        }
-    }
-    else if(radian >= -0.75 && radian <= 0.75)
-    {
-        if(orientation_ != OIVideoCaptorOrientationLandscapeLeft)
-        {
-            orientation_ = OIVideoCaptorOrientationLandscapeLeft;
-        }
-    }
-    else if(radian >= 0.75 && radian <= 2.25)
-    {
-        if(orientation_ != OIVideoCaptorOrientationPortraitUpsideDown)
-        {
-            orientation_ = OIVideoCaptorOrientationPortraitUpsideDown;
-        }
-    }
-    else if(radian <= -2.25 || radian >= 2.25)
-    {
-        if(orientation_ != OIVideoCaptorOrientationLandscapeRight)
-        {
-            orientation_ = OIVideoCaptorOrientationLandscapeRight;
-        }
-    }
-    
-    if (z > 0.85) {
-        orientation_ = OIVideoCaptorOrientationPortrait;
-    }
-}
+//- (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
+//{
+//    float x = -[acceleration x];
+//    float y =  [acceleration y];
+//    float z =  [acceleration z];
+//    float radian = atan2(y, x);
+//    
+//    if(radian >= -2.25 && radian <= -0.75)
+//    {
+//        if(orientation_ != OIVideoCaptorOrientationPortrait)
+//        {
+//            orientation_ = OIVideoCaptorOrientationPortrait;
+//        }
+//    }
+//    else if(radian >= -0.75 && radian <= 0.75)
+//    {
+//        if(orientation_ != OIVideoCaptorOrientationLandscapeLeft)
+//        {
+//            orientation_ = OIVideoCaptorOrientationLandscapeLeft;
+//        }
+//    }
+//    else if(radian >= 0.75 && radian <= 2.25)
+//    {
+//        if(orientation_ != OIVideoCaptorOrientationPortraitUpsideDown)
+//        {
+//            orientation_ = OIVideoCaptorOrientationPortraitUpsideDown;
+//        }
+//    }
+//    else if(radian <= -2.25 || radian >= 2.25)
+//    {
+//        if(orientation_ != OIVideoCaptorOrientationLandscapeRight)
+//        {
+//            orientation_ = OIVideoCaptorOrientationLandscapeRight;
+//        }
+//    }
+//    
+//    if (z > 0.85) {
+//        orientation_ = OIVideoCaptorOrientationPortrait;
+//    }
+//}
 
 @end

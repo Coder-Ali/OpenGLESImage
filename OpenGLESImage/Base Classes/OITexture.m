@@ -411,11 +411,10 @@
     NSUInteger bytesForImage = contentBufferBytesPerRow * (int)size_.height * 4;
     
     glFinish();
-    CFRetain(contentBuffer_); // I need to retain the pixel buffer here and release in the data source callback to prevent its bytes from being prematurely deallocated during a photo write operation
-    CVPixelBufferLockBaseAddress(contentBuffer_, 0);
+    CFRetain(contentBuffer_); // 此处retain了一下contentBuffer_，然后会在CGDataProviderCreateWithData的回调函数dataProviderUnlockCallback中对应调用release，本方法中没有release并不是泄漏。
+    CVPixelBufferLockBaseAddress(contentBuffer_, 0);  //此后会在CGDataProviderCreateWithData的回调函数dataProviderUnlockCallback中对应调用unlock函数。
     
     CGDataProviderRef dataProvider = CGDataProviderCreateWithData(contentBuffer_, (GLubyte *)CVPixelBufferGetBaseAddress(contentBuffer_), bytesForImage, dataProviderUnlockCallback);
-    
     
     CGColorSpaceRef defaultRGBColorSpace = CGColorSpaceCreateDeviceRGB();
     
@@ -429,6 +428,22 @@
     CGImageRelease(cgImageFromBytes);
     
     return image;
+}
+
+- (void)copyContentToBuffer:(GLubyte *)buffer
+{
+    glFinish();
+    CFRetain(contentBuffer_);
+    CVPixelBufferLockBaseAddress(contentBuffer_, 0);
+    
+    GLubyte *baseAddress = CVPixelBufferGetBaseAddress(contentBuffer_);
+    
+    for (int i = 0; i < self.size.width * self.size.height * 4; ++i) {
+        buffer[i] = baseAddress[i];
+    }
+    
+    CVPixelBufferUnlockBaseAddress(contentBuffer_, 0);
+    CFRelease(contentBuffer_);
 }
 
 #pragma mark - CVPixelBuffer Release Bytes Callback

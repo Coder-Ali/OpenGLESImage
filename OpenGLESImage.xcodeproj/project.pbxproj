@@ -23,6 +23,8 @@
 /* Begin PBXBuildFile section */
 		3310FC121B3D4A7F005FFA09 /* OIAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3310FC101B3D4A7F005FFA09 /* OIAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3310FC131B3D4A7F005FFA09 /* OIAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3310FC111B3D4A7F005FFA09 /* OIAnimation.m */; };
+		3385FFC81D58A346000D5994 /* OIVertexBufferObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 3385FFC61D58A346000D5994 /* OIVertexBufferObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3385FFC91D58A346000D5994 /* OIVertexBufferObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3385FFC71D58A346000D5994 /* OIVertexBufferObject.m */; };
 		33960C351B74892100FC60A6 /* OIAnimationLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 33960C291B74892100FC60A6 /* OIAnimationLayer.h */; };
 		33960C361B74892100FC60A6 /* OIAnimationLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 33960C2A1B74892100FC60A6 /* OIAnimationLayer.m */; };
 		33960C371B74892100FC60A6 /* OIAnimationLayerConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 33960C2B1B74892100FC60A6 /* OIAnimationLayerConfiguration.h */; };
@@ -130,6 +132,8 @@
 /* Begin PBXFileReference section */
 		3310FC101B3D4A7F005FFA09 /* OIAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIAnimation.h; sourceTree = "<group>"; };
 		3310FC111B3D4A7F005FFA09 /* OIAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIAnimation.m; sourceTree = "<group>"; };
+		3385FFC61D58A346000D5994 /* OIVertexBufferObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIVertexBufferObject.h; sourceTree = "<group>"; };
+		3385FFC71D58A346000D5994 /* OIVertexBufferObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIVertexBufferObject.m; sourceTree = "<group>"; };
 		33960C291B74892100FC60A6 /* OIAnimationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIAnimationLayer.h; sourceTree = "<group>"; };
 		33960C2A1B74892100FC60A6 /* OIAnimationLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIAnimationLayer.m; sourceTree = "<group>"; };
 		33960C2B1B74892100FC60A6 /* OIAnimationLayerConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIAnimationLayerConfiguration.h; sourceTree = "<group>"; };
@@ -523,6 +527,8 @@
 				B422FB4D18D453310069CDE8 /* OIConsumer.h */,
 				B427C74618C9D0BA00C22135 /* OIFrameBufferObject.h */,
 				B427C74718C9D0BA00C22135 /* OIFrameBufferObject.m */,
+				3385FFC61D58A346000D5994 /* OIVertexBufferObject.h */,
+				3385FFC71D58A346000D5994 /* OIVertexBufferObject.m */,
 				B427C74818C9D0BA00C22135 /* OIProducer.h */,
 				B427C74918C9D0BA00C22135 /* OIProducer.m */,
 				B427C74A18C9D0BA00C22135 /* OIProgram.h */,
@@ -640,6 +646,7 @@
 				844050221A1C3B3F003D5F28 /* OIBoxBlurFilter.h in Headers */,
 				844050231A1C3B3F003D5F28 /* OIVerticalBoxBlurFilter.h in Headers */,
 				844050251A1C3B3F003D5F28 /* OIView.h in Headers */,
+				3385FFC81D58A346000D5994 /* OIVertexBufferObject.h in Headers */,
 				844050261A1C3B40003D5F28 /* OIAudioVideoWriter.h in Headers */,
 				33960C451B7499EA00FC60A6 /* OIAnimationLayerManager.h in Headers */,
 				33960C391B74892100FC60A6 /* OIAnimationLayerMixer.h in Headers */,
@@ -743,6 +750,7 @@
 				8440502C1A1C3C34003D5F28 /* OIProgram.m in Sources */,
 				8440502D1A1C3C34003D5F28 /* OITexture.m in Sources */,
 				8440502E1A1C3C34003D5F28 /* OIProducerAnimationTimer.m in Sources */,
+				3385FFC91D58A346000D5994 /* OIVertexBufferObject.m in Sources */,
 				8440502F1A1C3C34003D5F28 /* OIVideoCaptor.m in Sources */,
 				844050301A1C3C34003D5F28 /* OIStillImageCamera.m in Sources */,
 				844050311A1C3C34003D5F28 /* OIImage.m in Sources */,
@@ -801,36 +809,27 @@
 		844050531A1C4626003D5F28 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv7,
-					armv7s,
-					arm64,
-				);
+				ARCHS = "$(ARCHS_STANDARD)";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "$(ARCHS_STANDARD)";
 			};
 			name = Debug;
 		};
 		844050541A1C4626003D5F28 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv7,
-					armv7s,
-					arm64,
-				);
+				ARCHS = "$(ARCHS_STANDARD)";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "$(ARCHS_STANDARD)";
 			};
 			name = Release;
 		};
 		84F7F2511A1C367500CA32DE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD)",
-					armv7s,
-				);
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = NO;
@@ -852,7 +851,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				VALID_ARCHS = "$(ARCHS_STANDARD) armv7s";
+				VALID_ARCHS = "$(ARCHS_STANDARD)";
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
@@ -860,10 +859,7 @@
 		84F7F2521A1C367500CA32DE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD)",
-					armv7s,
-				);
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = NO;
@@ -882,7 +878,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				VALID_ARCHS = "$(ARCHS_STANDARD) armv7s";
+				VALID_ARCHS = "$(ARCHS_STANDARD)";
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;

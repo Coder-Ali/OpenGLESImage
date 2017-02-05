@@ -87,7 +87,7 @@
 
 - (void)setProgramUniform
 {
-    float rate = inputTexture_.size.width / inputTexture_.size.height;
+    float rate = self.contentSize.width / self.contentSize.height;
     
     [filterProgram_ setFloat:rate forUniform:@"whRate"];
 }

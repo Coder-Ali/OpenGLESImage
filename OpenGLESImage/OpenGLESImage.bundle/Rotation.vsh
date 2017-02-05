@@ -19,12 +19,12 @@ void main()
 {
     vec4 rotatedPosition = position;
     rotatedPosition.x = rotatedPosition.x - anchorPoint.x;
-    rotatedPosition.y = rotatedPosition.y - anchorPoint.y;
+    rotatedPosition.y = rotatedPosition.y / whRate - anchorPoint.y;
     
     rotatedPosition = rotationMatrix * rotatedPosition;
     
     rotatedPosition.x = rotatedPosition.x + anchorPoint.x;
-    rotatedPosition.y = (rotatedPosition.y + anchorPoint.y) * whRate;
+    rotatedPosition.y = rotatedPosition.y * whRate + anchorPoint.y;
     
     gl_Position = rotatedPosition;
     
