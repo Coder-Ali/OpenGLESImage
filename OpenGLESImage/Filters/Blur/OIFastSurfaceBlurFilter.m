@@ -23,7 +23,7 @@
 
 #pragma mark - Liftcycle
 
-- (id)init
+- (instancetype)init
 {
     self = [super init];
     if (self) {

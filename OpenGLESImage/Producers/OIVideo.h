@@ -30,8 +30,8 @@ typedef enum OIVideoStatus_ OIVideoStatus;
 
 @interface OIVideo : OIProducer
 
-- (id)initWithAVAsset:(AVAsset *)asset;
-- (id)initWithURL:(NSURL *)URL;
+- (instancetype)initWithAVAsset:(AVAsset *)asset;
+- (instancetype)initWithURL:(NSURL *)URL;
 
 @property (assign, nonatomic) id<OIVideoDelegate> delegate;
 

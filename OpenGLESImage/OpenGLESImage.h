@@ -49,6 +49,7 @@
 #import <OpenGLESImage/OIAudioVideoWriter.h>
 #import <OpenGLESImage/OIMaths.h>
 #import <OpenGLESImage/OIVertexBufferObject.h>
+#import <OpenGLESImage/OIGIFWriter.h>
 
 //@interface OpenGLESImage : NSObject
 //

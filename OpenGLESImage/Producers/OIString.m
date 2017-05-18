@@ -49,14 +49,14 @@
     [super dealloc];
 }
 
-- (id)initWithNSString:(NSString *)string fontSize:(float)fontSize size:(CGSize)size;
+- (instancetype)initWithNSString:(NSString *)string fontSize:(float)fontSize size:(CGSize)size;
 {
     self = [self initWithNSString:string fontName:@"Arial" fontSize:fontSize color:[UIColor blackColor] size:size];
     
     return self;
 }
 
-- (id)initWithNSString:(NSString *)string fontName:(NSString *)fontName fontSize:(float)fontSize color:(UIColor *)color size:(CGSize)size
+- (instancetype)initWithNSString:(NSString *)string fontName:(NSString *)fontName fontSize:(float)fontSize color:(UIColor *)color size:(CGSize)size
 {
     self = [super init];
     if (self) {

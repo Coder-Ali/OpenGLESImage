@@ -100,14 +100,14 @@
     [super dealloc];
 }
 
-- (id)initWithContentSize:(CGSize)contentSize outputURL:(NSURL *)outputURL
+- (instancetype)initWithContentSize:(CGSize)contentSize outputURL:(NSURL *)outputURL
 {
     self = [self initWithContentSize:contentSize outputURL:outputURL fileType:AVFileTypeQuickTimeMovie settings:nil];
     
     return self;
 }
 
-- (id)initWithContentSize:(CGSize)contentSize outputURL:(NSURL *)outputURL fileType:(NSString *)outputFileType settings:(NSDictionary *)outputSettings
+- (instancetype)initWithContentSize:(CGSize)contentSize outputURL:(NSURL *)outputURL fileType:(NSString *)outputFileType settings:(NSDictionary *)outputSettings
 {
     self = [super init];
     if (self) {

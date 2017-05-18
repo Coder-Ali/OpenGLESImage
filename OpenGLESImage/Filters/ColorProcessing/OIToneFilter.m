@@ -37,7 +37,7 @@
 
 #pragma mark - Lifecycle
 
-- (id)initWithRed:(float)red green:(CGFloat)green blue:(CGFloat)blue percentage:(CGFloat)percentage
+- (instancetype)initWithRed:(float)red green:(CGFloat)green blue:(CGFloat)blue percentage:(CGFloat)percentage
 {
     self = [super init];
     if (self) {

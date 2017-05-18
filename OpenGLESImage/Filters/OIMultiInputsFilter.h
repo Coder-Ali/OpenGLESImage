@@ -12,6 +12,6 @@
 
 @property (nonatomic) unsigned int inputCount;
 
-- (id)initWithContentSize:(CGSize)contentSize inputCount:(unsigned int)inputCount;
+- (instancetype)initWithContentSize:(CGSize)contentSize inputCount:(unsigned int)inputCount;
 
 @end

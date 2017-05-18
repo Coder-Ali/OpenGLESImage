@@ -13,8 +13,8 @@
 
 @interface OIString : OIProducer
 
-- (id)initWithNSString:(NSString *)string fontSize:(float)fontSize size:(CGSize)size;
-- (id)initWithNSString:(NSString *)string fontName:(NSString *)fontName fontSize:(float)fontSize color:(UIColor *)color size:(CGSize)size;
+- (instancetype)initWithNSString:(NSString *)string fontSize:(float)fontSize size:(CGSize)size;
+- (instancetype)initWithNSString:(NSString *)string fontName:(NSString *)fontName fontSize:(float)fontSize color:(UIColor *)color size:(CGSize)size;
 
 @property (copy, readwrite, nonatomic) NSString *NSString;
 @property (copy, readwrite, nonatomic) NSString *fontName;

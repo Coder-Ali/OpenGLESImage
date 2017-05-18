@@ -76,7 +76,7 @@ typedef enum OIVideoCaptorExposureMode_ {
 @property (readwrite, nonatomic) CGPoint exposurePoint;
 @property (readwrite, nonatomic) float exposureTargetBias;
 
-- (id)initWithCameraPosition:(AVCaptureDevicePosition)cameraPosition sessionPreset:(NSString *)sessionPreset;
+- (instancetype)initWithCameraPosition:(AVCaptureDevicePosition)cameraPosition sessionPreset:(NSString *)sessionPreset;
 
 @property (readonly, nonatomic) OIVideoCaptorOrientation orientation;
 

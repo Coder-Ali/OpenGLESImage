@@ -38,7 +38,7 @@
     [super dealloc];
 }
 
-- (id)initWithCameraPosition:(AVCaptureDevicePosition)cameraPosition sessionPreset:(NSString *)sessionPreset
+- (instancetype)initWithCameraPosition:(AVCaptureDevicePosition)cameraPosition sessionPreset:(NSString *)sessionPreset
 {
     self = [super initWithCameraPosition:cameraPosition sessionPreset:sessionPreset];
     if (self) {

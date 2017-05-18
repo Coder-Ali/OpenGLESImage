@@ -31,14 +31,14 @@
     [super dealloc];
 }
 
-- (id)initWithUIView:(UIView *)uiView;
+- (instancetype)initWithUIView:(UIView *)uiView;
 {
     self = [self initWithCALayer:uiView.layer];
     
     return self;
 }
 
-- (id)initWithCALayer:(CALayer *)caLayer
+- (instancetype)initWithCALayer:(CALayer *)caLayer
 {
     if (!caLayer) {
         return nil;

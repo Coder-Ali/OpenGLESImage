@@ -51,7 +51,7 @@
     [super dealloc];
 }
 
-- (id)init
+- (instancetype)init
 {
     self = [self initWithCameraPosition:AVCaptureDevicePositionBack sessionPreset:AVCaptureSessionPresetHigh];
     if (self) {
@@ -60,7 +60,7 @@
     return self;
 }
 
-- (id)initWithCameraPosition:(AVCaptureDevicePosition)cameraPosition sessionPreset:(NSString *)sessionPreset
+- (instancetype)initWithCameraPosition:(AVCaptureDevicePosition)cameraPosition sessionPreset:(NSString *)sessionPreset
 {
     self = [super initWithCameraPosition:cameraPosition sessionPreset:sessionPreset];
     
@@ -76,7 +76,7 @@
         audioInput_ = [[AVCaptureDeviceInput alloc] initWithDevice:microphone_ error:&error];
         
         if (error) {
-            NSLog(@"OpenGLESImage Error at OIVideoCamera - (id)initWithCameraPosition: sessionPreset:, message: %@.", error);
+            NSLog(@"OpenGLESImage Error at OIVideoCamera - initWithCameraPosition: sessionPreset:, message: %@.", error);
         }
         
         if ([cameraSession_ canAddInput:audioInput_])
@@ -84,7 +84,7 @@
             [cameraSession_ addInput:audioInput_];
         }
         else {
-            NSLog(@"OpenGLESImage Error at OIVideoCamera - (id)initWithCameraPosition: sessionPreset:, message: audio input can not be add.");
+            NSLog(@"OpenGLESImage Error at OIVideoCamera - initWithCameraPosition: sessionPreset:, message: audio input can not be add.");
         }
         
         audioOutput_ = [[AVCaptureAudioDataOutput alloc] init];
@@ -95,7 +95,7 @@
         }
         else
         {
-            NSLog(@"OpenGLESImage Error at OIVideoCamera - (id)initWithCameraPosition: sessionPreset:, message: audio output can not be add.");
+            NSLog(@"OpenGLESImage Error at OIVideoCamera - initWithCameraPosition: sessionPreset:, message: audio output can not be add.");
         }
         
         [audioOutput_ setSampleBufferDelegate:self queue:microphoneQueue_];

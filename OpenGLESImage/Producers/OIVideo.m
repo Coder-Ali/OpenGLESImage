@@ -49,7 +49,7 @@
     [super dealloc];
 }
 
-- (id)init
+- (instancetype)init
 {
     self = [super init];
     if (self) {
@@ -71,7 +71,7 @@
     return self;
 }
 
-- (id)initWithAVAsset:(AVAsset *)asset
+- (instancetype)initWithAVAsset:(AVAsset *)asset
 {
     self = [self init];
     if (self) {
@@ -80,7 +80,7 @@
     return self;
 }
 
-- (id)initWithURL:(NSURL *)URL
+- (instancetype)initWithURL:(NSURL *)URL
 {
     self = [self init];
     if (self) {

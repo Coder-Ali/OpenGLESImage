@@ -13,8 +13,8 @@
 
 @interface OIUIElement : OIProducer
 
-- (id)initWithUIView:(UIView *)uiView;
-- (id)initWithCALayer:(CALayer *)caLayer;
+- (instancetype)initWithUIView:(UIView *)uiView;
+- (instancetype)initWithCALayer:(CALayer *)caLayer;
 
 - (void)refresh;
 

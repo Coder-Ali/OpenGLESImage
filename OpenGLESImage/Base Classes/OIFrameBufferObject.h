@@ -34,7 +34,7 @@ typedef enum OIFrameBufferObjectContentMode_ OIFrameBufferObjectContentMode;
 @property (readonly, nonatomic) OIFrameBufferObjectType type;
 @property (nonatomic) OIFrameBufferObjectContentMode contentMode;
 
-- (id)init;
+- (instancetype)init;
 
 - (void)setupStorageForOffscreenWithSize:(CGSize)fboSize;
 - (void)setupStorageForDisplayFromLayer:(CAEAGLLayer *)layer;

@@ -35,7 +35,7 @@
     [super dealloc];
 }
 
-- (id)initWithVertexShaderString:(NSString *)vShaderString fragmentShaderString:(NSString *)fShaderString
+- (instancetype)initWithVertexShaderString:(NSString *)vShaderString fragmentShaderString:(NSString *)fShaderString
 {
     self = [super init];
     if (self && vShaderString != nil && fShaderString != nil) {
@@ -49,7 +49,7 @@
     return self;
 }
 
-- (id)initWithVertexShaderFilename:(NSString *)vShaderFilename fragmentShaderFilename:(NSString *)fShaderFilename
+- (instancetype)initWithVertexShaderFilename:(NSString *)vShaderFilename fragmentShaderFilename:(NSString *)fShaderFilename
 {
     if (vShaderFilename == nil || fShaderFilename == nil) {
         return nil;

@@ -50,6 +50,12 @@
  */
 + (void)performAsynchronouslyOnImageProcessingQueue:(void (^)(void))block;
 
+/**
+ @method finish
+ @abstract 完成剩余的GPU指令。
+ @discussion GPU的指令是异步执行的。调用此方法后，调用的线程会被阻塞，直至已经在队列中的GPU指令全部完成为止。
+ */
++ (void)finish;
 
 + (void)noLongerBeNeed;
 

@@ -29,13 +29,34 @@
 
 #pragma mark - Class Methods
 
+static OIContext *sharedContext_ = nil;
+
 + (OIContext *)sharedContext
 {
-    static OIContext *sharedContext = nil;
-    if (sharedContext == nil) {
-        sharedContext = [[[self class] alloc] init];
-    }
-    return sharedContext;
+    static dispatch_once_t onceToken;
+    
+    dispatch_once(&onceToken, ^{
+        if (!sharedContext_) {
+            sharedContext_ = [[super allocWithZone:NULL] init];
+        }
+    }) ;
+    
+    return sharedContext_;
+}
+
++ (instancetype)allocWithZone:(struct _NSZone *)zone
+{
+    return [OIContext sharedContext];
+}
+
++ (id)copyWithZone:(struct _NSZone *)zone
+{
+    return [OIContext sharedContext];
+}
+
++ (id)mutableCopyWithZone:(struct _NSZone *)zone
+{
+    return [OIContext sharedContext];
 }
 
 + (void)performSynchronouslyOnImageProcessingQueue:(void (^)(void))block
@@ -78,6 +99,13 @@
     }
 }
 
++ (void)finish
+{
+    [[self class] performSynchronouslyOnImageProcessingQueue:^{
+        glFinish();
+    }];
+}
+
 + (void)noLongerBeNeed
 {
     [OIContext performAsynchronouslyOnImageProcessingQueue:^{
@@ -100,7 +128,7 @@
     [super dealloc];
 }
 
-- (id)init
+- (instancetype)init
 {
     self = [super init];
     if (self) {

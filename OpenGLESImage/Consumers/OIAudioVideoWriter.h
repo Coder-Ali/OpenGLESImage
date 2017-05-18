@@ -48,8 +48,8 @@ typedef enum OIAudioVideoWriterStatus_ OIAudioVideoWriterStatus;
 
 @property (readwrite, nonatomic, getter=isWritingInRealTime) BOOL writingInRealTime;  // When receiver should write in real time (e.g. writing video data from camera or writing audio data from mircophone), this property should be set to YES. Default is NO.
 
-- (id)initWithContentSize:(CGSize)contentSize outputURL:(NSURL *)outputURL;  // Using AVFileTypeQuickTimeMovie file type.
-- (id)initWithContentSize:(CGSize)contentSize outputURL:(NSURL *)outputURL fileType:(NSString *)outputFileType settings:(NSDictionary *)outputSettings;  // When receiver is writing audio data from mircophone, the outputFileType should be AVFileTypeQuickTimeMovie.
+- (instancetype)initWithContentSize:(CGSize)contentSize outputURL:(NSURL *)outputURL;  // Using AVFileTypeQuickTimeMovie file type.
+- (instancetype)initWithContentSize:(CGSize)contentSize outputURL:(NSURL *)outputURL fileType:(NSString *)outputFileType settings:(NSDictionary *)outputSettings;  // When receiver is writing audio data from mircophone, the outputFileType should be AVFileTypeQuickTimeMovie.
 
 - (void)writeWithAudioSampleBuffer:(CMSampleBufferRef)audioSampleBuffer;
 

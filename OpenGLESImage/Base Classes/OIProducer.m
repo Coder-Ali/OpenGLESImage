@@ -53,7 +53,7 @@ static NSString *animationID_ = nil;
     [super dealloc];
 }
 
-- (id)init
+- (instancetype)init
 {
     self = [super init];
     if (self) {

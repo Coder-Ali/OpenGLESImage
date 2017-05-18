@@ -15,7 +15,7 @@
 
 // Initialization Methods
 
-- (id)initWithUIImage:(UIImage *)image;
+- (instancetype)initWithUIImage:(UIImage *)image;
 
 @property (retain, nonatomic) UIImage *sourceImage;
 @property (readonly, nonatomic) UIImage *processedImage;

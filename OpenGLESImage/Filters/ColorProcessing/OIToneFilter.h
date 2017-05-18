@@ -10,7 +10,7 @@
 
 @interface OIToneFilter : OIFilter
 
-- (id)initWithRed:(float)red green:(CGFloat)green blue:(CGFloat)blue percentage:(CGFloat)percentage;
+- (instancetype)initWithRed:(float)red green:(CGFloat)green blue:(CGFloat)blue percentage:(CGFloat)percentage;
 
 @property(nonatomic) float red;
 @property(nonatomic) float green;

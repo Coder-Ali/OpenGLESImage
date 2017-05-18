@@ -29,7 +29,7 @@
     [super dealloc];
 }
 
-- (id)init
+- (instancetype)init
 {
     self = [super init];
     
@@ -41,7 +41,7 @@
     return self;
 }
 
-- (id)initWithContentSize:(CGSize)contentSize inputCount:(unsigned int)inputCount
+- (instancetype)initWithContentSize:(CGSize)contentSize inputCount:(unsigned int)inputCount
 {
     self = [super initWithContentSize:contentSize];
     

@@ -54,7 +54,7 @@
     [super dealloc];
 }
 
-- (id)init
+- (instancetype)init
 {
     self = [super init];
     if (self) {
@@ -72,7 +72,7 @@
     return self;
 }
 
-- (id)initWithUIImage:(UIImage *)image
+- (instancetype)initWithUIImage:(UIImage *)image
 {
     self = [self init];
     if (self) {

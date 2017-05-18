@@ -24,7 +24,7 @@
 @synthesize anchorPoint = anchorPoint_;
 @synthesize degrees = degrees_;
 
-- (id)init
+- (instancetype)init
 {
     self = [super init];
     if (self) {

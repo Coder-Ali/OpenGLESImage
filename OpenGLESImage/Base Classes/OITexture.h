@@ -34,14 +34,14 @@ typedef enum _OITextureOrientation {
 
 + (GLint)maximumTextureSizeForCurrentDevice;
 
-- (id)initWithSize:(CGSize)size;
-- (id)initWithCVBuffer:(CVBufferRef)CVBuffer;
-- (id)initWithCGImage:(CGImageRef)image;
-- (id)initWithCALayer:(CALayer *)caLayer;
-- (id)initWithPixelTables:(GLubyte *)tables tableSize:(int)tableSize count:(int)count;  // Uncompleted
-- (id)initWithSize:(CGSize)size orientation:(OITextureOrientation)orientation;
-- (id)initWithCVBuffer:(CVBufferRef)CVBuffer orientation:(OITextureOrientation)orientation;
-- (id)initWithCGImage:(CGImageRef)image orientation:(OITextureOrientation)orientation;
+- (instancetype)initWithSize:(CGSize)size;
+- (instancetype)initWithCVBuffer:(CVBufferRef)CVBuffer;
+- (instancetype)initWithCGImage:(CGImageRef)image;
+- (instancetype)initWithCALayer:(CALayer *)caLayer;
+- (instancetype)initWithPixelTables:(GLubyte *)tables tableSize:(int)tableSize count:(int)count;  // Uncompleted
+- (instancetype)initWithSize:(CGSize)size orientation:(OITextureOrientation)orientation;
+- (instancetype)initWithCVBuffer:(CVBufferRef)CVBuffer orientation:(OITextureOrientation)orientation;
+- (instancetype)initWithCGImage:(CGImageRef)image orientation:(OITextureOrientation)orientation;
 
 - (void)setupContentWithSize:(CGSize)size;
 - (void)setupContentWithCVBuffer:(CVBufferRef)CVBuffer;

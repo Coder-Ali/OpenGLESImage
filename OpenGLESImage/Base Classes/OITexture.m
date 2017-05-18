@@ -57,7 +57,7 @@
     [super dealloc];
 }
 
-- (id)init
+- (instancetype)init
 {
     self = [super init];
     if (self) {
@@ -82,25 +82,25 @@
     return self;
 }
 
-- (id)initWithSize:(CGSize)size
+- (instancetype)initWithSize:(CGSize)size
 {
     self = [self initWithSize:size orientation:OITextureOrientationUp];
     return self;
 }
 
-- (id)initWithCVBuffer:(CVBufferRef)CVBuffer;
+- (instancetype)initWithCVBuffer:(CVBufferRef)CVBuffer;
 {
     self = [self initWithCVBuffer:CVBuffer orientation:OITextureOrientationUp];
     return self;
 }
 
-- (id)initWithCGImage:(CGImageRef)image
+- (instancetype)initWithCGImage:(CGImageRef)image
 {
     self = [self initWithCGImage:image orientation:OITextureOrientationUp];
     return self;
 }
 
-- (id)initWithCALayer:(CALayer *)caLayer
+- (instancetype)initWithCALayer:(CALayer *)caLayer
 {
     self = [self init];
     if (self) {
@@ -109,7 +109,7 @@
     return self;
 }
 
-- (id)initWithPixelTables:(GLubyte *)tables tableSize:(int)tableSize count:(int)count
+- (instancetype)initWithPixelTables:(GLubyte *)tables tableSize:(int)tableSize count:(int)count
 {
     self = [self init];
     if (self) {
@@ -131,7 +131,7 @@
     return self;
 }
 
-- (id)initWithSize:(CGSize)size orientation:(OITextureOrientation)orientation
+- (instancetype)initWithSize:(CGSize)size orientation:(OITextureOrientation)orientation
 {
     self = [self init];
     if (self) {
@@ -141,7 +141,7 @@
     return self;
 }
 
-- (id)initWithCVBuffer:(CVBufferRef)CVBuffer orientation:(OITextureOrientation)orientation;
+- (instancetype)initWithCVBuffer:(CVBufferRef)CVBuffer orientation:(OITextureOrientation)orientation;
 {
     self = [self init];
     if (self) {
@@ -151,7 +151,7 @@
     return self;
 }
 
-- (id)initWithCGImage:(CGImageRef)image orientation:(OITextureOrientation)orientation
+- (instancetype)initWithCGImage:(CGImageRef)image orientation:(OITextureOrientation)orientation
 {
     self = [self init];
     if (self) {
@@ -414,7 +414,7 @@
     CFRetain(contentBuffer_); // 此处retain了一下contentBuffer_，然后会在CGDataProviderCreateWithData的回调函数dataProviderUnlockCallback中对应调用release，本方法中没有release并不是泄漏。
     CVPixelBufferLockBaseAddress(contentBuffer_, 0);  //此后会在CGDataProviderCreateWithData的回调函数dataProviderUnlockCallback中对应调用unlock函数。
     
-    CGDataProviderRef dataProvider = CGDataProviderCreateWithData(contentBuffer_, (GLubyte *)CVPixelBufferGetBaseAddress(contentBuffer_), bytesForImage, dataProviderUnlockCallback);
+    CGDataProviderRef dataProvider = CGDataProviderCreateWithData(contentBuffer_, (GLubyte *)CVPixelBufferGetBaseAddress(contentBuffer_), bytesForImage, dataProviderUnlockCallback_);
     
     CGColorSpaceRef defaultRGBColorSpace = CGColorSpaceCreateDeviceRGB();
     
@@ -448,14 +448,14 @@
 
 #pragma mark - CVPixelBuffer Release Bytes Callback
 
-void contentBufferReleaseBytesCallback( void *releaseRefCon, const void *baseAddress )
+void contentBufferReleaseBytesCallback_( void *releaseRefCon, const void *baseAddress )
 {
     if (baseAddress) {
         free((void *)baseAddress);
     }
 }
 
-void dataProviderUnlockCallback (void *info, const void *data, size_t size)
+void dataProviderUnlockCallback_ (void *info, const void *data, size_t size)
 {
     CVBufferRef contentBuffer = (CVBufferRef)info;
     
@@ -474,7 +474,7 @@ void dataProviderUnlockCallback (void *info, const void *data, size_t size)
     attrs = CFDictionaryCreateMutable(kCFAllocatorDefault, 1, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
     CFDictionarySetValue(attrs, kCVPixelBufferIOSurfacePropertiesKey, empty);
     
-    error = CVPixelBufferCreateWithBytes(kCFAllocatorDefault, (size_t)bufferSize.width, (size_t)bufferSize.height, kCVPixelFormatType_32BGRA, imageData, (size_t)bufferSize.width * 4, contentBufferReleaseBytesCallback, NULL, attrs, &contentBuffer_);
+    error = CVPixelBufferCreateWithBytes(kCFAllocatorDefault, (size_t)bufferSize.width, (size_t)bufferSize.height, kCVPixelFormatType_32BGRA, imageData, (size_t)bufferSize.width * 4, contentBufferReleaseBytesCallback_, NULL, attrs, &contentBuffer_);
     
     OIErrorLog(error, [self class], @"- (void)createContentBufferWithImageData:(GLubyte *)imageData size:(CGSize)bufferSize", [NSString stringWithFormat:@"error code %d", error], nil);
     
@@ -525,7 +525,7 @@ void dataProviderUnlockCallback (void *info, const void *data, size_t size)
     CGDataProviderRelease(dataProvider);
     
     CVPixelBufferRef resizedBuffer = NULL;
-    CVPixelBufferCreateWithBytes(kCFAllocatorDefault, newSize.width, newSize.height, kCVPixelFormatType_32BGRA, imageData, newSize.width * 4, contentBufferReleaseBytesCallback, NULL, NULL, &resizedBuffer);
+    CVPixelBufferCreateWithBytes(kCFAllocatorDefault, newSize.width, newSize.height, kCVPixelFormatType_32BGRA, imageData, newSize.width * 4, contentBufferReleaseBytesCallback_, NULL, NULL, &resizedBuffer);
     return resizedBuffer;
 }
 

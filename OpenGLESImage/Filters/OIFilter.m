@@ -38,7 +38,7 @@
     [super dealloc];
 }
 
-- (id)init
+- (instancetype)init
 {
     self = [super init];
     if (self) {
@@ -56,7 +56,7 @@
     return self;
 }
 
-- (id)initWithContentSize:(CGSize)contentSize
+- (instancetype)initWithContentSize:(CGSize)contentSize
 {
     self = [self init];
     if (self) {

@@ -25,7 +25,7 @@
 + (NSString *)vertexShaderFilename;
 + (NSString *)fragmentShaderFilename;
 
-- (id)initWithContentSize:(CGSize)contentSize;
+- (instancetype)initWithContentSize:(CGSize)contentSize;
 
 - (void)setProgramUniform;
 

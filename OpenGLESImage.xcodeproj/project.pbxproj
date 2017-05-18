@@ -23,6 +23,10 @@
 /* Begin PBXBuildFile section */
 		3310FC121B3D4A7F005FFA09 /* OIAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3310FC101B3D4A7F005FFA09 /* OIAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3310FC131B3D4A7F005FFA09 /* OIAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3310FC111B3D4A7F005FFA09 /* OIAnimation.m */; };
+		332A6EDF1E5B04B3000DFDED /* OIGIFWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 332A6EDD1E5B04B3000DFDED /* OIGIFWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		332A6EE01E5B04B3000DFDED /* OIGIFWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 332A6EDE1E5B04B3000DFDED /* OIGIFWriter.m */; };
+		332A6EE21E5C1121000DFDED /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 332A6EE11E5C1121000DFDED /* ImageIO.framework */; };
+		332A6EE41E5C1C2B000DFDED /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 332A6EE31E5C1C2B000DFDED /* MobileCoreServices.framework */; };
 		3385FFC81D58A346000D5994 /* OIVertexBufferObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 3385FFC61D58A346000D5994 /* OIVertexBufferObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3385FFC91D58A346000D5994 /* OIVertexBufferObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3385FFC71D58A346000D5994 /* OIVertexBufferObject.m */; };
 		33960C351B74892100FC60A6 /* OIAnimationLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 33960C291B74892100FC60A6 /* OIAnimationLayer.h */; };
@@ -132,6 +136,10 @@
 /* Begin PBXFileReference section */
 		3310FC101B3D4A7F005FFA09 /* OIAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIAnimation.h; sourceTree = "<group>"; };
 		3310FC111B3D4A7F005FFA09 /* OIAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIAnimation.m; sourceTree = "<group>"; };
+		332A6EDD1E5B04B3000DFDED /* OIGIFWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIGIFWriter.h; sourceTree = "<group>"; };
+		332A6EDE1E5B04B3000DFDED /* OIGIFWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIGIFWriter.m; sourceTree = "<group>"; };
+		332A6EE11E5C1121000DFDED /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		332A6EE31E5C1C2B000DFDED /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		3385FFC61D58A346000D5994 /* OIVertexBufferObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIVertexBufferObject.h; sourceTree = "<group>"; };
 		3385FFC71D58A346000D5994 /* OIVertexBufferObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIVertexBufferObject.m; sourceTree = "<group>"; };
 		33960C291B74892100FC60A6 /* OIAnimationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIAnimationLayer.h; sourceTree = "<group>"; };
@@ -276,6 +284,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				332A6EE41E5C1C2B000DFDED /* MobileCoreServices.framework in Frameworks */,
+				332A6EE21E5C1121000DFDED /* ImageIO.framework in Frameworks */,
 				84217FDF1A40233E003488E8 /* CoreMotion.framework in Frameworks */,
 				844050011A1C3A23003D5F28 /* Foundation.framework in Frameworks */,
 				844050001A1C3A1B003D5F28 /* OpenGLES.framework in Frameworks */,
@@ -431,6 +441,8 @@
 		B401432118B4AB3B00BC6480 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				332A6EE31E5C1C2B000DFDED /* MobileCoreServices.framework */,
+				332A6EE11E5C1121000DFDED /* ImageIO.framework */,
 				84217FDE1A40233E003488E8 /* CoreMotion.framework */,
 				8443D71819753CE200803FC7 /* QuartzCore.framework */,
 				842A92A3195C338D00DD28C4 /* AVFoundation.framework */,
@@ -592,6 +604,8 @@
 				B4F4D94C18E26E8B00ACB514 /* OIView.m */,
 				84E280D019AB2068000DE6DF /* OIAudioVideoWriter.h */,
 				84E280D119AB2068000DE6DF /* OIAudioVideoWriter.m */,
+				332A6EDD1E5B04B3000DFDED /* OIGIFWriter.h */,
+				332A6EDE1E5B04B3000DFDED /* OIGIFWriter.m */,
 			);
 			name = Consumers;
 			path = consumers;
@@ -604,6 +618,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				332A6EDF1E5B04B3000DFDED /* OIGIFWriter.h in Headers */,
 				33960C3B1B74892100FC60A6 /* OIAnimationScript.h in Headers */,
 				33960C3D1B74892100FC60A6 /* OIAnimationScriptItem.h in Headers */,
 				3310FC121B3D4A7F005FFA09 /* OIAnimation.h in Headers */,
@@ -761,6 +776,7 @@
 				84944C941A43CED500BD3CEC /* OIMultiplyBlendFilter.m in Sources */,
 				844050341A1C3C34003D5F28 /* OIVideo.m in Sources */,
 				844050351A1C3C34003D5F28 /* OIFilter.m in Sources */,
+				332A6EE01E5B04B3000DFDED /* OIGIFWriter.m in Sources */,
 				33960C421B74898B00FC60A6 /* OIAnimationLayerMixerConfiguration.m in Sources */,
 				844050361A1C3C34003D5F28 /* OITwoInputsFilter.m in Sources */,
 				844050371A1C3C34003D5F28 /* OITwoPassesFilter.m in Sources */,
